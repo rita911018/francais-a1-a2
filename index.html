@@ -936,9 +936,14 @@ function checkAnswer(btn) {
   const correctAnswer = answerDiv.dataset.answer.replace(/&quot;/g, '"');
   const userAnswer = input.value.trim();
 
-  // Normalize both for comparison: lowercase, collapse whitespace
-  const norm = s => s.toLowerCase().replace(/\s+/g, ' ').replace(/[，,]/g, ',').replace(/[。.]/g, '.');
-  const isCorrect = norm(userAnswer) === norm(correctAnswer);
+  // Normalize: strip accents, punctuation, extra spaces, lowercase
+  const stripAccents = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const norm = s => stripAccents(s.toLowerCase()).replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const normUser = norm(userAnswer);
+  const normCorrect = norm(correctAnswer);
+
+  // Exact match after normalization, OR user answer contains the core answer
+  const isCorrect = normUser === normCorrect || (normUser.length > 3 && normCorrect.includes(normUser));
 
   answerDiv.style.display = 'block';
   answerDiv.querySelector('.answer-fr').textContent = correctAnswer;
