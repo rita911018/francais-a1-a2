@@ -185,6 +185,10 @@
 
   .vocab-fr { font-weight: 600; color: var(--ink); }
   .vocab-zh { color: var(--grey); }
+  .speak-btn { cursor:pointer; font-size:0.75rem; opacity:0.5; transition:opacity 0.15s; user-select:none; display:inline-block; vertical-align:middle; margin:0 0.15rem; }
+  .speak-btn:hover { opacity:1; }
+  .speak-btn.speaking { opacity:1; animation: pulse 0.6s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
 
   /* ── Exercise ── */
   .exercise {
@@ -834,6 +838,21 @@
 </div>
 
 <script>
+// ════════════════════════ SPEECH ════════════════════════
+function speakFrench(text, btn) {
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'fr-FR';
+  u.rate = 0.85;
+  const voices = speechSynthesis.getVoices();
+  const fr = voices.find(v => v.lang.startsWith('fr'));
+  if (fr) u.voice = fr;
+  if (btn) { btn.classList.add('speaking'); u.onend = () => btn.classList.remove('speaking'); }
+  speechSynthesis.speak(u);
+}
+speechSynthesis.getVoices();
+speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
 // ════════════════════════ TAB SWITCHING ════════════════════════
 document.querySelectorAll('.nav-tab').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -911,13 +930,13 @@ function renderDaily() {
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">
         <span style="font-weight:700;font-size:0.85rem;">📝 Vocabulaire</span>
       </div>
-      <div class="vocab-list">${d.vocab.map(v => `<div class="vocab-item"><span class="vocab-fr">${v[0]}</span><span class="vocab-zh">${v[1]}</span></div>`).join('')}</div>
+      <div class="vocab-list">${d.vocab.map(v => `<div class="vocab-item"><span class="vocab-fr">${v[0]}</span><span class="speak-btn" onclick="speakFrench(this.previousElementSibling.textContent,this)">🔊</span><span class="vocab-zh">${v[1]}</span></div>`).join('')}</div>
       <div style="background:#faf8f3;border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:1rem;font-size:0.82rem;color:var(--soft);line-height:1.8;">
         <strong style="color:var(--pine);">💬 例句：</strong>
         ${(()=>{const w=d.vocab;return [
-          `Je voudrais <strong>${w[0][0]}</strong>. — 我想要${w[0][1]}。`,
-          `Tu aimes <strong>${w[1][0]}</strong> ? — 你喜欢${w[1][1]}吗？`,
-          `C'est <strong>${w[2][0]}</strong> ! — 这是${w[2][1]}！`
+          `<span>Je voudrais <strong>${w[0][0]}</strong>. — 我想要${w[0][1]}。 <span class="speak-btn" onclick="speakFrench(this.parentElement.querySelector('strong').textContent,this)">🔊</span></span>`,
+          `<span>Tu aimes <strong>${w[1][0]}</strong> ? — 你喜欢${w[1][1]}吗？ <span class="speak-btn" onclick="speakFrench(this.parentElement.querySelector('strong').textContent,this)">🔊</span></span>`,
+          `<span>C'est <strong>${w[2][0]}</strong> ! — 这是${w[2][1]}！ <span class="speak-btn" onclick="speakFrench(this.parentElement.querySelector('strong').textContent,this)">🔊</span></span>`
         ].join('<br>')})()}
       </div>
       <div style="font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">✏️ Exercices (5题)</div>
@@ -1038,7 +1057,7 @@ const themes = [
 function renderVocab() {
   document.getElementById('vocabContent').innerHTML = themes.map(t => `
     <h2>${t.title}</h2>
-    <div class="vocab-list">${t.words.map(w => `<div class="vocab-item"><span class="vocab-fr">${w[0]}</span><span class="vocab-zh">${w[1]}</span></div>`).join('')}</div>
+    <div class="vocab-list">${t.words.map(w => `<div class="vocab-item"><span class="vocab-fr">${w[0]}</span><span class="speak-btn" onclick="speakFrench(this.previousElementSibling.textContent,this)">🔊</span><span class="vocab-zh">${w[1]}</span></div>`).join('')}</div>
   `).join('');
 }
 
