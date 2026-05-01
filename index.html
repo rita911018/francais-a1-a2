@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Français A1–A2 · 31天复习 + 知识点手册</title>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --soft: #2d2d44;
+    --grey: #6b6b80;
+    --blue: #2c3e8c;
+    --gold: #c9a84c;
+    --cream: #faf8f3;
+    --card: #fff;
+    --border: #e8e3d7;
+    --red: #c0392b;
+    --green: #277a4e;
+    --tag-bg: #f0ebe0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(250,248,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .nav-tab {
+    padding: 0.9rem 2rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--grey);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  .nav-tab:hover { color: var(--ink); }
+
+  /* ── Layout ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--soft);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--grey);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Day cards ── */
+  .day-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    transition: box-shadow 0.2s;
+  }
+
+  .day-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .day-num {
+    background: var(--blue);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .day-topic {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .day-grammar {
+    color: var(--grey);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  /* ── Grammar block ── */
+  .grammar-block {
+    background: #f7f4ec;
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+  }
+
+  .grammar-block .fr {
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .rule {
+    margin-bottom: 0.5rem;
+    line-height: 1.65;
+  }
+
+  .rule strong { color: var(--ink); }
+
+  /* ── Vocab list ── */
+  .vocab-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .vocab-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .vocab-fr { font-weight: 600; color: var(--ink); }
+  .vocab-zh { color: var(--grey); }
+
+  /* ── Exercise ── */
+  .exercise {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .exercise-q {
+    font-size: 0.88rem;
+    margin-bottom: 0.6rem;
+    color: var(--soft);
+  }
+
+  .exercise-q em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+  .reveal-btn {
+    font-size: 0.78rem;
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: 600;
+    background: none;
+    border: none;
+    padding: 0.25rem 0;
+    letter-spacing: 0.02em;
+  }
+
+  .reveal-btn:hover { color: #1a2570; }
+
+  .answer {
+    display: none;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .answer.show { display: block; }
+
+  .answer-fr {
+    color: var(--green);
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+
+  .ex-input {
+    font-family: "PingFang SC", "Hiragino Sans GB", -apple-system, sans-serif;
+  }
+
+  .ex-input::placeholder { color: #c0bbb0; font-style: italic; }
+
+  /* ── Quick nav dots ── */
+  .day-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 2rem;
+  }
+
+  .day-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .day-dot:hover { border-color: var(--blue); color: var(--blue); }
+  .day-dot.done { background: var(--blue); color: white; border-color: var(--blue); }
+
+  /* ── Reference: Accordion ── */
+  .accordion {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .accordion-header {
+    padding: 1rem 1.15rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: background 0.15s;
+  }
+
+  .accordion-header:hover { background: #faf8f3; }
+
+  .accordion-arrow {
+    font-size: 0.7rem;
+    color: var(--grey);
+    transition: transform 0.2s;
+  }
+
+  .accordion.open .accordion-arrow { transform: rotate(180deg); }
+
+  .accordion-body {
+    display: none;
+    padding: 0 1.15rem 1.15rem;
+    font-size: 0.88rem;
+    color: var(--soft);
+    line-height: 1.75;
+  }
+
+  .accordion.open .accordion-body { display: block; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: 0.75rem 0;
+  }
+
+  th {
+    text-align: left;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--grey);
+    padding: 0.4rem 0.6rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td:first-child { font-weight: 600; color: var(--blue); }
+
+  .conj-table td:first-child {
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.78rem;
+  }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--soft);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .tag.fr-tag { background: #e8e6f0; color: var(--blue); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .container { padding: 1.5rem 1rem 3rem; }
+    h1 { font-size: 1.4rem; }
+    .vocab-list { grid-template-columns: 1fr; }
+    .day-card { padding: 1rem; }
+    .nav-tab { padding: 0.75rem 1.25rem; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-tab active" data-tab="daily">📅 36天复习</div>
+  <div class="nav-tab" data-tab="grammar">📖 A1–A2 语法</div>
+  <div class="nav-tab" data-tab="verbs">🔤 动词变位</div>
+  <div class="nav-tab" data-tab="vocab">📝 A1–A2 词汇</div>
+  <div class="nav-tab" data-tab="exam">📝 真题</div>
+</nav>
+
+<!-- ═══════════════════════════════  DAILY ═══════════════════════════════ -->
+<div class="tab-content active" id="tab-daily">
+<div class="container">
+  <h1>36天 · A1–A2 系统复习</h1>
+  <p class="subtitle">前期覆盖 A1 核心复习，中期进入 A2 重点语法，后期综合与场景。每天一块语法 + 一组词汇 + 三道练习，一小时刚好。点击题目看答案。</p>
+
+  <div class="day-nav" id="dayNav"></div>
+  <div id="dailyContent"></div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════  GRAMMAR ═══════════════════════════════ -->
+<div class="tab-content" id="tab-grammar">
+<div class="container">
+  <h1>A1–A2 语法参考手册</h1>
+  <p class="subtitle">A1（基础）+ A2（进阶）共 20 个核心语法点。点击展开。</p>
+
+<h2 style="margin-top:0.5rem;border:none;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey);">A1 · 基础</h2>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    现在时 · Présent — 规则动词 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>-er 动词（第一组）：</strong><br><span class="fr">parler → je parle, tu parles, il parle, nous parlons, vous parlez, ils parlent</span></p>
+    <p><strong>-ir 动词（第二组）：</strong><br><span class="fr">finir → je finis, tu finis, il finit, nous finissons, vous finissez, ils finissent</span></p>
+    <p><strong>-re 动词（第三组）：</strong><br><span class="fr">vendre → je vends, tu vends, il vend, nous vendons, vous vendez, ils vendent</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    冠词 · Articles <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>定冠词：</strong><span class="fr">le (m.), la (f.), l' (元音), les (pl.)</span><br>指特定或已知事物：<span class="fr">Le soleil brille.</span></p>
+    <p><strong>不定冠词：</strong><span class="fr">un (m.), une (f.), des (pl.)</span><br>指不特定事物：<span class="fr">J'ai un chien.</span></p>
+    <p><strong>部分冠词：</strong><span class="fr">du, de la, de l', des</span> — 不可数名词：<span class="fr">Je mange du pain.</span></p>
+    <p><strong>否定 → de/d'：</strong><span class="fr">Je n'ai pas de chien.</span> · <span class="fr">Je ne bois pas d'eau.</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    形容词 · Adjectifs — 性数配合与位置 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>性数配合：</strong>形容词与名词的性和数一致。<br><span class="fr">un homme <u>intelligent</u></span> → <span class="fr">une femme <u>intelligente</u></span><br><span class="fr">des garçons <u>intelligents</u></span> → <span class="fr">des filles <u>intelligentes</u></span></p>
+    <p><strong>常见不规则：</strong><br><span class="fr">bon → bonne</span> · <span class="fr">beau → belle</span> · <span class="fr">vieux → vieille</span> · <span class="fr">blanc → blanche</span> · <span class="fr">long → longue</span></p>
+    <p><strong>位置：</strong>大部分放名词后。少数放前（BAGS规则）：<span class="fr">Beau, Âge, Bon, Grand, Petit, Jeune, Vieux, Nouveau, Mauvais, Jolie</span><br><span class="fr">une <u>belle</u> maison</span> · <span class="fr">un <u>grand</u> homme</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    主有形容词 · Possessifs <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <table>
+      <tr><th></th><th>m.sg</th><th>f.sg</th><th>pl</th></tr>
+      <tr><td>我的</td><td>mon</td><td>ma → mon*</td><td>mes</td></tr>
+      <tr><td>你的</td><td>ton</td><td>ta → ton*</td><td>tes</td></tr>
+      <tr><td>他/她的</td><td>son</td><td>sa → son*</td><td>ses</td></tr>
+      <tr><td>我们的</td><td colspan="2">notre</td><td>nos</td></tr>
+      <tr><td>你们的</td><td colspan="2">votre</td><td>vos</td></tr>
+      <tr><td>他们的</td><td colspan="2">leur</td><td>leurs</td></tr>
+    </table>
+    <p>* 元音/h 哑音开头的阴性名词用 <span class="fr">mon/ton/son</span>：<span class="fr">mon amie</span>（不是 ma amie）</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    疑问句 · Interrogation <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>三种方式：</strong><br>① 语调（口语）：<span class="fr">Tu es français ? ↗</span><br>② <span class="fr">Est-ce que</span>：<span class="fr">Est-ce que tu es français ?</span><br>③ 倒装（正式）：<span class="fr">Es-tu français ?</span></p>
+    <p><strong>疑问词：</strong><span class="fr">qui</span>（谁）· <span class="fr">que/qu'est-ce que</span>（什么）· <span class="fr">où</span>（哪）· <span class="fr">quand</span>（何时）· <span class="fr">comment</span>（怎样）· <span class="fr">pourquoi</span>（为什么）· <span class="fr">combien</span>（多少）</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    否定 · Négation <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>基本否定：</strong><span class="fr">ne...pas</span> 包围变位动词<br><span class="fr">Je <u>ne</u> parle <u>pas</u>.</span></p>
+    <p><strong>其他否定：</strong><br><span class="fr">ne...plus</span>（不再）· <span class="fr">ne...jamais</span>（从不）· <span class="fr">ne...rien</span>（什么都不）· <span class="fr">ne...personne</span>（没人）</p>
+    <p>复合时态：ne...pas 包围助动词 → <span class="fr">Je <u>n</u>'ai <u>pas</u> mangé.</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    常用介词 · Prépositions <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>地点：</strong><span class="fr">sur</span>（在...上）· <span class="fr">sous</span>（在...下）· <span class="fr">dans</span>（在...里）· <span class="fr">devant</span>（前面）· <span class="fr">derrière</span>（后面）· <span class="fr">à côté de</span>（旁边）· <span class="fr">entre</span>（之间）· <span class="fr">chez</span>（在...家）</p>
+    <p><strong>城市/国家：</strong><br><span class="fr">à</span> + 城市：<span class="fr">à Paris</span><br><span class="fr">en</span> + 阴性国名：<span class="fr">en France</span><br><span class="fr">au</span> + 阳性国名：<span class="fr">au Japon</span><br><span class="fr">aux</span> + 复数国名：<span class="fr">aux États-Unis</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Il y a · Il faut · 无人称结构 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>Il y a</strong> = 有 / 存在<br><span class="fr">Il y a un chat dans le jardin.</span>（花园里有只猫）<br><span class="fr">Il y a trois jours.</span>（三天前）</p>
+    <p><strong>Il faut</strong> = 必须 / 需要<br><span class="fr">Il faut manger.</span>（得吃饭）<br><span class="fr">Il faut que...</span>（需要...）— A2 接虚拟式</p>
+  </div>
+</div>
+
+<h2 style="border:none;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey);">A2 · 进阶</h2>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Passé composé · 复合过去时 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>构成：</strong><span class="fr">avoir</span> / <span class="fr">être</span>（现在时）+ 过去分词</p>
+    <p><strong>avoir 用于大多数动词：</strong><br>
+    <span class="fr">J'ai mangé</span> · <span class="fr">Tu as fini</span> · <span class="fr">Il a vendu</span></p>
+    <p><strong>être 用于：</strong>①14个位移动词（DR MRS VANDERTRAMP）+ ②所有代动词<br>
+    <span class="fr">Je suis allé(e)</span> · <span class="fr">Elle est partie</span> · <span class="fr">Nous nous sommes levés</span></p>
+    <p><strong>过去分词配合：</strong>être 作助动词时，过去分词与主语性数一致。<br>avoir 作助动词时，如果直接宾语在动词前，过去分词与直宾配合：<span class="fr">Les pommes que j'ai <u>achetées</u></span></p>
+    <p><strong>用法：</strong>已完成的一次性动作；一连串过去动作；有明确时间标志(<span class="fr">hier, la semaine dernière, en 2020</span>)</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Imparfait · 未完成过去时 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>构成：</strong><span class="fr">nous</span> 现在时去掉 <span class="fr">-ons</span> + 词尾 <span class="fr">-ais, -ais, -ait, -ions, -iez, -aient</span></p>
+    <p>例：<span class="fr">parler → nous parlons → je parl<u>ais</u>, tu parl<u>ais</u>, il parl<u>ait</u>, nous parl<u>ions</u>, vous parl<u>iez</u>, ils parl<u>aient</u></span></p>
+    <p>唯一不规则：<span class="fr">être → j'étais, tu étais, il était, nous étions, vous étiez, ils étaient</span></p>
+    <p><strong>用法：</strong>①过去持续的状态/习惯 ②背景描写（天气/环境/心情）③过去正在进行的动作 ④过去同时发生的动作</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    PC vs Imparfait · 过去时选择 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>核心区别——用画面感记：</strong></p>
+    <p><span class="fr">Imparfait</span> = 电影的背景画面（天气、场景、人物的持续状态）<br>
+    <span class="fr">Passé composé</span> = 画面中发生的事件（有人进门了、电话响了）</p>
+    <p><strong>例：</strong><span class="fr">Il <u>pleuvait</u> (背景) quand je <u>suis sorti</u> (事件).</span><br>
+    <span class="fr">Je <u>lisais</u> (背景) quand le téléphone <u>a sonné</u> (事件).</span><br>
+    <span class="fr">Elle <u>portait</u> une robe rouge (背景) quand je l'<u>ai vue</u> (事件).</span></p>
+    <p><strong>常见错误：</strong><br>
+    ❌ <span class="fr">Hier, il <u>pleuvait</u> toute la journée.</span> → ✅ <span class="fr">Hier, il <u>a plu</u> toute la journée.</span>（有明确时间段=PC）<br>
+    ❌ <span class="fr">Quand j'étais petit, j'<u>ai aimé</u> le chocolat.</span> → ✅ <span class="fr">Quand j'étais petit, j'<u>aimais</u> le chocolat.</span>（过去习惯=imparfait）</p>
+    <p><strong>信号词：</strong><br>
+    <span class="fr">PC</span> → <span class="fr">soudain, tout à coup, une fois, d'abord, puis, ensuite, enfin</span><br>
+    <span class="fr">Imparfait</span> → <span class="fr">tous les jours, souvent, toujours, d'habitude, avant, à cette époque</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Futur simple · 简单将来时 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>构成：</strong>动词不定式 + <span class="fr">-ai, -as, -a, -ons, -ez, -ont</span>（-re 动词先去 e）</p>
+    <p><span class="fr">je parler<u>ai</u> · tu finir<u>as</u> · il vendr<u>a</u> · nous partir<u>ons</u> · vous prendr<u>ez</u> · ils viendr<u>ont</u></span></p>
+    <p><strong>不规则词根（高频）：</strong></p>
+    <table><tr><td>être</td><td>ser-</td><td>je serai</td></tr>
+    <tr><td>avoir</td><td>aur-</td><td>j'aurai</td></tr>
+    <tr><td>aller</td><td>ir-</td><td>j'irai</td></tr>
+    <tr><td>faire</td><td>fer-</td><td>je ferai</td></tr>
+    <tr><td>pouvoir</td><td>pourr-</td><td>je pourrai</td></tr>
+    <tr><td>venir</td><td>viendr-</td><td>je viendrai</td></tr>
+    <tr><td>voir</td><td>verr-</td><td>je verrai</td></tr>
+    <tr><td>savoir</td><td>saur-</td><td>je saurai</td></tr></table>
+    <p><strong>Futur proche：</strong><span class="fr">aller</span> + 动词不定式 = 近期将来<br>
+    <span class="fr">Je <u>vais</u> partir.</span> = 我马上要走（比 futur simple 更口语化）</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Conditionnel présent · 条件式现在时 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>构成：</strong>futur simple 词根 + imparfait 词尾 = <span class="fr">-ais, -ais, -ait, -ions, -iez, -aient</span></p>
+    <p><strong>三大用法：</strong><br>
+    ① 礼貌请求：<span class="fr">Je <u>voudrais</u> un café.</span>（比 <span class="fr">je veux</span> 礼貌）<br>
+    ② 建议：<span class="fr">Tu <u>devrais</u> te reposer.</span><br>
+    ③ 假设（si + imparfait → conditionnel）：<span class="fr">Si j'avais le temps, je <u>voyagerais</u>.</span></p>
+    <p><strong>Saying "would/should/could"：</strong><br>
+    <span class="fr">je voudrais</span> = I would like · <span class="fr">je devrais</span> = I should · <span class="fr">je pourrais</span> = I could</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    COD / COI · 直接/间接宾语代词 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>COD（直接宾语代词）：</strong><span class="fr">me, te, le/la, nous, vous, les</span></p>
+    <p><span class="fr">Je vois <u>Marie</u> → Je <u>la</u> vois.</span><br>
+    <span class="fr">Il mange <u>la pomme</u> → Il <u>la</u> mange.</span></p>
+    <p><strong>COI（间接宾语代词）：</strong><span class="fr">me, te, lui, nous, vous, leur</span>（替代 à + 人）</p>
+    <p><span class="fr">Je parle <u>à Paul</u> → Je <u>lui</u> parle.</span><br>
+    <span class="fr">Elle téléphone <u>à ses parents</u> → Elle <u>leur</u> téléphone.</span></p>
+    <p><strong>位置：</strong>动词前。否定：<span class="fr">Je ne <u>le</u> vois pas.</span><br>
+    复合时态（PC）：助动词前 → <span class="fr">Je <u>l</u>'ai vu.</span>（注意过去分词配合！ <span class="fr">Je l'ai vu<u>e</u></span> 如果是阴性）</p>
+    <p><strong>双代词顺序（高频考点）：</strong><br>
+    <span class="fr">me/te/se/nous/vous → le/la/les → lui/leur → y → en</span><br>
+    <span class="fr">Tu me <u>le</u> donnes ?</span> · <span class="fr">Je <u>le lui</u> ai dit.</span> · <span class="fr">Il <u>nous en</u> a parlé.</span></p>
+    <p><strong>⚠️ 常见坑：</strong>命令式肯定句中代词放动词后、连字符：<span class="fr">Donne-<u>le-moi</u> !</span> 但否定命令代词回前面：<span class="fr">Ne <u>me le</u> donne pas !</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    En / Y · 副代词 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>En：替代 de + 名词</strong><br>
+    ① 数量：<span class="fr">Tu as des frères ? — Oui, j'<u>en</u> ai deux.</span><br>
+    ② de + 事物：<span class="fr">Tu parles de ton voyage ? — Oui, j'<u>en</u> parle.</span><br>
+    ③ 部分冠词：<span class="fr">Tu veux du pain ? — Oui, j'<u>en</u> veux.</span></p>
+    <p><strong>Y：替代 à + 地点 / à + 事物</strong><br>
+    ① 地点：<span class="fr">Tu vas à Paris ? — Oui, j'<u>y</u> vais.</span><br>
+    ② à + 事物：<span class="fr">Tu penses à ton examen ? — Oui, j'<u>y</u> pense.</span></p>
+    <p><strong>⚠️ à + 人 用 COI 代词（lui/leur），不用 y：</strong><br>
+    <span class="fr">Je pense à Marie → Je pense <u>à elle</u></span>（人不能用 y！）</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Pronoms relatifs · 关系代词 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>Qui</strong> = 作主语（who/which/that）<br>
+    <span class="fr">La femme <u>qui</u> parle est ma prof.</span></p>
+    <p><strong>Que</strong> = 作直宾（whom/which/that）<br>
+    <span class="fr">Le livre <u>que</u> je lis est intéressant.</span><br>
+    ⚠️ 复合时态注意配合：<span class="fr">La pomme que j'ai <u>mangée</u>...</span></p>
+    <p><strong>Où</strong> = 地点/时间（where/when）<br>
+    <span class="fr">La ville <u>où</u> je suis né.</span> · <span class="fr">Le jour <u>où</u> je l'ai rencontré.</span></p>
+    <p><strong>Dont</strong> = de + 先行词（of which/whose/about which）<br>
+    <span class="fr">Le film <u>dont</u> tu parles.</span>（= tu parles <u>de</u> ce film）<br>
+    <span class="fr">L'homme <u>dont</u> la femme est médecin.</span>（= la femme <u>de</u> cet homme）</p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Comparatif & Superlatif · 比较级与最高级 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>比较级：</strong>plus/moins/aussi + adjectif/adverbe + que</p>
+    <p><span class="fr">Marie est <u>plus</u> grande <u>que</u> Paul.</span><br>
+    <span class="fr">Je cours <u>moins</u> vite <u>que</u> toi.</span><br>
+    <span class="fr">Il est <u>aussi</u> intelligent <u>que</u> son frère.</span></p>
+    <p><strong>名词比较：</strong>plus de / moins de / autant de + nom + que<br>
+    <span class="fr">J'ai <u>plus de</u> temps <u>que</u> toi.</span></p>
+    <p><strong>不规则：</strong><span class="fr">bon → meilleur</span> · <span class="fr">bien → mieux</span>（没有"plus bon"或"plus bien"！）</p>
+    <p><strong>最高级：</strong>le/la/les + plus/moins + adjectif<br>
+    <span class="fr">C'est <u>le plus</u> beau jour de ma vie.</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Verbes pronominaux · 代动词 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>四类代动词：</strong><br>
+    ① 自反（对自己）：<span class="fr">se laver</span>（洗澡）<br>
+    ② 相互（彼此）：<span class="fr">se parler</span>（互相说话）<br>
+    ③ 被动：<span class="fr">Ça se vend bien.</span>（这东西卖得好）<br>
+    ④ 固定搭配：<span class="fr">se souvenir de</span>（记得）、<span class="fr">s'occuper de</span>（负责）</p>
+    <p><strong>复合过去时：</strong>助动词用 <span class="fr">être</span>，自反代词仍在动词前。<br>
+    <span class="fr">Je <u>me suis</u> levé(e) tôt.</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Impératif · 命令式 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>只有三个人称：</strong><span class="fr">tu, nous, vous</span>（去掉主语）</p>
+    <p><span class="fr">Parle ! Parlons ! Parlez !</span><br>
+    <span class="fr">Finis ! Finissons ! Finissez !</span></p>
+    <p><strong>注意：</strong><span class="fr">-er</span> 动词的 <span class="fr">tu</span> 形式去 <span class="fr">s</span>：<span class="fr">Tu parles → Parle !</span>（但后面有 y/en 时保留 s：<span class="fr">Vas-y !</span>）</p>
+    <p><strong>代词位置：</strong>肯定命令代词放动词后连字符：<span class="fr">Donne-<u>le-moi</u> !</span> · 否定命令代词回动词前：<span class="fr">Ne <u>me le</u> donne pas !</span></p>
+  </div>
+</div>
+
+<div class="accordion">
+  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+    Articles partitifs · 部分冠词 <span class="accordion-arrow">▼</span>
+  </div>
+  <div class="accordion-body">
+    <p><strong>不可数名词前：</strong><span class="fr">du (m.) / de la (f.) / de l' (元音) / des (pl.)</span></p>
+    <p><span class="fr">Je mange <u>du</u> pain.</span> · <span class="fr">Je bois <u>de l</u>'eau.</span> · <span class="fr">Il achète <u>des</u> légumes.</span></p>
+    <p><strong>否定句中 → de/d'：</strong><br>
+    <span class="fr">Je ne mange <u>pas de</u> pain.</span>（不是"pas du pain"！）</p>
+    <p><strong>数量表达后 → de/d'：</strong><br>
+    <span class="fr">un kilo <u>de</u> pommes</span> · <span class="fr">beaucoup <u>de</u> travail</span></p>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════  VERBS ═══════════════════════════════ -->
+<div class="tab-content" id="tab-verbs">
+<div class="container">
+  <h1>A1–A2 动词变位表</h1>
+  <p class="subtitle">核心动词，五个核心时态。A1 重点背 présent + passé composé，A2 加 imparfait / futur / conditionnel。</p>
+
+  <div id="verbTables"></div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════  VOCAB ═══════════════════════════════ -->
+<div class="tab-content" id="tab-vocab">
+<div class="container">
+  <h1>A1–A2 主题词汇表</h1>
+  <p class="subtitle">A1（自我介绍/家庭/食物/日常/交通/服装）+ A2（健康/住房/旅行/工作/消费/天气休闲）共 12 个主题。</p>
+  <div id="vocabContent"></div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════  EXAM ═══════════════════════════════ -->
+<div class="tab-content" id="tab-exam">
+<div class="container">
+  <h1>DELF A2 真题训练</h1>
+  <p class="subtitle">写作（Production écrite）+ 口语（Production orale）高频考题。先自己写/说，再对照参考范文。</p>
+
+  <h2>✍️ Production écrite · 写作</h2>
+  <p style="color:var(--grey);font-size:0.85rem;margin-bottom:1.5rem;">2 篇短文，45 分钟。第一篇 60+ 词，第二篇 60+ 词。先看题 → 写完 → 对范文。</p>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">1</div><div class="day-topic">Inviter un ami · 邀请朋友</div></div>
+    <div class="grammar-block"><strong>Sujet：</strong>Vous organisez une fête pour votre anniversaire. Vous écrivez un message à un(e) ami(e) pour l'inviter. Vous donnez la date, l'heure, le lieu, et vous proposez d'apporter quelque chose.<br><strong>Écrivez 60 mots minimum.</strong></div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏范文 ▴':'查看范文 ▾'">查看范文 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Salut Marie !<br><br>Je t'écris pour t'inviter à ma fête d'anniversaire. C'est samedi 15 juin à 20h chez moi, 12 rue des Lilas. Il y aura de la musique, des amis et un bon dîner. Si tu peux venir, est-ce que tu pourrais apporter une bouteille de jus de fruits ?<br><br>Dis-moi si tu es libre !<br>À bientôt,<br>Sophie</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 套路：Salut + 目的 + 日期/时间/地点 + 请求带东西 + 让对方回复 + 签名。约 65 词。</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">2</div><div class="day-topic">Refuser une invitation · 拒绝邀请</div></div>
+    <div class="grammar-block"><strong>Sujet：</strong>Votre ami(e) vous invite à aller au cinéma samedi soir. Vous ne pouvez pas y aller. Vous répondez pour refuser poliment et vous proposez une autre date.<br><strong>Écrivez 60 mots minimum.</strong></div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏范文 ▴':'查看范文 ▾'">查看范文 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Cher Paul,<br><br>Merci beaucoup pour ton invitation au cinéma ! Malheureusement, je ne peux pas venir samedi soir parce que je dois garder ma petite sœur.<br><br>Je suis vraiment désolé(e). Par contre, je suis libre dimanche après-midi. Ça te dirait d'y aller dimanche à la place ?<br><br>Tiens-moi au courant !<br>Amitiés,<br>Thomas</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 套路：Merci + refus poli + raison simple + proposer alternative + amitiés。约 72 词。</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">3</div><div class="day-topic">Raconter un souvenir · 描述经历</div></div>
+    <div class="grammar-block"><strong>Sujet：</strong>Vous avez passé un week-end inoubliable. Vous racontez ce que vous avez fait, avec qui, et pourquoi c'était spécial.<br><strong>Écrivez 60 mots minimum. Utilisez le passé composé et l'imparfait.</strong></div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏范文 ▴':'查看范文 ▾'">查看范文 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Le week-end dernier, je suis allé(e) à la montagne avec mes amis. Il faisait très beau et le soleil brillait. Nous avons marché pendant trois heures et nous avons découvert un petit lac magnifique.<br><br>Le soir, nous avons fait un barbecue et nous avons regardé les étoiles. C'était un moment magique parce que j'étais entouré(e) des personnes que j'aime. Je n'oublierai jamais ce week-end !</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 套路：Quand + météo (imparfait) + activités (PC) + émotion (imparfait) + conclusion。约 80 词。</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">4</div><div class="day-topic">Demander des renseignements · 咨询信息</div></div>
+    <div class="grammar-block"><strong>Sujet：</strong>Vous voulez suivre un cours de cuisine. Vous écrivez à l'école pour demander : les dates, les horaires, le prix, et s'il faut apporter quelque chose.<br><strong>Écrivez 60 mots minimum.</strong></div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏范文 ▴':'查看范文 ▾'">查看范文 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Madame, Monsieur,<br><br>Je vous écris pour avoir des informations sur vos cours de cuisine. Je voudrais savoir quand commencent les prochains cours et quels sont les horaires. Quel est le prix pour un mois de cours ? Est-ce que je dois apporter quelque chose (un tablier, des ingrédients) ?<br><br>Je vous remercie d'avance pour votre réponse.<br>Cordialement,<br>Julie Martin</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 套路：formule de politesse + objet + questions (quand/combien/quoi) + remerciements + cordialement。约 75 词。</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">5</div><div class="day-topic">Décrire une personne · 描述一个人</div></div>
+    <div class="grammar-block"><strong>Sujet：</strong>Vous écrivez à un(e) ami(e) pour lui parler d'une personne que vous avez rencontrée récemment. Vous décrivez son apparence, son caractère, et pourquoi vous l'appréciez.<br><strong>Écrivez 60 mots minimum.</strong></div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏范文 ▴':'查看范文 ▾'">查看范文 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Salut Anna,<br><br>Je voulais te parler de ma nouvelle collègue, Léa. Elle est grande et elle a les cheveux bruns et les yeux verts. Elle est très gentille et toujours souriante. Elle est aussi très drôle — on rit beaucoup ensemble !<br><br>Ce que j'aime chez elle, c'est qu'elle aide toujours les autres. Elle m'a beaucoup aidé(e) pour mon projet. Je suis content(e) de l'avoir rencontrée.<br>À bientôt !</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 套路：Présentation + apparence + caractère + exemple concret + sentiment。约 78 词。</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">6</div><div class="day-topic">Proposer une sortie · 提议出行</div></div>
+    <div class="grammar-block"><strong>Sujet：</strong>Vous voulez organiser une sortie avec des amis. Vous proposez une activité, un jour, une heure, et un lieu de rendez-vous.<br><strong>Écrivez 60 mots minimum.</strong></div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏范文 ▴':'查看范文 ▾'">查看范文 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Salut tout le monde !<br><br>Je vous propose d'aller faire une randonnée dimanche prochain. Il y a un très beau chemin dans la forêt de Fontainebleau. On pourrait se retrouver à 10h devant la gare. Il faut juste apporter de l'eau et un pique-nique.<br><br>Le parcours fait environ 10 km, donc ce n'est pas trop difficile. Qui est partant ?<br>À dimanche j'espère !</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 套路：Proposition + activité + heure/lieu + matériel à prévoir + question finale。约 72 词。</p>
+    </div>
+  </div>
+
+  <h2>🗣️ Production orale · 口语</h2>
+  <p style="color:var(--grey);font-size:0.85rem;margin-bottom:1.5rem;">三部分：自我介绍（1-2 min）+ 独白（2 min，有10分钟准备）+ 角色扮演（3-4 min）。下面是高频考题和答题框架。</p>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">①</div><div class="day-topic">Entretien dirigé · 自我介绍（必考）</div></div>
+    <div class="grammar-block"><strong>考官常见问题：</strong><br>· Comment vous vous appelez ? / Pouvez-vous vous présenter ?<br>· Où habitez-vous ?<br>· Parlez-moi de votre famille.<br>· Qu'est-ce que vous faites dans la vie ? (études / travail)<br>· Pourquoi apprenez-vous le français ?<br>· Quels sont vos loisirs ?</div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏答题模板 ▴':'查看答题模板 ▾'">查看答题模板 ▾</button>
+    <div class="answer">
+      <span class="answer-fr">Je m'appelle [prénom]. J'ai [âge] ans et j'habite à [ville], en Chine. Je suis [profession/étudiant(e)].<br><br>Dans ma famille, il y a [nombre] personnes : mon père, ma mère, et [moi / mon frère / ma sœur]. Mon père est [métier] et ma mère est [métier].<br><br>J'apprends le français depuis [durée]. J'aime cette langue parce qu'elle est très belle. Aussi, je voudrais peut-être travailler avec des pays francophones un jour.<br><br>Pendant mon temps libre, j'aime [loisir 1] et [loisir 2]. Le week-end, je fais souvent [activité] avec mes amis.</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 替换 [ ] 里的内容为你的真实信息。背熟这段，Part 1 直接拿下。</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">②</div><div class="day-topic">Monologue suivi · 独白高频题</div></div>
+    <div class="grammar-block"><strong>高频话题（10分钟准备 → 说2分钟）：</strong><br>· Parlez de votre ville.<br>· Décrivez votre routine quotidienne.<br>· Quels sont vos projets pour les prochaines vacances ?<br>· Parlez d'une personne que vous admirez.<br>· Décrivez votre logement idéal.<br>· Qu'est-ce que vous aimez faire le week-end ?</div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏答题框架 ▴':'查看答题框架 ▾'">查看答题框架 ▾</button>
+    <div class="answer">
+      <span class="answer-fr"><strong>结构模板（任何话题都能套）：</strong><br><br>1️⃣ Introduction (15 sec)<br>Je vais vous parler de [sujet].<br><br>2️⃣ Point 1 + exemple (40 sec)<br>D'abord, ... Par exemple, ...<br><br>3️⃣ Point 2 + exemple (40 sec)<br>Ensuite, ... Notamment, ...<br><br>4️⃣ Opinion personnelle (25 sec)<br>Personnellement, je pense que ... / Pour moi, ...<br><br>5️⃣ Conclusion (10 sec)<br>Voilà, c'est tout ce que je voulais dire sur [sujet].</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 关键：分点 + 每个点给具体例子 + 用连接词（d'abord, ensuite, enfin, par exemple, personnellement）</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><div class="day-num">③</div><div class="day-topic">Exercice en interaction · 角色扮演</div></div>
+    <div class="grammar-block"><strong>高频情境（3-4分钟，考官扮演对方）：</strong><br>· Vous êtes à l'office de tourisme, demandez des informations sur les activités.<br>· Vous voulez échanger un vêtement dans un magasin.<br>· Vous réservez une chambre d'hôtel par téléphone.<br>· Vous cherchez un colocataire, vous posez des questions au candidat.<br>· Vous êtes au restaurant, il y a un problème avec votre plat.</div>
+    <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'隐藏答题技巧 ▴':'查看答题技巧 ▾'">查看答题技巧 ▾</button>
+    <div class="answer">
+      <span class="answer-fr"><strong>生存句式——每种场景都要会：</strong><br><br>🔹 <strong>问信息：</strong>Je voudrais savoir... / Est-ce que vous pouvez me dire... ? / Qu'est-ce que vous me conseillez ?<br><br>🔹 <strong>提要求：</strong>Je voudrais... / Est-ce que je peux... ? / Ça serait possible de... ?<br><br>🔹 <strong>有问题：</strong>Excusez-moi, il y a un problème... / Je suis désolé(e), mais... / Ce n'est pas ce que j'ai commandé.<br><br>🔹 <strong>讨价还价：</strong>Vous pouvez faire un prix ? / C'est un peu cher... / Est-ce qu'il y a une réduction ?<br><br>🔹 <strong>结束对话：</strong>Merci beaucoup ! / C'est parfait, je vous remercie. / Bonne journée !</span>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--grey);">📌 判分标准：能完成交流任务 + 基本语法正确 + 发音能被理解。不用完美，能沟通就行。</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ════════════════════════ TAB SWITCHING ════════════════════════
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ════════════════════════ 31-DAY DATA ════════════════════════
+const days = [
+  {topic:"A1 复习：Présent — 规则动词", grammar:"<div class='rule'><strong>-er：</strong><span class='fr'>je parle, tu parles, il parle, nous parlons, vous parlez, ils parlent</span></div><div class='rule'><strong>-ir：</strong><span class='fr'>je finis, tu finis, il finit, nous finissons, vous finissez, ils finissent</span></div><div class='rule'><strong>-re：</strong><span class='fr'>je vends, tu vends, il vend, nous vendons, vous vendez, ils vendent</span></div>", vocab:[["parler","说话"],["aimer","喜欢/爱"],["finir","完成"],["choisir","选择"],["attendre","等"]], exercises:[{q:"Nous <em>_____</em> (parler) français.",a:"Nous parlons français."},{q:"Tu <em>_____</em> (finir) ton travail ?",a:"Tu finis ton travail ?"},{q:"Elles <em>_____</em> (vendre) leur maison.",a:"Elles vendent leur maison."}]},
+  {topic:"A1 复习：Présent — 核心不规则动词", grammar:"<div class='rule'><strong>必须脱口而出：</strong><br><span class='fr'>être → je suis, tu es, il est, nous sommes, vous êtes, ils sont</span><br><span class='fr'>avoir → j'ai, tu as, il a, nous avons, vous avez, ils ont</span><br><span class='fr'>aller → je vais, tu vas, il va, nous allons, vous allez, ils vont</span><br><span class='fr'>faire → je fais, tu fais, il fait, nous faisons, vous faites, ils font</span></div>", vocab:[["être","是"],["avoir","有"],["aller","去"],["faire","做"],["pouvoir","能"]], exercises:[{q:"Je <em>_____</em> (être) chinois.",a:"Je suis chinois."},{q:"Ils <em>_____</em> (avoir) deux enfants.",a:"Ils ont deux enfants."},{q:"Où <em>_____</em> (aller)-vous ?",a:"Où allez-vous ?"}]},
+  {topic:"A1 复习：冠词 + 否定", grammar:"<div class='rule'><strong>定冠词：</strong><span class='fr'>le/la/l'/les</span>（已知/泛指）<br><strong>不定冠词：</strong><span class='fr'>un/une/des</span>（不特定）<br><strong>部分冠词：</strong><span class='fr'>du/de la/de l'/des</span>（不可数）</div><div class='rule'><strong>否定 = ne...pas：</strong><br><span class='fr'>Je ne parle pas.</span> · <span class='fr'>Je n'ai pas de chien.</span>（否定时不定/部分冠词→de）</div>", vocab:[["un livre","一本书"],["un stylo","一支笔"],["une table","一张桌子"],["du pain","一些面包"],["de l'eau","一些水"]], exercises:[{q:"J'ai <em>_____</em> chien. (不定冠词)",a:"J'ai un chien."},{q:"Je n'ai pas <em>_____</em> chien. (否定)",a:"Je n'ai pas de chien."},{q:"Elle boit <em>_____</em> eau. (部分冠词)",a:"Elle boit de l'eau."}]},
+  {topic:"A1 复习：疑问句", grammar:"<div class='rule'><strong>三种问法：</strong><br>① 语调 ↗：<span class='fr'>Tu parles français ?</span><br>② Est-ce que：<span class='fr'>Est-ce que tu parles français ?</span><br>③ 倒装：<span class='fr'>Parles-tu français ?</span></div><div class='rule'><strong>疑问词：</strong><span class='fr'>qui, que, où, quand, comment, pourquoi, combien</span></div>", vocab:[["où","哪里"],["quand","何时"],["comment","怎样"],["pourquoi","为什么"],["combien","多少"]], exercises:[{q:"<em>_____</em> (où) habites-tu ?",a:"Où habites-tu ?"},{q:"<em>_____</em> (est-ce que) tu aimes le cinéma ?",a:"Est-ce que tu aimes le cinéma ?"},{q:"Tu parles anglais <em>_____</em> ? ↗",a:"Tu parles anglais ?"}]},
+  {topic:"A1 复习：形容词 + 主有词", grammar:"<div class='rule'><strong>形容词性数配合：</strong><br><span class='fr'>un homme intelligent → une femme intelligente</span><br><span class='fr'>bon → bonne</span> · <span class='fr'>beau → belle</span> · <span class='fr'>vieux → vieille</span></div><div class='rule'><strong>主有形容词：</strong><span class='fr'>mon/ton/son, ma/ta/sa, mes/tes/ses, notre/votre/leur, nos/vos/leurs</span></div>", vocab:[["grand/petit","大/小"],["beau/belle","美"],["bon/bonne","好"],["jeune","年轻的"],["vieux/vieille","老的"]], exercises:[{q:"C'est une <em>_____</em> (beau) maison.",a:"C'est une belle maison."},{q:"Voici <em>_____</em> (mon/ma) amie Sophie.",a:"Voici mon amie Sophie."},{q:"<em>_____</em> (son/sa) père est médecin.",a:"Son père est médecin."}]},
+  {topic:"Passé composé — avoir", grammar:"<div class='rule'><strong>构成：</strong><span class='fr'>avoir</span> + 过去分词</div><div class='rule'>-er → <span class='fr'>-é</span> (manger → mangé)<br>-ir → <span class='fr'>-i</span> (finir → fini)<br>-re → <span class='fr'>-u</span> (vendre → vendu)</div><div class='rule'><strong>否定：</strong><span class='fr'>Je n'ai pas mangé.</span></div>", vocab:[["manger","吃"],["travailler","工作"],["finir","完成"],["choisir","选择"],["vendre","卖"]], exercises:[{q:"Hier, je <em>_____</em> (manger) au restaurant.",a:"Hier, j'ai mangé au restaurant."},{q:"Tu <em>_____</em> (finir) tes devoirs ?",a:"Tu as fini tes devoirs ?"},{q:"Nous <em>_____</em> (ne pas vendre) la voiture.",a:"Nous n'avons pas vendu la voiture."}]},
+  {topic:"Passé composé — être", grammar:"<div class='rule'><strong>être</strong> + 过去分词（过去分词与主语性数配合）</div><div class='rule'>位移动词：<span class='fr'>aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer</span> + 全部代动词</div><div class='rule'><span class='fr'>Elle est all<u>ée</u>.</span> · <span class='fr'>Nous sommes parti<u>s</u>.</span></div>", vocab:[["aller","去"],["venir","来"],["arriver","到达"],["partir","离开"],["naître","出生"]], exercises:[{q:"Marie <em>_____</em> (aller) au cinéma.",a:"Marie est allée au cinéma."},{q:"Ils <em>_____</em> (partir) hier soir.",a:"Ils sont partis hier soir."},{q:"Je <em>_____</em> (naître) en France.",a:"Je suis né(e) en France."}]},
+  {topic:"Passé composé — 代动词 + 不规则过去分词", grammar:"<div class='rule'>代动词用 <span class='fr'>être</span>：<span class='fr'>Je me suis levé(e).</span></div><div class='rule'><strong>高频不规则过去分词：</strong><br><span class='fr'>avoir → eu</span> · <span class='fr'>être → été</span> · <span class='fr'>faire → fait</span> · <span class='fr'>pouvoir → pu</span> · <span class='fr'>vouloir → voulu</span> · <span class='fr'>voir → vu</span> · <span class='fr'>savoir → su</span> · <span class='fr'>devoir → dû</span> · <span class='fr'>prendre → pris</span> · <span class='fr'>mettre → mis</span> · <span class='fr'>dire → dit</span> · <span class='fr'>écrire → écrit</span></div>", vocab:[["se lever","起床"],["se laver","洗澡"],["se promener","散步"],["avoir","有"],["faire","做"]], exercises:[{q:"Ce matin, je <em>_____</em> (se lever) à 7h.",a:"Ce matin, je me suis levé(e) à 7h."},{q:"Elle <em>_____</em> (faire) ses devoirs.",a:"Elle a fait ses devoirs."},{q:"Vous <em>_____</em> (voir) ce film ?",a:"Vous avez vu ce film ?"}]},
+  {topic:"Imparfait — 构成", grammar:"<div class='rule'><strong>公式：</strong><span class='fr'>nous</span> 现在时词根 + <span class='fr'>-ais, -ais, -ait, -ions, -iez, -aient</span></div><div class='rule'><span class='fr'>parler → nous parlons → je parlais, tu parlais, il parlait, nous parlions, vous parliez, ils parlaient</span></div><div class='rule'>唯一不规则：<span class='fr'>être → j'étais, tu étais, il était, nous étions, vous étiez, ils étaient</span></div>", vocab:[["parler","说话"],["regarder","看"],["écouter","听"],["habiter","居住"],["être","是"]], exercises:[{q:"Quand j'étais petit, je <em>_____</em> (habiter) à Paris.",a:"Quand j'étais petit, j'habitais à Paris."},{q:"Nous <em>_____</em> (être) toujours en retard.",a:"Nous étions toujours en retard."},{q:"Tu <em>_____</em> (regarder) la télé tous les soirs.",a:"Tu regardais la télé tous les soirs."}]},
+  {topic:"Imparfait — 用法", grammar:"<div class='rule'><strong>四大用法：</strong><br>① 过去习惯：<span class='fr'>Je <u>prenais</u> le bus tous les jours.</span><br>② 背景描写：<span class='fr'>Le soleil <u>brillait</u>, les oiseaux <u>chantaient</u>.</span><br>③ 过去正在进行的动作：<span class='fr'>Je <u>dormais</u> quand tu as appelé.</span><br>④ 过去同时发生的动作：<span class='fr'>Pendant que je <u>cuisinais</u>, il <u>mettait</u> la table.</span></div>", vocab:[["prendre","乘坐/拿"],["dormir","睡觉"],["cuisiner","做饭"],["briller","照耀"],["chanter","唱歌"]], exercises:[{q:"Avant, je <em>_____</em> (prendre) le métro.",a:"Avant, je prenais le métro."},{q:"Il <em>_____</em> (faire) beau ce jour-là.",a:"Il faisait beau ce jour-là."},{q:"Quand tu es arrivé, je <em>_____</em> (dormir).",a:"Quand tu es arrivé, je dormais."}]},
+  {topic:"PC vs Imparfait — 选择", grammar:"<div class='rule'><strong>画面对比：</strong><br><span class='fr'>Imparfait</span> = 背景画面（天气、场景、心情）<br><span class='fr'>PC</span> = 画面中发生的事件</div><div class='rule'><span class='fr'><u>Il pleuvait</u> quand je <u>suis sorti</u>.</span>（下雨是背景，出门是事件）<br><span class='fr'>Je <u>lisais</u> quand le téléphone <u>a sonné</u>.</span></div>", vocab:[["soudain","突然"],["tout à coup","忽然"],["d'habitude","通常"],["toujours","总是"],["souvent","经常"]], exercises:[{q:"Il <em>_____</em> (pleuvoir) quand je <em>_____</em> (sortir).",a:"Il pleuvait quand je suis sorti(e)."},{q:"Tous les étés, nous <em>_____</em> (aller) à la mer.",a:"Tous les étés, nous allions à la mer."},{q:"Soudain, un homme <em>_____</em> (entrer).",a:"Soudain, un homme est entré."}]},
+  {topic:"Futur simple — 构成", grammar:"<div class='rule'><strong>公式：</strong>不定式 + <span class='fr'>-ai, -as, -a, -ons, -ez, -ont</span>（-re 去 e）</div><div class='rule'><span class='fr'>je parler<u>ai</u> · tu finir<u>as</u> · il vendr<u>a</u></span></div><div class='rule'><strong>不规则词根：</strong><br><span class='fr'>être → ser-</span> · <span class='fr'>avoir → aur-</span> · <span class='fr'>faire → fer-</span> · <span class='fr'>aller → ir-</span> · <span class='fr'>pouvoir → pourr-</span></div>", vocab:[["demain","明天"],["la semaine prochaine","下周"],["l'année prochaine","明年"],["bientôt","不久"],["plus tard","以后"]], exercises:[{q:"Demain, je <em>_____</em> (aller) au bureau.",a:"Demain, j'irai au bureau."},{q:"Nous <em>_____</em> (être) en vacances la semaine prochaine.",a:"Nous serons en vacances la semaine prochaine."},{q:"Tu <em>_____</em> (pouvoir) venir ?",a:"Tu pourras venir ?"}]},
+  {topic:"Futur proche vs Futur simple", grammar:"<div class='rule'><span class='fr'>Futur proche</span> = <span class='fr'>aller</span> + 不定式 = 马上要做 / 确定的事<br><span class='fr'>Futur simple</span> = 较远的将来 / 不太确定的计划</div><div class='rule'><span class='fr'>Je <u>vais</u> partir.</span>（我现在就走）<br><span class='fr'>Je <u>partirai</u> un jour.</span>（有一天我会走）</div>", vocab:[["ce soir","今晚"],["tout de suite","马上"],["dans cinq minutes","五分钟内"],["un jour","有一天"],["quand","当...时"]], exercises:[{q:"Attention ! Tu <em>_____</em> (tomber) !",a:"Attention ! Tu vas tomber !"},{q:"Quand je serai grand, je <em>_____</em> (être) médecin.",a:"Quand je serai grand, je serai médecin."},{q:"Ce soir, nous <em>_____</em> (aller) au restaurant.",a:"Ce soir, nous allons au restaurant."}]},
+  {topic:"Conditionnel présent", grammar:"<div class='rule'><strong>构成：</strong>futur 词根 + imparfait 词尾</div><div class='rule'><strong>三大用法：</strong><br>① 礼貌：<span class='fr'>Je <u>voudrais</u> un café.</span><br>② 建议：<span class='fr'>Tu <u>devrais</u> te reposer.</span><br>③ 假设：<span class='fr'>Si j'avais de l'argent, je <u>voyagerais</u>.</span></div>", vocab:[["voudrais","想要(would like)"],["devrais","应该(should)"],["pourrais","可以(could)"],["aimerais","想/爱(would love)"],["serait","会是(would be)"]], exercises:[{q:"Je <em>_____</em> (vouloir) un thé, s'il vous plaît.",a:"Je voudrais un thé, s'il vous plaît."},{q:"Tu es fatigué, tu <em>_____</em> (devoir) dormir.",a:"Tu es fatigué, tu devrais dormir."},{q:"Si j'avais le temps, je <em>_____</em> (apprendre) le japonais.",a:"Si j'avais le temps, j'apprendrais le japonais."}]},
+  {topic:"COD 代词 — le/la/les", grammar:"<div class='rule'>替代直接宾语（不需介词的人或物）</div><div class='rule'><span class='fr'>me, te, le/la, nous, vous, les</span></div><div class='rule'><span class='fr'>Je vois <u>Marie</u> → Je <u>la</u> vois.</span><br><span class='fr'>Tu manges <u>la pomme</u> → Tu <u>la</u> manges.</span><br>复合时态注意配合：<span class='fr'>Je <u>l</u>'ai vu<u>e</u>.</span></div>", vocab:[["voir","看见"],["connaître","认识"],["aider","帮助"],["écouter","听"],["attendre","等"]], exercises:[{q:"Tu vois Paul ? — Oui, je <em>_____</em> vois.",a:"Tu vois Paul ? — Oui, je le vois."},{q:"Vous connaissez Marie ? — Oui, je <em>_____</em> connais.",a:"Vous connaissez Marie ? — Oui, je la connais."},{q:"Il a acheté les billets ? — Oui, il <em>_____</em> a achetés.",a:"Il a acheté les billets ? — Oui, il les a achetés."}]},
+  {topic:"COI 代词 — lui/leur", grammar:"<div class='rule'>替代 <span class='fr'>à + 人</span></div><div class='rule'><span class='fr'>me, te, lui, nous, vous, leur</span></div><div class='rule'><span class='fr'>Je parle <u>à Paul</u> → Je <u>lui</u> parle.</span><br><span class='fr'>Elle téléphone <u>à ses parents</u> → Elle <u>leur</u> téléphone.</span></div>", vocab:[["parler à","对...说话"],["téléphoner à","给...打电话"],["répondre à","回答"],["demander à","问"],["offrir à","送给"]], exercises:[{q:"Tu parles à Marie ? — Oui, je <em>_____</em> parle.",a:"Tu parles à Marie ? — Oui, je lui parle."},{q:"Il téléphone à ses amis ? — Oui, il <em>_____</em> téléphone.",a:"Il téléphone à ses amis ? — Oui, il leur téléphone."},{q:"Est-ce que tu <em>_____</em> as répondu ? (à ta mère)",a:"Est-ce que tu lui as répondu ?"}]},
+  {topic:"En — 副代词", grammar:"<div class='rule'><strong>En = de + 名词</strong></div><div class='rule'>① 数量：<span class='fr'>Tu as des frères ? — J'<u>en</u> ai deux.</span><br>② de + 事物：<span class='fr'>Tu parles de ton voyage ? — J'<u>en</u> parle.</span><br>③ 部分冠词：<span class='fr'>Tu veux du pain ? — J'<u>en</u> veux.</span></div>", vocab:[["du pain","一些面包"],["de l'eau","一些水"],["du temps","一些时间"],["des amis","一些朋友"],["de l'argent","一些钱"]], exercises:[{q:"Tu veux du café ? — Oui, j'<em>_____</em> veux.",a:"Tu veux du café ? — Oui, j'en veux."},{q:"Combien de livres as-tu ? — J'<em>_____</em> ai trois.",a:"Combien de livres as-tu ? — J'en ai trois."},{q:"Tu as besoin d'aide ? — Oui, j'<em>_____</em> ai besoin.",a:"Tu as besoin d'aide ? — Oui, j'en ai besoin."}]},
+  {topic:"Y — 副代词", grammar:"<div class='rule'><strong>Y = à + 地点 / à + 事物</strong></div><div class='rule'>① 地点：<span class='fr'>Tu vas à Paris ? — J'<u>y</u> vais.</span><br>② à + 事物：<span class='fr'>Tu penses à ton examen ? — J'<u>y</u> pense.</span></div><div class='rule'>⚠️ <span class='fr'>à + 人</span> 用 COI，不用 y！</div>", vocab:[["aller à","去"],["penser à","想"],["réfléchir à","思考"],["participer à","参加"],["s'intéresser à","感兴趣"]], exercises:[{q:"Tu vas à la bibliothèque ? — Oui, j'<em>_____</em> vais.",a:"Tu vas à la bibliothèque ? — Oui, j'y vais."},{q:"Vous pensez à votre avenir ? — Oui, j'<em>_____</em> pense.",a:"Vous pensez à votre avenir ? — Oui, j'y pense."},{q:"Il participe à la réunion ? — Oui, il <em>_____</em> participe.",a:"Il participe à la réunion ? — Oui, il y participe."}]},
+  {topic:"关系代词 — qui / que", grammar:"<div class='rule'><strong>Qui</strong> = 主语（后跟动词）<br><strong>Que</strong> = 直宾（后跟主语）</div><div class='rule'><span class='fr'>La femme <u>qui</u> parle est ma prof.</span>（qui 后是动词 parle）<br><span class='fr'>Le livre <u>que</u> je lis est bon.</span>（que 后是主语 je）</div>", vocab:[["une femme","一个女人"],["un livre","一本书"],["un film","一部电影"],["une chanson","一首歌"],["un restaurant","一家餐厅"]], exercises:[{q:"La femme <em>_____</em> habite ici est gentille.",a:"La femme qui habite ici est gentille."},{q:"Le film <em>_____</em> j'ai vu hier était super.",a:"Le film que j'ai vu hier était super."},{q:"C'est un restaurant <em>_____</em> je connais bien.",a:"C'est un restaurant que je connais bien."}]},
+  {topic:"关系代词 — où / dont", grammar:"<div class='rule'><strong>Où</strong> = 地点或时间（先行词是地点/时间名词）<br><strong>Dont</strong> = <span class='fr'>de</span> + 先行词</div><div class='rule'><span class='fr'>La ville <u>où</u> je suis né.</span><br><span class='fr'>Le jour <u>où</u> on s'est rencontrés.</span><br><span class='fr'>Le film <u>dont</u> tu parles.</span>（= tu parles <u>de</u> ce film）</div>", vocab:[["une ville","城市"],["un jour","一天"],["un souvenir","回忆"],["une raison","原因"],["un ami","朋友"]], exercises:[{q:"La ville <em>_____</em> j'habite est petite.",a:"La ville où j'habite est petite."},{q:"Le livre <em>_____</em> tu as besoin est ici.",a:"Le livre dont tu as besoin est ici."},{q:"Je me souviens du jour <em>_____</em> nous nous sommes rencontrés.",a:"Je me souviens du jour où nous nous sommes rencontrés."}]},
+  {topic:"Comparatif — 比较级", grammar:"<div class='rule'><strong>公式：</strong><span class='fr'>plus/moins/aussi + adjectif + que</span></div><div class='rule'><span class='fr'>Marie est <u>plus</u> grande <u>que</u> Paul.</span><br><span class='fr'>Je suis <u>moins</u> rapide <u>que</u> toi.</span><br><span class='fr'>Il est <u>aussi</u> intelligent <u>que</u> son père.</span></div><div class='rule'>⚠️ <span class='fr'>bon → meilleur</span> · <span class='fr'>bien → mieux</span></div>", vocab:[["grand","大/高"],["petit","小/矮"],["rapide","快"],["intelligent","聪明"],["cher","贵"]], exercises:[{q:"Paris est <em>_____</em> grand <em>_____</em> Lyon.",a:"Paris est plus grand que Lyon."},{q:"Ce gâteau est <em>_____</em> que l'autre. (bon)",a:"Ce gâteau est meilleur que l'autre."},{q:"Je cours <em>_____</em> vite que toi. (moins)",a:"Je cours moins vite que toi."}]},
+  {topic:"Superlatif — 最高级", grammar:"<div class='rule'><strong>公式：</strong><span class='fr'>le/la/les + plus/moins + adjectif</span></div><div class='rule'><span class='fr'>C'est <u>le plus</u> beau jour.</span><br><span class='fr'>C'est <u>la moins</u> chère.</span></div>", vocab:[["beau","美"],["intéressant","有趣"],["difficile","难"],["facile","容易"],["important","重要"]], exercises:[{q:"C'est <em>_____</em> film de l'année. (le plus bon ?)",a:"C'est le meilleur film de l'année. (le meilleur = 不规则！)"},{q:"C'est la ville <em>_____</em> belle de France.",a:"C'est la ville la plus belle de France."},{q:"C'est <em>_____</em> exercice de la leçon. (le plus difficile)",a:"C'est l'exercice le plus difficile de la leçon."}]},
+  {topic:"Verbes pronominaux — 代动词全解", grammar:"<div class='rule'><strong>四类：</strong>①自反 ②相互 ③被动 ④固定搭配</div><div class='rule'><span class='fr'>se laver</span>（自反）· <span class='fr'>se parler</span>（相互）· <span class='fr'>se vendre</span>（被动）· <span class='fr'>se souvenir de</span>（固定）</div><div class='rule'>PC：<span class='fr'>Je me suis levé(e).</span> 否定：<span class='fr'>Je ne me suis pas levé(e).</span></div>", vocab:[["se réveiller","醒来"],["s'habiller","穿衣"],["se dépêcher","赶快"],["se reposer","休息"],["s'amuser","玩得开心"]], exercises:[{q:"Ce matin, je <em>_____</em> (se réveiller) à 6h.",a:"Ce matin, je me suis réveillé(e) à 6h."},{q:"Nous <em>_____</em> (se promener) dans le parc.",a:"Nous nous sommes promené(e)s dans le parc."},{q:"Ils <em>_____</em> (ne pas s'amuser).",a:"Ils ne se sont pas amusés."}]},
+  {topic:"Impératif — 命令式", grammar:"<div class='rule'>只有 <span class='fr'>tu, nous, vous</span> 三个人称，去主语。</div><div class='rule'><span class='fr'>Parle ! Parlons ! Parlez !</span><br><span class='fr'>Finis ! Finissons ! Finissez !</span></div><div class='rule'>-er 的 tu 去 s：<span class='fr'>Tu manges → Mange !</span>（但 <span class='fr'>Vas-y !</span> 保留）</div>", vocab:[["écouter","听"],["regarder","看"],["venir","来"],["attendre","等"],["se taire","安静"]], exercises:[{q:"<em>_____</em> (parler, tu) plus fort !",a:"Parle plus fort !"},{q:"<em>_____</em> (aller, nous) au cinéma !",a:"Allons au cinéma !"},{q:"<em>_____</em> (ne pas manger, vous) trop de sucre !",a:"Ne mangez pas trop de sucre !"}]},
+  {topic:"Articles partitifs — 部分冠词", grammar:"<div class='rule'><span class='fr'>du (m.) / de la (f.) / de l' / des (pl.)</span></div><div class='rule'><span class='fr'>Je mange <u>du</u> pain.</span> · <span class='fr'>Je bois <u>de l</u>'eau.</span></div><div class='rule'>否定 → <span class='fr'>de/d'</span>：<span class='fr'>Je ne bois <u>pas d</u>'alcool.</span></div>", vocab:[["du riz","米饭"],["de la salade","沙拉"],["du poulet","鸡肉"],["des légumes","蔬菜"],["du fromage","奶酪"]], exercises:[{q:"Je mange <em>_____</em> pain tous les jours. (du / de)",a:"Je mange du pain tous les jours."},{q:"Je ne bois <em>_____</em> café. (pas de / pas du)",a:"Je ne bois pas de café."},{q:"Il achète <em>_____</em> pommes au marché.",a:"Il achète des pommes au marché."}]},
+  {topic:"综合复习 — 过去时", grammar:"<div class='rule'>混合练习 passé composé + imparfait。判断标准：背景还是事件？</div>", vocab:[["hier","昨天"],["la semaine dernière","上周"],["quand j'étais petit","我小时候"],["ce matin","今早"],["tout à coup","忽然"]], exercises:[{q:"Hier, je <em>_____</em> (se promener) quand je <em>_____</em> (voir) un accident.",a:"Hier, je me promenais quand j'ai vu un accident."},{q:"Quand j'étais petit, je <em>_____</em> (jouer) toujours dehors.",a:"Quand j'étais petit, je jouais toujours dehors."},{q:"Soudain, elle <em>_____</em> (entrer) dans la pièce.",a:"Soudain, elle est entrée dans la pièce."}]},
+  {topic:"综合复习 — 将来 + 条件", grammar:"<div class='rule'>混合练习 futur simple / proche + conditionnel</div>", vocab:[["l'année prochaine","明年"],["quand","当...时"],["si","如果"],["bientôt","不久"],["peut-être","也许"]], exercises:[{q:"L'année prochaine, je <em>_____</em> (déménager).",a:"L'année prochaine, je déménagerai."},{q:"Si je gagnais au loto, je <em>_____</em> (voyager).",a:"Si je gagnais au loto, je voyagerais."},{q:"Attention, tu <em>_____</em> (tomber) !",a:"Attention, tu vas tomber !"}]},
+  {topic:"综合复习 — 代词", grammar:"<div class='rule'>混合练习 COD/COI/en/y，注意位置和顺序。</div><div class='rule'>双代词顺序：<span class='fr'>me/te/se/nous/vous → le/la/les → lui/leur → y → en</span></div>", vocab:[["donner","给"],["envoyer","寄"],["prêter","借出"],["expliquer","解释"],["montrer","展示"]], exercises:[{q:"Tu donnes le livre à Marie ? — Oui, je <em>_____</em> donne.",a:"Tu donnes le livre à Marie ? — Oui, je le lui donne."},{q:"Tu vas à Paris ? — Oui, j'<em>_____</em> vais.",a:"Tu vas à Paris ? — Oui, j'y vais."},{q:"Il y a des pommes ? — Oui, il y <em>_____</em> a.",a:"Il y a des pommes ? — Oui, il y en a."}]},
+  {topic:"综合复习 — 关系代词 + 比较级", grammar:"<div class='rule'>混合 qui/que/où/dont + plus/moins/aussi...que</div>", vocab:[["préférer","更喜欢"],["adorer","超爱"],["détester","讨厌"],["le meilleur","最好的"],["le pire","最差的"]], exercises:[{q:"Le restaurant <em>_____</em> je préfère est italien.",a:"Le restaurant que je préfère est italien."},{q:"C'est <em>_____</em> café de la ville. (le plus bon → ?)",a:"C'est le meilleur café de la ville."},{q:"La personne <em>_____</em> j'ai parlé est très sympa.",a:"La personne à qui j'ai parlé est très sympa."}]},
+  {topic:"主题词汇 — La santé / 健康", grammar:"<div class='rule'><strong>A2 场景表达：</strong><br>Chez le médecin：<span class='fr'>J'ai mal à la tête. / Je tousse. / J'ai de la fièvre.</span><br>À la pharmacie：<span class='fr'>Je voudrais un médicament pour...</span><br>Conseils：<span class='fr'>Vous devriez vous reposer. / Il faut boire de l'eau.</span></div>", vocab:[["avoir mal à","...疼"],["la tête","头"],["le ventre","肚子"],["le dos","背"],["tousser","咳嗽"],["la fièvre","发烧"],["se reposer","休息"],["un médicament","药"]], exercises:[{q:"J'ai mal <em>_____</em> tête.",a:"J'ai mal à la tête."},{q:"Tu devrais <em>_____</em> (se reposer).",a:"Tu devrais te reposer."},{q:"Il faut <em>_____</em> (boire) beaucoup d'eau.",a:"Il faut boire beaucoup d'eau."}]},
+  {topic:"主题词汇 — Le logement / 住房", grammar:"<div class='rule'><strong>A2 场景表达：</strong><br>Décrire un appartement：<span class='fr'>C'est un T2 avec une chambre, un salon et une cuisine équipée.</span><br>Chercher un logement：<span class='fr'>Je cherche un appartement à louer. / C'est combien le loyer ?</span></div>", vocab:[["un appartement","公寓"],["une chambre","卧室"],["un salon","客厅"],["une cuisine","厨房"],["une salle de bains","浴室"],["louer","租"],["le loyer","租金"],["les charges","杂费"]], exercises:[{q:"Je cherche un appartement <em>_____</em> (à louer / à vendre).",a:"Je cherche un appartement à louer."},{q:"<em>_____</em> (combien) est le loyer ?",a:"C'est combien le loyer ?"},{q:"L'appartement a deux <em>_____</em> (chambres).",a:"L'appartement a deux chambres."}]},
+  {topic:"主题词汇 — Les voyages / 旅行", grammar:"<div class='rule'><strong>A2 场景表达：</strong><br>Réservation：<span class='fr'>Je voudrais réserver une chambre pour deux nuits.</span><br>À la gare：<span class='fr'>Un aller-retour pour Lyon, s'il vous plaît.</span><br>À l'hôtel：<span class='fr'>À quelle heure est le petit-déjeuner ?</span></div>", vocab:[["réserver","预订"],["un billet","票"],["aller-retour","往返"],["une chambre","房间"],["le petit-déjeuner","早餐"],["la gare","火车站"],["l'aéroport","机场"],["une valise","行李箱"]], exercises:[{q:"Je voudrais <em>_____</em> (réserver) une chambre.",a:"Je voudrais réserver une chambre."},{q:"Un <em>_____</em> pour Marseille, s'il vous plaît.",a:"Un aller-retour pour Marseille, s'il vous plaît."},{q:"Le train <em>_____</em> (partir) à quelle heure ?",a:"Le train part à quelle heure ?"}]},
+  {topic:"主题词汇 — Le travail / 工作", grammar:"<div class='rule'><strong>A2 场景表达：</strong><br>Parler de son métier：<span class='fr'>Je suis comptable. / Je travaille dans une entreprise.</span><br>Au bureau：<span class='fr'>Je dois finir ce rapport avant vendredi.</span><br>Entretien：<span class='fr'>J'ai de l'expérience dans ce domaine.</span></div>", vocab:[["un métier","职业"],["une entreprise","公司"],["un collègue","同事"],["une réunion","会议"],["un rapport","报告"],["un entretien","面试"],["le salaire","工资"],["les horaires","工作时间"]], exercises:[{q:"Je <em>_____</em> (travailler) dans une banque.",a:"Je travaille dans une banque."},{q:"Je dois finir ce rapport <em>_____</em> (avant) vendredi.",a:"Je dois finir ce rapport avant vendredi."},{q:"Elle <em>_____</em> (avoir) un entretien demain.",a:"Elle a un entretien demain."}]},
+  {topic:"主题词汇 — La consommation / 消费", grammar:"<div class='rule'><strong>A2 场景表达：</strong><br>Au magasin：<span class='fr'>Je peux essayer ? / Vous avez une taille plus grande ?</span><br>Au marché：<span class='fr'>C'est combien le kilo ? / Je vais prendre...</span><br>Au restaurant：<span class='fr'>Je voudrais l'addition, s'il vous plaît.</span></div>", vocab:[["essayer","试"],["la taille","尺码"],["le prix","价格"],["cher / pas cher","贵/便宜"],["l'addition","账单"],["un pourboire","小费"],["payer","付款"],["en solde","打折"]], exercises:[{q:"Je peux <em>_____</em> (essayer) cette robe ?",a:"Je peux essayer cette robe ?"},{q:"C'est <em>_____</em> (combien) le kilo ?",a:"C'est combien le kilo ?"},{q:"L'addition, <em>_____</em> (s'il vous plaît).",a:"L'addition, s'il vous plaît."}]},
+  {topic:"主题词汇 — Météo & Loisirs / 天气与休闲", grammar:"<div class='rule'><strong>A2 场景表达：</strong><br>Parler du temps：<span class='fr'>Il fait beau. / Il pleut. / Quel temps fait-il ?</span><br>Loisirs：<span class='fr'>Qu'est-ce que tu fais ce week-end ? / J'aime faire du sport.</span></div>", vocab:[["Il fait beau","天气好"],["Il pleut","下雨"],["Il fait chaud/froid","热/冷"],["faire du sport","运动"],["aller au cinéma","看电影"],["sortir avec des amis","和朋友出门"],["se reposer","休息"],["un passe-temps","爱好"]], exercises:[{q:"Quel temps <em>_____</em> (faire)-il aujourd'hui ?",a:"Quel temps fait-il aujourd'hui ?"},{q:"Qu'est-ce que tu <em>_____</em> (faire) ce week-end ?",a:"Qu'est-ce que tu fais ce week-end ?"},{q:"J'aime <em>_____</em> (faire) du sport.",a:"J'aime faire du sport."}]},
+  {topic:"总复习：动词变位马拉松", grammar:"<div class='rule'>今天集中攻克所有核心动词的五个时态。翻到「动词变位」tab 检查你的答案。</div>", vocab:[["être","是"],["avoir","有"],["faire","做"],["aller","去"],["pouvoir","能"]], exercises:[{q:"Conjugue <em>être</em> à l'imparfait.",a:"j'étais, tu étais, il était, nous étions, vous étiez, ils étaient"},{q:"Conjugue <em>faire</em> au futur simple.",a:"je ferai, tu feras, il fera, nous ferons, vous ferez, ils feront"},{q:"Conjugue <em>pouvoir</em> au conditionnel.",a:"je pourrais, tu pourrais, il pourrait, nous pourrions, vous pourriez, ils pourraient"}]},
+  {topic:"总复习：翻译练习", grammar:"<div class='rule'>把中文句子翻译成法语，综合运用本月的语法点。</div>", vocab:[["hier soir","昨晚"],["pendant que","当...的时候"],["si","如果"],["déjà","已经"],["jamais","从未"]], exercises:[{q:"昨天我在看电视的时候，电话响了。",a:"Hier, je regardais la télé quand le téléphone a sonné."},{q:"如果你有时间，我们去电影院吧。",a:"Si tu as le temps, on va au cinéma."},{q:"我已经吃过了，谢谢。（用en）",a:"J'en ai déjà mangé, merci."}]},
+];
+
+// ════════════════════════ RENDER DAILY ════════════════════════
+function renderDaily() {
+  const nav = document.getElementById('dayNav');
+  const content = document.getElementById('dailyContent');
+  const done = JSON.parse(localStorage.getItem('frA2Done') || '{}');
+
+  nav.innerHTML = days.map((d, i) =>
+    `<div class="day-dot${done[i] ? ' done' : ''}" title="Day ${i+1}: ${d.topic}" onclick="scrollToDay(${i})">${i+1}</div>`
+  ).join('');
+
+  content.innerHTML = days.map((d, i) => `
+    <div class="day-card" id="day${i}">
+      <div class="day-header">
+        <div class="day-num">${i+1}</div>
+        <div>
+          <div class="day-topic">${d.topic}</div>
+          <div class="day-grammar">约 45–60 分钟</div>
+        </div>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:0.5rem;">
+          <input type="checkbox" style="accent-color:var(--blue);width:18px;height:18px;" ${done[i]?'checked':''} onchange="toggleDone(${i}, this.checked)">
+        </div>
+      </div>
+      <div class="grammar-block">${d.grammar}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">
+        <span style="font-weight:700;font-size:0.85rem;">📝 Vocabulaire</span>
+      </div>
+      <div class="vocab-list">${d.vocab.map(v => `<div class="vocab-item"><span class="vocab-fr">${v[0]}</span><span class="vocab-zh">${v[1]}</span></div>`).join('')}</div>
+      <div style="background:#faf8f3;border-radius:6px;padding:0.6rem 0.8rem;margin-bottom:1rem;font-size:0.82rem;color:var(--soft);line-height:1.8;">
+        <strong style="color:var(--pine);">💬 例句：</strong>
+        ${(()=>{const w=d.vocab;return [
+          `Je voudrais <strong>${w[0][0]}</strong>. — 我想要${w[0][1]}。`,
+          `Tu aimes <strong>${w[1][0]}</strong> ? — 你喜欢${w[1][1]}吗？`,
+          `C'est <strong>${w[2][0]}</strong> ! — 这是${w[2][1]}！`
+        ].join('<br>')})()}
+      </div>
+      <div style="font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">✏️ Exercices (5题)</div>
+      ${d.exercises.map((ex, ei) => `
+        <div class="exercise">
+          <div class="exercise-q">${ex.q}</div>
+          <input type="text" class="ex-input" id="ex${i}_${ei}" placeholder="输入你的答案..." style="width:100%;padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:6px;font-size:0.88rem;font-family:inherit;margin-bottom:0.5rem;outline:none;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')checkAnswer(this.nextElementSibling)">
+          <button class="reveal-btn" onclick="checkAnswer(this)">检查 ▾</button>
+          <div class="answer" style="display:none;" data-answer="${ex.a.replace(/"/g,'&quot;')}"><span class="answer-fr"></span></div>
+        </div>
+      `).join('')}
+      <div class="exercise">
+        <div class="exercise-q">翻译成法语：<em>${d.vocab[0][1]}</em></div>
+        <input type="text" class="ex-input" id="ex${i}_bonus0" placeholder="输入你的答案..." onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')checkAnswer(this.nextElementSibling)">
+        <button class="reveal-btn" onclick="checkAnswer(this)">检查 ▾</button>
+        <div class="answer" style="display:none;" data-answer="${d.vocab[0][0].replace(/"/g,'&quot;')}"><span class="answer-fr"></span></div>
+      </div>
+      <div class="exercise">
+        <div class="exercise-q">翻译成法语：<em>${d.vocab[1][1]}</em></div>
+        <input type="text" class="ex-input" id="ex${i}_bonus1" placeholder="输入你的答案..." onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter')checkAnswer(this.nextElementSibling)">
+        <button class="reveal-btn" onclick="checkAnswer(this)">检查 ▾</button>
+        <div class="answer" style="display:none;" data-answer="${d.vocab[1][0].replace(/"/g,'&quot;')}"><span class="answer-fr"></span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function scrollToDay(i) {
+  document.getElementById('day'+i)?.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function toggleDone(i, checked) {
+  const done = JSON.parse(localStorage.getItem('frA2Done') || '{}');
+  done[i] = checked;
+  localStorage.setItem('frA2Done', JSON.stringify(done));
+  renderDaily();
+}
+
+function checkAnswer(btn) {
+  const input = btn.previousElementSibling;
+  const answerDiv = btn.nextElementSibling;
+  const correctAnswer = answerDiv.dataset.answer.replace(/&quot;/g, '"');
+  const userAnswer = input.value.trim();
+
+  // Normalize both for comparison: lowercase, collapse whitespace
+  const norm = s => s.toLowerCase().replace(/\s+/g, ' ').replace(/[，,]/g, ',').replace(/[。.]/g, '.');
+  const isCorrect = norm(userAnswer) === norm(correctAnswer);
+
+  answerDiv.style.display = 'block';
+  answerDiv.querySelector('.answer-fr').textContent = correctAnswer;
+  answerDiv.style.borderTop = isCorrect ? '2px solid var(--green)' : '2px solid var(--red)';
+  answerDiv.querySelector('.answer-fr').style.color = isCorrect ? 'var(--green)' : 'var(--red)';
+  input.style.borderColor = isCorrect ? 'var(--green)' : 'var(--red)';
+  btn.textContent = isCorrect ? '✅ 正确！' : '❌ 查看标准答案';
+  btn.style.color = isCorrect ? 'var(--green)' : 'var(--red)';
+}
+
+// ════════════════════════ VERB TABLES ════════════════════════
+const verbs = [
+  {verb:"être", pres:"suis, es, est, sommes, êtes, sont", pc:"ai été", imp:"étais, étais, était, étions, étiez, étaient", fut:"serai, seras, sera, serons, serez, seront", cond:"serais, serais, serait, serions, seriez, seraient"},
+  {verb:"avoir", pres:"ai, as, a, avons, avez, ont", pc:"ai eu", imp:"avais, avais, avait, avions, aviez, avaient", fut:"aurai, auras, aura, aurons, aurez, auront", cond:"aurais, aurais, aurait, aurions, auriez, auraient"},
+  {verb:"aller", pres:"vais, vas, va, allons, allez, vont", pc:"suis allé(e)", imp:"allais, allais, allait, allions, alliez, allaient", fut:"irai, iras, ira, irons, irez, iront", cond:"irais, irais, irait, irions, iriez, iraient"},
+  {verb:"faire", pres:"fais, fais, fait, faisons, faites, font", pc:"ai fait", imp:"faisais, faisais, faisait, faisions, faisiez, faisaient", fut:"ferai, feras, fera, ferons, ferez, feront", cond:"ferais, ferais, ferait, ferions, feriez, feraient"},
+  {verb:"pouvoir", pres:"peux, peux, peut, pouvons, pouvez, peuvent", pc:"ai pu", imp:"pouvais, pouvais, pouvait, pouvions, pouviez, pouvaient", fut:"pourrai, pourras, pourra, pourrons, pourrez, pourront", cond:"pourrais, pourrais, pourrait, pourrions, pourriez, pourraient"},
+  {verb:"vouloir", pres:"veux, veux, veut, voulons, voulez, veulent", pc:"ai voulu", imp:"voulais, voulais, voulait, voulions, vouliez, voulaient", fut:"voudrai, voudras, voudra, voudrons, voudrez, voudront", cond:"voudrais, voudrais, voudrait, voudrions, voudriez, voudraient"},
+  {verb:"devoir", pres:"dois, dois, doit, devons, devez, doivent", pc:"ai dû", imp:"devais, devais, devait, devions, deviez, devaient", fut:"devrai, devras, devra, devrons, devrez, devront", cond:"devrais, devrais, devrait, devrions, devriez, devraient"},
+  {verb:"savoir", pres:"sais, sais, sait, savons, savez, savent", pc:"ai su", imp:"savais, savais, savait, savions, saviez, savaient", fut:"saurai, sauras, saura, saurons, saurez, sauront", cond:"saurais, saurais, saurait, saurions, sauriez, sauraient"},
+  {verb:"venir", pres:"viens, viens, vient, venons, venez, viennent", pc:"suis venu(e)", imp:"venais, venais, venait, venions, veniez, venaient", fut:"viendrai, viendras, viendra, viendrons, viendrez, viendront", cond:"viendrais, viendrais, viendrait, viendrions, viendriez, viendraient"},
+  {verb:"prendre", pres:"prends, prends, prend, prenons, prenez, prennent", pc:"ai pris", imp:"prenais, prenais, prenait, prenions, preniez, prenaient", fut:"prendrai, prendras, prendra, prendrons, prendrez, prendront", cond:"prendrais, prendrais, prendrait, prendrions, prendriez, prendraient"},
+  {verb:"voir", pres:"vois, vois, voit, voyons, voyez, voient", pc:"ai vu", imp:"voyais, voyais, voyait, voyions, voyiez, voyaient", fut:"verrai, verras, verra, verrons, verrez, verront", cond:"verrais, verrais, verrait, verrions, verriez, verraient"},
+  {verb:"mettre", pres:"mets, mets, met, mettons, mettez, mettent", pc:"ai mis", imp:"mettais, mettais, mettait, mettions, mettiez, mettaient", fut:"mettrai, mettras, mettra, mettrons, mettrez, mettront", cond:"mettrais, mettrais, mettrait, mettrions, mettriez, mettraient"},
+];
+
+function renderVerbs() {
+  const tenses = ["Présent","Passé composé","Imparfait","Futur simple","Conditionnel"];
+  const keys = ["pres","pc","imp","fut","cond"];
+  let html = '';
+  verbs.forEach(v => {
+    html += `<h2>${v.verb}</h2>`;
+    html += '<div style="overflow-x:auto"><table class="conj-table"><tr><th></th>';
+    tenses.forEach(t => html += `<th>${t}</th>`);
+    html += '</tr>';
+    for(let p=0; p<6; p++) {
+      const persons = ['je','tu','il/elle','nous','vous','ils/elles'];
+      html += `<tr><td>${persons[p]}</td>`;
+      keys.forEach(k => {
+        const parts = v[k].split(', ');
+        html += `<td style="color:var(--ink);font-weight:${k==='pres'||k==='fut'?'600':'400'}">${parts[p] || parts[0]}</td>`;
+      });
+      html += '</tr>';
+    }
+    html += '</table></div>';
+  });
+  document.getElementById('verbTables').innerHTML = html;
+}
+
+// ════════════════════════ VOCAB ════════════════════════
+const themes = [
+  {title:"A1 · Se présenter · 自我介绍", words:[["Je m'appelle...","我叫..."],["Je suis chinois(e)","我是中国人"],["J'habite à...","我住在..."],["Je viens de...","我来自..."],["J'ai ... ans","我...岁"],["Je parle français/anglais","我说法语/英语"],["Enchanté(e)","很高兴认识你"],["Comment tu t'appelles ?","你叫什么？"],["Tu es d'où ?","你从哪里来？"],["Quel âge as-tu ?","你多大了？"],["monsieur/madame","先生/女士"],["un ami / une amie","朋友"]]},
+  {title:"A1 · La famille · 家庭", words:[["le père","父亲"],["la mère","母亲"],["le frère","兄弟"],["la sœur","姐妹"],["les parents","父母"],["le fils","儿子"],["la fille","女儿"],["le mari","丈夫"],["la femme","妻子/女人"],["le grand-père","祖父"],["la grand-mère","祖母"],["célibataire","单身"],["marié(e)","已婚"],["divorcé(e)","离婚"]]},
+  {title:"A1 · La nourriture · 食物", words:[["le pain","面包"],["le fromage","奶酪"],["le beurre","黄油"],["le riz","米"],["les pâtes","意面"],["la viande","肉"],["le poisson","鱼"],["le poulet","鸡肉"],["les légumes","蔬菜"],["les fruits","水果"],["l'eau (f.)","水"],["le café","咖啡"],["le thé","茶"],["le vin","葡萄酒"],["le sucre","糖"],["le sel","盐"]]},
+  {title:"A1 · Routine quotidienne · 日常生活", words:[["se lever","起床"],["se réveiller","醒来"],["s'habiller","穿衣"],["prendre le petit-déjeuner","吃早餐"],["aller au travail","去上班"],["déjeuner","吃午餐"],["dîner","吃晚餐"],["se coucher","睡觉"],["se doucher","淋浴"],["se brosser les dents","刷牙"],["sortir","出门"],["rentrer","回家"],["faire les courses","购物"],["faire le ménage","做家务"]]},
+  {title:"A1 · Transports · 交通", words:[["le bus","公交"],["le métro","地铁"],["le train","火车"],["la voiture","汽车"],["le vélo","自行车"],["à pied","步行"],["la gare","火车站"],["l'arrêt de bus","公交站"],["prendre le bus/métro","乘公交/地铁"],["conduire","开车"],["un ticket","票"],["à droite","右边"],["à gauche","左边"],["tout droit","直走"]]},
+  {title:"A1 · Vêtements & Couleurs · 衣服和颜色", words:[["un pantalon","裤子"],["une chemise","衬衫"],["une robe","连衣裙"],["une jupe","裙子"],["un t-shirt","T恤"],["des chaussures","鞋"],["un manteau","大衣"],["rouge","红"],["bleu","蓝"],["vert","绿"],["jaune","黄"],["noir","黑"],["blanc","白"],["grand/petit","大/小"],["porter","穿/戴"]]},
+  {title:"La santé · 健康", words:[["avoir mal à","...疼"],["la tête","头"],["le ventre","肚子"],["le dos","背"],["la gorge","喉咙"],["tousser","咳嗽"],["la fièvre","发烧"],["le rhume","感冒"],["se reposer","休息"],["un médicament","药"],["une ordonnance","处方"],["la pharmacie","药店"],["guérir","痊愈"],["en bonne santé","身体健康"],["faire du sport","运动"]]},
+  {title:"Le logement · 住房", words:[["un appartement","公寓"],["une maison","房子"],["une chambre","卧室"],["un salon","客厅"],["une cuisine","厨房"],["une salle de bains","浴室"],["les toilettes","卫生间"],["un balcon","阳台"],["louer","租"],["le loyer","租金"],["les charges","杂费"],["un propriétaire","房东"],["un locataire","租客"],["déménager","搬家"],["meublé","带家具的"]]},
+  {title:"Les voyages · 旅行", words:[["réserver","预订"],["un billet","票"],["aller simple","单程"],["aller-retour","往返"],["la gare","火车站"],["l'aéroport","机场"],["une valise","行李箱"],["un passeport","护照"],["une chambre","房间"],["le petit-déjeuner","早餐"],["l'arrivée","到达"],["le départ","出发"],["en retard","晚点"],["à l'heure","准时"],["une correspondance","换乘"]]},
+  {title:"Le travail · 工作", words:[["un métier","职业"],["une entreprise","公司"],["un collègue","同事"],["un patron","老板"],["une réunion","会议"],["un rapport","报告"],["un entretien","面试"],["un CV","简历"],["le salaire","工资"],["les horaires","工作时间"],["à plein temps","全职"],["à temps partiel","兼职"],["embaucher","招聘"],["démissionner","辞职"],["être en retard","迟到"]]},
+  {title:"La consommation · 消费", words:[["essayer","试"],["la taille","尺码"],["le prix","价格"],["cher","贵"],["pas cher","便宜"],["en solde","打折"],["payer","付款"],["en espèces","现金"],["par carte","刷卡"],["un reçu","收据"],["l'addition","账单"],["un pourboire","小费"],["le marché","市场"],["le magasin","商店"],["rendre","退货"]]},
+  {title:"Météo & Loisirs · 天气与休闲", words:[["Il fait beau","天气好"],["Il pleut","下雨"],["Il neige","下雪"],["Il fait chaud","热"],["Il fait froid","冷"],["Il y a du vent","有风"],["faire du sport","运动"],["aller au cinéma","看电影"],["sortir avec des amis","和朋友出门"],["se promener","散步"],["lire","阅读"],["écouter de la musique","听音乐"],["jouer à","玩(游戏/运动)"],["un passe-temps","爱好"],["s'ennuyer","无聊"]]},
+];
+
+function renderVocab() {
+  document.getElementById('vocabContent').innerHTML = themes.map(t => `
+    <h2>${t.title}</h2>
+    <div class="vocab-list">${t.words.map(w => `<div class="vocab-item"><span class="vocab-fr">${w[0]}</span><span class="vocab-zh">${w[1]}</span></div>`).join('')}</div>
+  `).join('');
+}
+
+// ════════════════════════ INIT ════════════════════════
+renderDaily();
+renderVerbs();
+renderVocab();
+</script>
+
+</body>
+</html>
