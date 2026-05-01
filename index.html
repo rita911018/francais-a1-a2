@@ -357,7 +357,263 @@
 
   .tag.fr-tag { background: #e8e6f0; color: var(--blue); }
 
-  /* ── Responsive ── */
+  /* ── Plan tab ── */
+  .plan-day-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 2rem;
+  }
+  .plan-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--card);
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .plan-dot:hover { border-color: var(--blue); color: var(--blue); }
+  .plan-dot.done { background: var(--blue); color: white; border-color: var(--blue); }
+  .plan-dot.today { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .plan-dot.phase1 { --phase-color: #2c6fad; }
+  .plan-dot.phase2 { --phase-color: #277a4e; }
+  .plan-dot.phase3 { --phase-color: #c0392b; }
+  .plan-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .plan-card-header {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .plan-card-header.phase1 { background: linear-gradient(135deg, #e8f0fb 0%, #d0e3ff 100%); border-bottom: 2px solid #2c6fad; }
+  .plan-card-header.phase2 { background: linear-gradient(135deg, #e8f7ee 0%, #c8edd9 100%); border-bottom: 2px solid #277a4e; }
+  .plan-card-header.phase3 { background: linear-gradient(135deg, #fdecea 0%, #fad0cc 100%); border-bottom: 2px solid #c0392b; }
+  .plan-day-badge {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .plan-phase-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+  .plan-phase-tag.phase1 { background: #2c6fad; color: white; }
+  .plan-phase-tag.phase2 { background: #277a4e; color: white; }
+  .plan-phase-tag.phase3 { background: #c0392b; color: white; }
+  .plan-done-btn {
+    margin-left: auto;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    background: white;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .plan-done-btn.done { background: var(--blue); color: white; border-color: var(--blue); }
+  .plan-done-btn:hover { border-color: var(--blue); }
+  .plan-card-body { padding: 1.2rem 1.5rem; }
+  .plan-section {
+    margin-bottom: 1.2rem;
+  }
+  .plan-section-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--soft);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .plan-grammar-note {
+    background: #f0f5ff;
+    border-left: 3px solid #2c6fad;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.84rem;
+    color: #1a2570;
+    margin-top: 0.4rem;
+    cursor: pointer;
+  }
+  .plan-grammar-note.collapsed::after { content: " (点击展开)"; }
+  .plan-vocab-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .plan-vocab-pill {
+    background: #f0ebe0;
+    border-radius: 20px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.82rem;
+    color: var(--soft);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .plan-sentences {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .plan-sentences li {
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    color: var(--blue);
+    font-style: italic;
+    border-bottom: 1px dotted var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .plan-sentences li:last-child { border-bottom: none; }
+  .plan-yt-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+    margin-bottom: 0.75rem;
+  }
+  .plan-yt-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .plan-exercise {
+    background: #fafafa;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.6rem;
+  }
+  .plan-exercise-q {
+    font-size: 0.88rem;
+    color: var(--soft);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .plan-ex-input {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    margin-bottom: 0.45rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .plan-ex-input:focus { border-color: var(--blue); }
+  .plan-ex-input.correct { border-color: var(--green); background: #f0faf5; }
+  .plan-ex-input.wrong { border-color: var(--red); background: #fff5f5; }
+  .plan-check-btn {
+    padding: 0.35rem 0.85rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--blue);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .plan-check-btn:hover { background: #1a2570; }
+  .plan-ex-feedback {
+    display: none;
+    margin-top: 0.4rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.83rem;
+    line-height: 1.55;
+  }
+  .plan-ex-feedback.correct { background: #f0faf5; color: var(--green); }
+  .plan-ex-feedback.wrong { background: #fff5f5; color: var(--red); }
+  /* Wrong tab */
+  .wrong-group-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--grey);
+    background: var(--tag-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .wrong-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  .wrong-item-q { font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.4rem; }
+  .wrong-item-row { display: flex; gap: 0.75rem; flex-wrap: wrap; font-size: 0.83rem; margin-bottom: 0.3rem; }
+  .wrong-your { color: var(--red); }
+  .wrong-correct { color: var(--green); }
+  .wrong-note {
+    background: #fff8e1;
+    border-left: 3px solid var(--gold);
+    padding: 0.35rem 0.7rem;
+    border-radius: 0 5px 5px 0;
+    font-size: 0.8rem;
+    color: #7a5500;
+    margin-top: 0.4rem;
+  }
+  .wrong-actions { display: flex; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
+  .wrong-retry-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.86rem;
+    font-family: inherit;
+    margin-top: 0.5rem;
+    outline: none;
+  }
+  .wrong-retry-input:focus { border-color: var(--blue); }
+  .btn-sm {
+    padding: 0.3rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    color: var(--soft);
+  }
+  .btn-sm:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-sm.danger { border-color: #fbb; color: var(--red); }
+  .btn-sm.danger:hover { background: var(--red); color: white; }
+  .btn-sm.primary { background: var(--blue); color: white; border-color: var(--blue); }
+  .btn-sm.primary:hover { background: #1a2570; }
   @media (max-width: 640px) {
     .container { padding: 1.5rem 1rem 3rem; }
     h1 { font-size: 1.4rem; }
@@ -634,6 +890,8 @@
   <div class="nav-tab" data-tab="grammar">📖 A1–A2 语法</div>
   <div class="nav-tab" data-tab="verbs">🔤 动词变位</div>
   <div class="nav-tab" data-tab="vocab">📝 A1–A2 词汇</div>
+  <div class="nav-tab" data-tab="plan">📅 学习计划</div>
+  <div class="nav-tab" data-tab="wrong">❌ 错题本</div>
   <div class="nav-tab" data-tab="exam">📝 真题</div>
   <div class="nav-tab" data-tab="listen">🎧 听力</div>
 </nav>
@@ -1488,6 +1746,30 @@
 </div>
 
 <!-- ═══════════════════════════════  EXAM ═══════════════════════════════ -->
+
+<!-- ════════════════════════════════  PLAN ════════════════════════════════ -->
+<div class="tab-content" id="tab-plan">
+<div class="container">
+  <h1>📅 30天学习计划</h1>
+  <p class="subtitle">A2存题补缺→高频场景→模拟冲刺，共三阶段30天。每天语法+词汇+听力+练习题，答错自动入错题本。</p>
+  <div id="planDayNav" class="plan-day-nav"></div>
+  <div id="planContent"></div>
+</div>
+</div>
+
+<!-- ════════════════════════════════  WRONG ════════════════════════════════ -->
+<div class="tab-content" id="tab-wrong">
+<div class="container">
+  <h1>❌ 错题本</h1>
+  <p class="subtitle">学习计划中答错的题目会自动保存到这里。按语法标签分组，随时复习。</p>
+  <div id="wrongToolbar" style="display:flex;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+    <button class="btn-sm danger" onclick="clearAllWrong()">&#x1f5d1; 清空全部</button>
+    <span id="wrongCount" style="font-size:0.85rem;color:var(--grey);align-self:center;"></span>
+  </div>
+  <div id="wrongContent"></div>
+</div>
+</div>
+
 <div class="tab-content" id="tab-exam">
 <div class="container">
   <h1>DELF A2 真题训练</h1>
@@ -1615,6 +1897,9 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    // Re-render dynamic tabs when switched to
+    if (tab.dataset.tab === 'wrong') renderWrong();
+    if (tab.dataset.tab === 'plan') renderPlanNav();
   });
 });
 
@@ -1993,6 +2278,676 @@ renderDaily();
 renderVerbs();
 renderVocab();
 renderEpisodeList();
+renderPlan();
+renderWrong();
+
+// ════════════════════════ 30-DAY PLAN DATA ════════════════════════
+const grammarExplains = {
+  '反身动词': '反身动词在PC中用être，过去分词需配合主语性数（阴性+e，复数+s）。',
+  '命令式': '命令式affirmative：tu/nous/vous形式，-ER动词tu去掉s；negative：ne + 原形 + pas，代词前置。',
+  'depuis/pendant': 'depuis=从那时起（状态持续到现在），pendant=一段时间内（强调时长），il y a=X时间前。',
+  '条件式': 'je voudrais（我想要）= vouloir的条件式，比je veux更礼貌。devrais=应该，pourrais=可以。',
+  'PC vs Imparfait': 'PC说具体事件（突然发生/完成），Imparfait说状态/习惯/背景。',
+  '否定句': '否定句中des→de；ne在元音前缩写为n\'；复合时态ne...pas包围助动词。',
+  '关系代词': 'qui=主语（后跟动词），que=宾语（后跟主语），où=地点/时间，dont=de+的内容。',
+  '代词COD/COI': '代词放在动词前；COD(le/la/les)直接代替物；COI(lui/leur)代替à+人；y=à+地点/事物；en=de+名词。',
+  '写作': '写作套路：问候+目的+具体信息+结束语。注意时态选择，字数60词以上。',
+  '口语': '口语结构：Introduction→Point 1+例子→Point 2+例子→Opinion→Conclusion。',
+  '听力': '听力技巧：第一遍听大意，第二遍逐句，重点标记数字/日期/地点。',
+  '综合': '综合练习：注意语法点的综合运用，尤其时态、代词、否定的混合。',
+};
+
+const planDays = [
+  // D1-10: 查漏补缺
+  {day:1, phase:'查漏补缺', grammar:'反身动词构成+变位', grammarNote:'se lever, se laver, s\'habiller — 所有反身动词PC用être，过去分词需配合主语性数', grammarTag:'反身动词',
+   vocab:['se lever（起床）','se coucher（睡觉）','se laver（洗漱）','s\'habiller（穿衣）','se reposer（休息）'],
+   sentences:['Je me lève à 7h.','Elle s\'est levée tôt.','Nous nous couchons tard.'],
+   listening:1,
+   tasks:['背5个反身动词','造3句反身动词句子','听力第1集默写关键词'],
+   exercises:[
+     {q:'Je ___ lève à 7h. (me/te/se)', a:'me', tag:'反身动词'},
+     {q:'Elle s\'est ___. (lever→PC阴性)', a:'levée', tag:'反身动词'},
+     {q:'Il se lave 的否定式是？', a:'Il ne se lave pas', tag:'反身动词'},
+     {q:'反身动词PC用哪个助动词？', a:'être', tag:'反身动词'},
+     {q:'Nous ___ reposons. (nous/vous/se)', a:'nous', tag:'反身动词'},
+   ]},
+  {day:2, phase:'查漏补缺', grammar:'反身动词PC（se+être，配性数）', grammarNote:'PC中：je me suis levé(e)，阴性+e；ils se sont levés；elles se sont levées', grammarTag:'反身动词',
+   vocab:['se réveiller（醒来）','se dépêcher（赶快）','se souvenir（记得）','se promener（散步）','s\'amuser（玩得开心）'],
+   sentences:['Je me suis réveillé(e) tôt.','Elles se sont habillées vite.','Nous nous sommes promenés.'],
+   listening:2,
+   tasks:['练习反身动词PC变位','造句：阴性主语+反身动词PC','听力第2集'],
+   exercises:[
+     {q:'Ce matin, il ___ ___ levé à 6h.', a:'s\'est', tag:'反身动词'},
+     {q:'Elles ___ ___ réveillées. (se réveiller PC)', a:'se sont', tag:'反身动词'},
+     {q:'Nous ___ ___ promenés hier.', a:'nous sommes', tag:'反身动词'},
+     {q:'反身动词PC否定：Je ___ me suis ___ levé(e).', a:'ne / pas', tag:'反身动词'},
+     {q:'阴性单数+se lever PC的过去分词是？', a:'levée', tag:'反身动词'},
+   ]},
+  {day:3, phase:'查漏补缺', grammar:'命令式 affirmative（-ER/-IR/-RE三组）', grammarNote:'-ER动词tu形式去掉s：Parle！；nous建议：Parlons！；vous正式：Parlez！', grammarTag:'命令式',
+   vocab:['écouter（听）','regarder（看）','finir（完成）','vendre（卖）','venir（来）'],
+   sentences:['Parle plus fort !','Finissons nos devoirs !','Attendez un moment, s\'il vous plaît !'],
+   listening:3,
+   tasks:['练习三组动词命令式','造5个肯定命令句','听力第3集'],
+   exercises:[
+     {q:'(Manger, tu) ___ tes légumes !', a:'Mange', tag:'命令式'},
+     {q:'(Finir, nous) ___ ce travail !', a:'Finissons', tag:'命令式'},
+     {q:'(Attendre, vous) ___ !', a:'Attendez', tag:'命令式'},
+     {q:'-ER动词tu命令式为什么去s？', a:'规则：-ER动词tu形式命令式去掉末尾的s', tag:'命令式'},
+     {q:'(Aller, nous) ___ au cinéma !', a:'Allons', tag:'命令式'},
+   ]},
+  {day:4, phase:'查漏补缺', grammar:'命令式 négative + 代词位置变化', grammarNote:'否定命令：Ne + 动词 + pas；代词：否定前置(Ne me dis pas)，肯定后置(Dis-le-moi)', grammarTag:'命令式',
+   vocab:['ne...pas（不要...）','se taire（安静）','se dépêcher（赶快）','s\'asseoir（坐下）','partir（离开）'],
+   sentences:['Ne parle pas pendant la classe !','Donne-le-moi !','Ne me le donne pas !'],
+   listening:4,
+   tasks:['练习否定命令式','比较代词位置','听力第4集'],
+   exercises:[
+     {q:'(Ne pas manger, tu) ___ trop de sucre !', a:'Ne mange pas', tag:'命令式'},
+     {q:'(Ne pas partir, vous) ___ !', a:'Ne partez pas', tag:'命令式'},
+     {q:'肯定命令代词位置：Donne ___ (le livre à moi)', a:'Donne-le-moi', tag:'命令式'},
+     {q:'否定命令代词位置：___ me le donne pas.', a:'Ne', tag:'命令式'},
+     {q:'(Se taire, nous) ___ !', a:'Taisons-nous', tag:'命令式'},
+   ]},
+  {day:5, phase:'查漏补缺', grammar:'depuis/pendant/il y a 时间表达', grammarNote:'depuis=从那时起持续到现在（接现在时）；pendant=一段时间内；il y a=X时间前（接PC）', grammarTag:'depuis/pendant',
+   vocab:['depuis（从...起）','pendant（在...期间）','il y a（...前）','longtemps（很长时间）','déjà（已经）'],
+   sentences:['J\'apprends le français depuis six mois.','Il a travaillé pendant trois ans.','Il y a deux jours, j\'ai vu ce film.'],
+   listening:5,
+   tasks:['造depuis/pendant/il y a各2句','听力第5集'],
+   exercises:[
+     {q:'J\'étudie le français ___ deux ans. (depuis/pendant)', a:'depuis', tag:'depuis/pendant'},
+     {q:'Elle a habité à Paris ___ dix ans. (période révolue)', a:'pendant', tag:'depuis/pendant'},
+     {q:'___ cinq jours, je suis parti en vacances.', a:'Il y a', tag:'depuis/pendant'},
+     {q:'depuis后面接哪个时态（动作持续到现在）？', a:'现在时（présent）', tag:'depuis/pendant'},
+     {q:'Il ___ trois heures qu\'il travaille.', a:'y a', tag:'depuis/pendant'},
+   ]},
+  {day:6, phase:'查漏补缺', grammar:'条件式 je voudrais/pourrais/aimerais', grammarNote:'条件式=futur词根+imparfait词尾；用于礼貌请求、建议、假设(si+imparfait)', grammarTag:'条件式',
+   vocab:['voudrais（想要）','pourrais（可以）','devrais（应该）','aimerais（想）','serait（会是）'],
+   sentences:['Je voudrais un café, s\'il vous plaît.','Tu devrais te reposer.','Si j\'avais le temps, je voyagerais.'],
+   listening:6,
+   tasks:['造5个条件式句子','练习si从句','听力第6集'],
+   exercises:[
+     {q:'Je ___ (vouloir, conditionnel) un thé.', a:'voudrais', tag:'条件式'},
+     {q:'Tu es fatigué, tu ___ (devoir, cond.) te reposer.', a:'devrais', tag:'条件式'},
+     {q:'Si j\'avais de l\'argent, je ___ (voyager, cond.).', a:'voyagerais', tag:'条件式'},
+     {q:'条件式比直陈式更___（礼貌/直接）？', a:'礼貌', tag:'条件式'},
+     {q:'Est-ce que vous ___ (pouvoir, cond.) m\'aider ?', a:'pourriez', tag:'条件式'},
+   ]},
+  {day:7, phase:'查漏补缺', grammar:'PC vs Imparfait 综合练习', grammarNote:'PC=具体事件/完成；Imparfait=背景/习惯/状态。画面法：Imparfait是背景，PC是事件', grammarTag:'PC vs Imparfait',
+   vocab:['soudain（突然）','tout à coup（忽然）','d\'habitude（通常）','quand j\'étais petit（小时候）','pendant que（正当...时）'],
+   sentences:['Il pleuvait quand je suis sorti.','Soudain, quelqu\'un a frappé à la porte.','Avant, je prenais le bus tous les jours.'],
+   listening:7,
+   tasks:['做PC vs Imparfait选择题10道','听力第7集'],
+   exercises:[
+     {q:'Hier, il ___ (pleuvoir) quand je ___ (sortir).', a:'pleuvait / suis sorti', tag:'PC vs Imparfait'},
+     {q:'Quand j\'étais enfant, je ___ (jouer) souvent dehors.', a:'jouais', tag:'PC vs Imparfait'},
+     {q:'Soudain, un homme ___ (entrer) dans la salle.', a:'est entré', tag:'PC vs Imparfait'},
+     {q:'Tous les étés, nous ___ (aller) à la mer.', a:'allions', tag:'PC vs Imparfait'},
+     {q:'Je ___ (lire) quand le téléphone ___ (sonner).', a:'lisais / a sonné', tag:'PC vs Imparfait'},
+   ]},
+  {day:8, phase:'查漏补缺', grammar:'否定句8种综合练习', grammarNote:'ne...pas/jamais/plus/rien/personne/aucun/ni...ni/ne...que；否定时des→de', grammarTag:'否定句',
+   vocab:['ne...jamais（从不）','ne...plus（不再）','ne...rien（什么都不）','ne...personne（没人）','ne...que（只）'],
+   sentences:['Je ne mange jamais de durian.','Il ne reste plus de pain.','Je n\'ai vu personne.'],
+   listening:8,
+   tasks:['写8种否定形式各一句','听力第8集'],
+   exercises:[
+     {q:'Je ___ mange ___ de viande. (从不)', a:'ne / jamais', tag:'否定句'},
+     {q:'Il ___ reste ___ d\'eau. (不再)', a:'ne / plus', tag:'否定句'},
+     {q:'Elle n\'a vu ___. (没有人)', a:'personne', tag:'否定句'},
+     {q:'否定句中 des pommes 变成 ___？', a:'de pommes', tag:'否定句'},
+     {q:'Je ___ mange ___ des légumes. (只)', a:'ne / que', tag:'否定句'},
+   ]},
+  {day:9, phase:'查漏补缺', grammar:'关系代词 qui/que/où/dont', grammarNote:'qui=主语接动词；que=宾语接主语；où=地点/时间；dont=de+先行词', grammarTag:'关系代词',
+   vocab:['qui（关系主语）','que（关系宾语）','où（地点/时间）','dont（de+先行词）','lequel（哪一个）'],
+   sentences:['La femme qui parle est ma prof.','Le film que j\'ai vu était super.','C\'est la ville où je suis né.'],
+   listening:9,
+   tasks:['用四个关系代词各造两句','听力第9集'],
+   exercises:[
+     {q:'La femme ___ parle est ma prof. (关系主语)', a:'qui', tag:'关系代词'},
+     {q:'Le livre ___ je lis est intéressant. (关系宾语)', a:'que', tag:'关系代词'},
+     {q:'La ville ___ j\'habite est belle. (地点)', a:'où', tag:'关系代词'},
+     {q:'Le film ___ tu parles est célèbre. (de+先行词)', a:'dont', tag:'关系代词'},
+     {q:'C\'est l\'ami ___ la femme est médecin.', a:'dont', tag:'关系代词'},
+   ]},
+  {day:10, phase:'查漏补缺', grammar:'代词COD/COI/y/en综合', grammarNote:'COD(le/la/les)→直接宾语；COI(lui/leur)→à+人；y→à+地点/事物；en→de+名词；双代词顺序：me/te/se→le/la/les→lui/leur→y→en', grammarTag:'代词COD/COI',
+   vocab:['le/la/les（COD）','lui/leur（COI）','y（à+地点）','en（de+名词）','me/te/nous/vous'],
+   sentences:['Je le vois tous les jours.','Je lui parle souvent.','J\'y vais demain.'],
+   listening:10,
+   tasks:['代词替换练习10题','听力第10集'],
+   exercises:[
+     {q:'Tu vois Marie ? — Oui, je ___ vois. (COD)', a:'la', tag:'代词COD/COI'},
+     {q:'Tu parles à Paul ? — Oui, je ___ parle. (COI)', a:'lui', tag:'代词COD/COI'},
+     {q:'Tu vas à Paris ? — Oui, j\'___ vais. (y)', a:'y', tag:'代词COD/COI'},
+     {q:'Tu veux du pain ? — Oui, j\'___ veux. (en)', a:'en', tag:'代词COD/COI'},
+     {q:'双代词顺序：Je ___ ___ donne. (le livre → à lui)', a:'le lui', tag:'代词COD/COI'},
+   ]},
+  // D11-20: 高频场景
+  {day:11, phase:'高频场景', grammar:'写作练习——描述一次旅行（PC+地点词汇）', grammarNote:'旅行写作套路：时间背景(Imparfait)+活动(PC)+感受(Imparfait)+总结', grammarTag:'写作',
+   vocab:['voyager（旅行）','visiter（参观）','découvrir（发现）','admirer（欣赏）','se souvenir（记得）'],
+   sentences:['J\'ai visité Paris l\'année dernière.','Le voyage était inoubliable.','Nous avons découvert de beaux endroits.'],
+   listening:11,
+   tasks:['写一篇60词旅行描述','用PC+Imparfait混合','听力第11集'],
+   exercises:[
+     {q:'L\'été dernier, je ___ (visiter, PC) Paris.', a:'ai visité', tag:'写作'},
+     {q:'Il ___ (faire) beau et le soleil ___ (briller). (背景)', a:'faisait / brillait', tag:'PC vs Imparfait'},
+     {q:'Nous ___ (découvrir, PC) un petit lac.', a:'avons découvert', tag:'写作'},
+     {q:'旅行写作中描述天气用哪个时态？', a:'Imparfait（背景）', tag:'PC vs Imparfait'},
+     {q:'C\'était un voyage ___. (填形容词：难忘的)', a:'inoubliable', tag:'写作'},
+   ]},
+  {day:12, phase:'高频场景', grammar:'写作练习——邀请函套路', grammarNote:'邀请函：Salut+姓名 → 目的 → 日期/时间/地点 → 请求 → 期待回复 → 签名', grammarTag:'写作',
+   vocab:['inviter（邀请）','organiser（组织）','participer（参加）','confirmer（确认）','apporter（带来）'],
+   sentences:['Je t\'invite à ma fête d\'anniversaire.','C\'est samedi à 20h chez moi.','Dis-moi si tu peux venir.'],
+   listening:12,
+   tasks:['写一封60词邀请函','听力第12集'],
+   exercises:[
+     {q:'Je t\'___ (inviter) à une soirée.', a:'invite', tag:'写作'},
+     {q:'邀请函中如何礼貌请求对方带东西？', a:'Est-ce que tu pourrais apporter...? / Tu peux apporter...?', tag:'写作'},
+     {q:'邀请函结尾如何让对方回复？', a:'Dis-moi si tu peux venir. / Tiens-moi au courant.', tag:'写作'},
+     {q:'Vous ___ (pouvoir, conditionnel) venir samedi ?', a:'pourriez', tag:'条件式'},
+     {q:'邀请信的开头格式是？', a:'Salut + 姓名 / Cher(e) + 姓名', tag:'写作'},
+   ]},
+  {day:13, phase:'高频场景', grammar:'写作练习——感谢/道歉信', grammarNote:'感谢：Merci pour... + explication；道歉：Je suis désolé(e) + raison + solution', grammarTag:'写作',
+   vocab:['remercier（感谢）','s\'excuser（道歉）','malheureusement（不幸地）','désolé(e)（抱歉）','par contre（但是）'],
+   sentences:['Je te remercie pour ton aide.','Je suis vraiment désolé(e) de ne pas pouvoir venir.','Par contre, je suis libre dimanche.'],
+   listening:13,
+   tasks:['写一封道歉信（拒绝邀请）','听力第13集'],
+   exercises:[
+     {q:'Je ___ beaucoup pour ton invitation. (感谢)', a:'te remercie', tag:'写作'},
+     {q:'Malheureusement, je ne ___ pas venir. (pouvoir)', a:'peux', tag:'写作'},
+     {q:'Je ___ (être) vraiment désolé(e).', a:'suis', tag:'写作'},
+     {q:'道歉信中如何提出替代方案？', a:'Par contre / Mais / En revanche + 替代时间', tag:'写作'},
+     {q:'道歉信结尾常用语是？', a:'Amitiés / Cordialement / À bientôt', tag:'写作'},
+   ]},
+  {day:14, phase:'高频场景', grammar:'口语练习——自我介绍1分30秒', grammarNote:'自我介绍：姓名+年龄+国籍 → 工作/学习 → 家庭 → 爱好 → 学法语原因', grammarTag:'口语',
+   vocab:['se présenter（自我介绍）','profession（职业）','loisir（爱好）','langue（语言）','nationalité（国籍）'],
+   sentences:['Je m\'appelle... J\'ai ... ans.','Je suis étudiant(e) en ...','J\'apprends le français depuis ...'],
+   listening:14,
+   tasks:['录音：说1分30秒自我介绍','听力第14集'],
+   exercises:[
+     {q:'Je m\'___ (s\'appeler) Marie.', a:'appelle', tag:'口语'},
+     {q:'J\'___ le français depuis six mois. (apprendre)', a:'apprends', tag:'口语'},
+     {q:'口语自我介绍必提的5个内容是？', a:'姓名+年龄+职业+家庭+爱好', tag:'口语'},
+     {q:'Pourquoi ___ (apprendre, tu) le français ?', a:'apprends-tu / tu apprends', tag:'口语'},
+     {q:'自我介绍中如何说"我来自中国"？', a:'Je viens de Chine. / Je suis chinois(e).', tag:'口语'},
+   ]},
+  {day:15, phase:'高频场景', grammar:'口语练习——独白话题2分钟', grammarNote:'独白结构：Introduction(15s) → Point1+例子(40s) → Point2+例子(40s) → Opinion(25s) → Conclusion(10s)', grammarTag:'口语',
+   vocab:['d\'abord（首先）','ensuite（然后）','enfin（最后）','personnellement（个人来说）','par exemple（例如）'],
+   sentences:['Je vais vous parler de...','D\'abord... Par exemple...','Personnellement, je pense que...'],
+   listening:15,
+   tasks:['练习独白：我的城市（2分钟）','听力第15集'],
+   exercises:[
+     {q:'独白开头标准句是？', a:'Je vais vous parler de [sujet].', tag:'口语'},
+     {q:'连接词d\'abord的意思是？', a:'首先', tag:'口语'},
+     {q:'D\'___ / Ensuite / Enfin 是哪类词？', a:'连接词（顺序连接词）', tag:'口语'},
+     {q:'如何在口语中表达个人意见？', a:'Personnellement / Pour moi / À mon avis', tag:'口语'},
+     {q:'独白结尾套路是？', a:'Voilà, c\'est tout ce que je voulais dire sur [sujet].', tag:'口语'},
+   ]},
+  {day:16, phase:'高频场景', grammar:'听力专项——数字/日期/时间听写', grammarNote:'数字：70=soixante-dix；80=quatre-vingts；90=quatre-vingt-dix；100=cent；时间：Il est 14h30=quatorze heures trente', grammarTag:'听力',
+   vocab:['soixante-dix（70）','quatre-vingts（80）','quatre-vingt-dix（90）','cent（100）','mille（1000）'],
+   sentences:['Il est quatorze heures trente.','Le train part à vingt et une heures.','Ça coûte quatre-vingt-cinq euros.'],
+   listening:16,
+   tasks:['听写数字练习','听力第16集专项'],
+   exercises:[
+     {q:'75用法语怎么说？', a:'soixante-quinze', tag:'听力'},
+     {q:'92用法语怎么说？', a:'quatre-vingt-douze', tag:'听力'},
+     {q:'14h45用法语怎么说？', a:'quatorze heures quarante-cinq', tag:'听力'},
+     {q:'2500用法语怎么说？', a:'deux mille cinq cents', tag:'听力'},
+     {q:'听力中如何区分vingt(20)和cent(100)？', a:'注意上下文和数量单位', tag:'听力'},
+   ]},
+  {day:17, phase:'高频场景', grammar:'阅读理解——广告/邮件题型', grammarNote:'广告题：找关键信息（价格/日期/条件）；邮件题：判断目的（邀请/拒绝/询问）', grammarTag:'综合',
+   vocab:['une annonce（广告）','un courriel（邮件）','chercher（寻找）','proposer（提议）','gratuit（免费）'],
+   sentences:['On cherche un colocataire.','L\'entrée est gratuite pour les moins de 18 ans.','Veuillez confirmer votre réservation.'],
+   listening:17,
+   tasks:['做阅读理解练习2篇','听力第17集'],
+   exercises:[
+     {q:'广告中 gratuit 是什么意思？', a:'免费', tag:'综合'},
+     {q:'邮件开头 Madame, Monsieur 是什么场合？', a:'正式场合（官方/商业邮件）', tag:'写作'},
+     {q:'veuillez + infinitif 表示什么？', a:'请...（礼貌请求）', tag:'综合'},
+     {q:'Une annonce de colocation 是什么类型广告？', a:'合租广告', tag:'综合'},
+     {q:'阅读题中如何快速找关键信息？', a:'先看问题，再找对应段落的关键词', tag:'综合'},
+   ]},
+  {day:18, phase:'高频场景', grammar:'综合场景——购物/问路', grammarNote:'购物：Je voudrais / C\'est combien ? / Je peux essayer ? 问路：Pour aller à... / Tournez à gauche', grammarTag:'综合',
+   vocab:['essayer（试穿）','la taille（尺码）','tourner（转）','continuer tout droit（直走）','au bout de（在...尽头）'],
+   sentences:['Je peux essayer cette robe ?','Pour aller à la gare, s\'il vous plaît ?','Tournez à droite après le feu.'],
+   listening:18,
+   tasks:['角色扮演：购物对话','问路练习','听力第18集'],
+   exercises:[
+     {q:'购物时如何问价格？', a:'C\'est combien ? / Quel est le prix ?', tag:'综合'},
+     {q:'Je cherche une veste en taille ___. (M号)', a:'M (medium)', tag:'综合'},
+     {q:'问路套路：Pour ___ à la gare ?', a:'aller', tag:'综合'},
+     {q:'Tournez à ___ (左) au prochain carrefour.', a:'gauche', tag:'综合'},
+     {q:'C\'est ___ ___ la rue. (在街道尽头)', a:'au bout de', tag:'综合'},
+   ]},
+  {day:19, phase:'高频场景', grammar:'综合场景——健康/看医生', grammarNote:'J\'ai mal à la tête/gorge/ventre；Je tousse/J\'ai de la fièvre；Vous devriez + infinitif', grammarTag:'综合',
+   vocab:['avoir mal à（...疼）','la gorge（喉咙）','tousser（咳嗽）','la fièvre（发烧）','une ordonnance（处方）'],
+   sentences:['J\'ai très mal à la gorge.','Je tousse depuis trois jours.','Vous devriez prendre ce médicament.'],
+   listening:19,
+   tasks:['模拟看医生对话','听力第19集'],
+   exercises:[
+     {q:'J\'___ mal à la tête. (avoir)', a:'ai', tag:'综合'},
+     {q:'Je tousse ___ deux jours. (depuis/pendant)', a:'depuis', tag:'depuis/pendant'},
+     {q:'医生建议用哪个语气表达？', a:'Vous devriez + infinitif（条件式）', tag:'条件式'},
+     {q:'À la pharmacie：Je voudrais quelque chose pour ___ la toux.', a:'soigner / calmer', tag:'综合'},
+     {q:'Il a de la ___ (发烧).', a:'fièvre', tag:'综合'},
+   ]},
+  {day:20, phase:'高频场景', grammar:'综合场景——描述人/地方（形容词变形）', grammarNote:'形容词性数配合：grand/grande；beau/belle；blanc/blanche；位置：大多数后置，BAGS类前置', grammarTag:'综合',
+   vocab:['grand/grande（大/高）','sympathique（友善）','moderne（现代）','animé（热闹）','calme（安静）'],
+   sentences:['C\'est une grande ville très animée.','Elle est grande avec les yeux bleus.','Le quartier est calme et agréable.'],
+   listening:20,
+   tasks:['写一段人物描述（50词）','写一段地点描述（50词）','听力第20集'],
+   exercises:[
+     {q:'un homme ___ (grand, 阳性)', a:'grand', tag:'综合'},
+     {q:'une ville ___ (grand, 阴性)', a:'grande', tag:'综合'},
+     {q:'un ___ (beau, 阳性) garçon', a:'beau', tag:'综合'},
+     {q:'une ___ (beau, 阴性) maison', a:'belle', tag:'综合'},
+     {q:'形容词 blanc 阴性形式是？', a:'blanche', tag:'综合'},
+   ]},
+  // D21-30: 模拟冲刺
+  {day:21, phase:'模拟冲刺', grammar:'模拟听力1套', grammarNote:'听力考试：第1部分3题，第2部分4题，第3部分5题。每题听两遍，注意题目中的数字/地点/人名。', grammarTag:'听力',
+   vocab:['comprendre（理解）','répéter（重复）','noter（记录）','identifier（辨别）','un dialogue（对话）'],
+   sentences:['Écoutez et répondez aux questions.','La première partie : 3 enregistrements.','Vous avez 30 secondes pour lire les questions.'],
+   listening:21,
+   tasks:['完整做一套听力真题','对答案分析错误','听力第21集'],
+   exercises:[
+     {q:'听力考试每段录音听几遍？', a:'两遍', tag:'听力'},
+     {q:'听力中出现数字要特别注意哪些混淆点？', a:'vingt/cent/mille；heures/minutes；prix/numéro', tag:'听力'},
+     {q:'听力第一部分通常是什么题型？', a:'判断正误 / 选择 / 连线', tag:'听力'},
+     {q:'Ne pas confondre：quinze(15) 和 soixante(60)', a:'quinze=15，soixante=60，注意语音区别', tag:'听力'},
+     {q:'听力中如何快速定位关键信息？', a:'先读题目，听时专注关键词（人名/地点/时间/数字）', tag:'听力'},
+   ]},
+  {day:22, phase:'模拟冲刺', grammar:'模拟听力2套', grammarNote:'重点练习：注意题目中否定句的陷阱；代词替换；同义表达', grammarTag:'听力',
+   vocab:['une émission（节目）','une publicité（广告）','un message（留言）','une annonce（广播）','une interview（采访）'],
+   sentences:['Vous allez entendre un message.','Répondez aux questions suivantes.','Cochez la bonne réponse.'],
+   listening:22,
+   tasks:['第2套听力模拟','分析错题类型','听力第22集'],
+   exercises:[
+     {q:'听力中出现 ne...pas 要注意什么？', a:'否定意思，不要混淆为肯定', tag:'听力'},
+     {q:'une émission de radio 是什么？', a:'广播节目', tag:'听力'},
+     {q:'cochez la bonne réponse 的意思是？', a:'选出正确答案', tag:'听力'},
+     {q:'听力陷阱：答案常藏在___（开头/结尾/转折处）', a:'转折处（mais/par contre/en fait）', tag:'听力'},
+     {q:'听力中同义表达举例：maison=___？', a:'logement / domicile / habitation / chez soi', tag:'听力'},
+   ]},
+  {day:23, phase:'模拟冲刺', grammar:'模拟听力3套', grammarNote:'综合训练：数字类、判断类、多选类题型强化', grammarTag:'听力',
+   vocab:['vrai/faux（对/错）','exact（正确）','incorrect（不正确）','selon（根据）','d\'après（根据）'],
+   sentences:['D\'après le document, ...','Selon la personne interrogée,...','Cochez vrai ou faux.'],
+   listening:23,
+   tasks:['第3套听力模拟','总结错题规律','听力第23集'],
+   exercises:[
+     {q:'vrai/faux题：如何判断？', a:'找到题目对应的录音句，逐字比对', tag:'听力'},
+     {q:'d\'après/selon 的意思是？', a:'根据...', tag:'听力'},
+     {q:'听力考试时间管理：每题平均___秒', a:'约30秒（听前读题15秒，听时答题15秒）', tag:'听力'},
+     {q:'听力中人名/地名听不清怎么办？', a:'根据上下文推断，注意首字母/音节', tag:'听力'},
+     {q:'第三套听力重点：__类题型最多', a:'选择题（三选一）', tag:'听力'},
+   ]},
+  {day:24, phase:'模拟冲刺', grammar:'模拟写作1套（2篇）', grammarNote:'写作考试：两篇各60+词；第1篇：非正式（邀请/感谢/道歉）；第2篇：正式（咨询/投诉）', grammarTag:'写作',
+   vocab:['rédiger（撰写）','un paragraphe（段落）','une introduction（引言）','une conclusion（结论）','un brouillon（草稿）'],
+   sentences:['Je vous écris pour vous informer de...','Je vous remercie d\'avance.','Dans l\'attente de votre réponse,...'],
+   listening:24,
+   tasks:['完整写作模拟：2篇限时45分钟','自我评分','听力第24集'],
+   exercises:[
+     {q:'正式邮件的结尾套语是？', a:'Cordialement / Dans l\'attente de votre réponse, veuillez agréer...', tag:'写作'},
+     {q:'写作中如何开头一封咨询信？', a:'Je vous écris pour avoir des informations sur...', tag:'写作'},
+     {q:'写作第1篇通常是什么类型？', a:'非正式：邀请/感谢/道歉/描述', tag:'写作'},
+     {q:'写作中时态选择：描述过去→___，表达愿望→___', a:'PC/Imparfait；条件式voudrais', tag:'写作'},
+     {q:'60词要求：大约几句话？', a:'约5-7句（每句约10词）', tag:'写作'},
+   ]},
+  {day:25, phase:'模拟冲刺', grammar:'模拟写作2套', grammarNote:'强化：连接词使用，时态一致性，词汇多样性', grammarTag:'写作',
+   vocab:['cependant（然而）','de plus（另外）','en effet（确实）','c\'est pourquoi（这就是为什么）','tout d\'abord（首先）'],
+   sentences:['De plus, je voudrais savoir...','Cependant, je ne peux pas...','C\'est pourquoi je vous écris.'],
+   listening:25,
+   tasks:['写作模拟第2套','重点检查连接词和时态','听力第25集'],
+   exercises:[
+     {q:'de plus 的意思是？', a:'另外/此外', tag:'写作'},
+     {q:'cependant 的意思和用法？', a:'然而（表转折，用于正式书面语）', tag:'写作'},
+     {q:'c\'est pourquoi 的意思是？', a:'这就是为什么/因此', tag:'写作'},
+     {q:'写作中如何增加词汇多样性？', a:'用同义词：beau=magnifique/joli；bien=très/vraiment', tag:'写作'},
+     {q:'写作评分：除字数外还考察什么？', a:'语法正确性、词汇丰富性、连贯性', tag:'写作'},
+   ]},
+  {day:26, phase:'模拟冲刺', grammar:'模拟写作3套', grammarNote:'写作综合：检查常见错误（性数配合、助动词选择、冠词使用）', grammarTag:'写作',
+   vocab:['vérifier（检查）','corriger（纠正）','relire（重读）','améliorer（改善）','cohérent（连贯）'],
+   sentences:['Je relis ma lettre pour corriger les erreurs.','La réponse est cohérente et bien structurée.','J\'améliore mon vocabulaire chaque jour.'],
+   listening:26,
+   tasks:['写作模拟第3套','建立个人错误清单','听力第26集'],
+   exercises:[
+     {q:'写作常见错误1：性数配合。une femme ___ (grand)', a:'grande', tag:'综合'},
+     {q:'写作常见错误2：助动词选择。Elle ___ (partir, PC)', a:'est partie', tag:'反身动词'},
+     {q:'写作常见错误3：否定时冠词。Je n\'ai pas ___ voiture.', a:'de', tag:'否定句'},
+     {q:'写作常见错误4：depuis vs il y a', a:'depuis接现在时（持续），il y a接PC（过去时间点）', tag:'depuis/pendant'},
+     {q:'写作审题步骤是什么？', a:'读题→确定类型→写草稿→检查字数→改错', tag:'写作'},
+   ]},
+  {day:27, phase:'模拟冲刺', grammar:'口语模拟（限时录音）', grammarNote:'口语考试：Part1自我介绍2min；Part2独白2min（10min准备）；Part3角色扮演3-4min', grammarTag:'口语',
+   vocab:['s\'exprimer（表达）','une interaction（互动）','un jeu de rôle（角色扮演）','proposer（提议）','négocier（协商）'],
+   sentences:['Excusez-moi, je voudrais savoir...','Est-ce que vous pourriez m\'aider ?','Je suis d\'accord avec vous.'],
+   listening:27,
+   tasks:['口语模拟：限时自我介绍2分钟（录音）','独白练习（话题：ma ville）','听力第27集'],
+   exercises:[
+     {q:'口语中如何礼貌询问？', a:'Je voudrais savoir... / Pourriez-vous m\'indiquer... ?', tag:'口语'},
+     {q:'角色扮演中遇到不懂的词怎么办？', a:'Comment dit-on... en français ? / Pouvez-vous répéter ?', tag:'口语'},
+     {q:'口语中如何表达赞同？', a:'Je suis d\'accord / Tout à fait / Exactement', tag:'口语'},
+     {q:'口语中如何表达不同意？', a:'Je ne suis pas d\'accord / Pas tout à fait / Au contraire', tag:'口语'},
+     {q:'口语评分标准包括？', a:'完成交际任务+词汇语法+发音流利度', tag:'口语'},
+   ]},
+  {day:28, phase:'模拟冲刺', grammar:'口语模拟（限时录音）', grammarNote:'强化：角色扮演常见场景（旅馆预订/问路/购物/看医生）的生存句式', grammarTag:'口语',
+   vocab:['réserver（预订）','annuler（取消）','se plaindre（抱怨）','expliquer（解释）','insister（坚持）'],
+   sentences:['Je voudrais réserver une chambre pour deux nuits.','Il y a un problème avec ma commande.','Je suis vraiment désolé pour ce contretemps.'],
+   listening:28,
+   tasks:['角色扮演：旅馆预订（5分钟）','角色扮演：餐厅投诉（5分钟）','听力第28集'],
+   exercises:[
+     {q:'旅馆预订：Je voudrais ___ une chambre pour deux nuits.', a:'réserver', tag:'口语'},
+     {q:'问题套路：Il y a un ___ avec ma commande.', a:'problème', tag:'口语'},
+     {q:'道歉套路：Je suis ___ pour ce contretemps.', a:'désolé(e)', tag:'口语'},
+     {q:'询问价格：C\'est ___ la nuit ? (combien)', a:'combien', tag:'口语'},
+     {q:'口语角色扮演最重要的是什么？', a:'完成交际任务（能沟通到位），不必追求完美语法', tag:'口语'},
+   ]},
+  {day:29, phase:'模拟冲刺', grammar:'弱点集中复习（看错题本）', grammarNote:'根据错题本重点复习薄弱语法点。今天不做新题，专攻错题！', grammarTag:'综合',
+   vocab:['réviser（复习）','consolider（巩固）','maîtriser（掌握）','s\'améliorer（进步）','réussir（成功）'],
+   sentences:['Je dois réviser mes points faibles.','J\'ai progressé grâce à mes révisions.','Je vais réussir l\'examen !'],
+   listening:29,
+   tasks:['翻看错题本所有错题','重点语法点精练','听力第29集'],
+   exercises:[
+     {q:'PC vs Imparfait：Hier, je ___ (marcher) quand je ___ (tomber).', a:'marchais / suis tombé(e)', tag:'PC vs Imparfait'},
+     {q:'反身动词PC：Elle ___ ___ (se lever) à 8h.', a:'s\'est levée', tag:'反身动词'},
+     {q:'代词：Tu as vu le film ? — Oui, je ___ ai vu.', a:'l\'', tag:'代词COD/COI'},
+     {q:'否定：Je ___ mange ___ de sucre. (plus)', a:'ne / plus', tag:'否定句'},
+     {q:'条件式：Est-ce que vous ___ (pouvoir) m\'aider ?', a:'pourriez', tag:'条件式'},
+   ]},
+  {day:30, phase:'模拟冲刺', grammar:'轻松收尾——只看词汇+听力，不做题', grammarNote:'考前一天：轻松复习词汇，听喜欢的法语歌或播客，保持状态，早点睡觉！', grammarTag:'综合',
+   vocab:['confiant(e)（自信的）','prêt(e)（准备好的）','courageux（勇敢的）','concentré(e)（专注的）','réussir（成功）'],
+   sentences:['Je suis prêt(e) pour l\'examen !','J\'ai bien travaillé ces 30 jours.','Je vais réussir !'],
+   listening:30,
+   tasks:['浏览词汇表（只看不写）','听力第30集放松听','早点睡觉！'],
+   exercises:[
+     {q:'Je suis ___ pour l\'examen ! (准备好的)', a:'prêt(e)', tag:'综合'},
+     {q:'Bonne ___ pour l\'examen ! (祝好运)', a:'chance', tag:'综合'},
+     {q:'今天的任务是什么？', a:'轻松复习，不焦虑，早睡觉！', tag:'综合'},
+     {q:'考试当天注意事项？', a:'带好证件+笔+手表；提前到达；深呼吸放松', tag:'综合'},
+     {q:'三十天的努力换来什么？', a:'Vous allez réussir ! 加油！', tag:'综合'},
+   ]},
+];
+
+// ════════════════════════ PLAN RENDERING ════════════════════════
+function getPlanProgress() {
+  try { return new Set(JSON.parse(localStorage.getItem('planProgress') || '[]')); }
+  catch(e) { return new Set(); }
+}
+function savePlanProgress(s) {
+  localStorage.setItem('planProgress', JSON.stringify([...s]));
+}
+function getPlanStartDate() {
+  return localStorage.getItem('planStartDate');
+}
+function setPlanStartDate() {
+  if (!getPlanStartDate()) {
+    localStorage.setItem('planStartDate', new Date().toISOString().slice(0,10));
+  }
+}
+function getTodayDayIndex() {
+  const start = getPlanStartDate();
+  if (!start) return -1;
+  const diff = Math.floor((new Date() - new Date(start)) / 86400000);
+  return diff; // 0-based
+}
+
+function renderPlanNav() {
+  const progress = getPlanProgress();
+  const todayIdx = getTodayDayIndex();
+  const nav = document.getElementById('planDayNav');
+  if (!nav) return;
+  nav.innerHTML = planDays.map((d, i) => {
+    const phase = d.day <= 10 ? 'phase1' : d.day <= 20 ? 'phase2' : 'phase3';
+    let cls = `plan-dot ${phase}`;
+    if (progress.has(d.day)) cls += ' done';
+    if (i === todayIdx) cls += ' today';
+    return `<div class="${cls}" title="D${d.day}: ${d.grammar}" onclick="scrollToPlanDay(${i})">${d.day}</div>`;
+  }).join('');
+}
+
+function scrollToPlanDay(i) {
+  document.getElementById('planDay' + i)?.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function togglePlanDone(day, checked) {
+  const progress = getPlanProgress();
+  if (checked) progress.add(day); else progress.delete(day);
+  savePlanProgress(progress);
+  renderPlanNav();
+  // update button appearance
+  const btn = document.querySelector(`[data-plan-done="${day}"]`);
+  if (btn) { btn.textContent = checked ? '✅ 已完成' : '完成打卡'; btn.classList.toggle('done', checked); }
+}
+
+function checkPlanAnswer(btn, dayIdx, exIdx) {
+  const planEx = planDays[dayIdx].exercises[exIdx];
+  const input = document.getElementById(`planEx_${dayIdx}_${exIdx}`);
+  const feedback = document.getElementById(`planFb_${dayIdx}_${exIdx}`);
+  if (!input || !feedback) return;
+  const userAnswer = input.value.trim();
+  const correctAnswer = planEx.a;
+  const tag = planEx.tag;
+
+  const stripAccents = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const norm = s => stripAccents(s.toLowerCase()).replace(/[^a-z0-9\s\/]/g,' ').replace(/\s+/g,' ').trim();
+  const isCorrect = norm(userAnswer) === norm(correctAnswer) || (norm(userAnswer).length > 1 && norm(correctAnswer).includes(norm(userAnswer)));
+
+  input.classList.remove('correct','wrong');
+  input.classList.add(isCorrect ? 'correct' : 'wrong');
+  feedback.style.display = 'block';
+  feedback.className = 'plan-ex-feedback ' + (isCorrect ? 'correct' : 'wrong');
+
+  if (isCorrect) {
+    feedback.innerHTML = '✅ 正确！答案：<strong>' + correctAnswer + '</strong>';
+    btn.textContent = '✅ 正确';
+    btn.style.background = 'var(--green)';
+  } else {
+    feedback.innerHTML = '❌ 正确答案：<strong>' + correctAnswer + '</strong>' +
+      (grammarExplains[tag] ? '<div style="margin-top:0.3rem;font-size:0.78rem;color:var(--soft);">💡 ' + grammarExplains[tag] + '</div>' : '');
+    btn.textContent = '❌ 查看答案';
+    btn.style.background = 'var(--red)';
+    // Save to wrongItems
+    saveWrongItem({
+      day: planDays[dayIdx].day,
+      question: planEx.q,
+      userAnswer: userAnswer || '（未作答）',
+      correctAnswer: correctAnswer,
+      grammarTag: tag,
+      timestamp: Date.now()
+    });
+  }
+}
+
+function saveWrongItem(item) {
+  let items = [];
+  try { items = JSON.parse(localStorage.getItem('wrongItems') || '[]'); } catch(e) {}
+  // Avoid exact duplicates (same day+question)
+  const isDup = items.some(x => x.day === item.day && x.question === item.question);
+  if (!isDup) {
+    items.push(item);
+    localStorage.setItem('wrongItems', JSON.stringify(items));
+  }
+}
+
+function renderPlan() {
+  setPlanStartDate();
+  renderPlanNav();
+  const content = document.getElementById('planContent');
+  if (!content) return;
+  const progress = getPlanProgress();
+
+  content.innerHTML = planDays.map((d, i) => {
+    const phase = d.day <= 10 ? 1 : d.day <= 20 ? 2 : 3;
+    const phaseClass = 'phase' + phase;
+    const phaseName = d.phase;
+    const isDone = progress.has(d.day);
+    const ytIdx = d.listening;
+
+    return `
+    <div class="plan-card" id="planDay${i}">
+      <div class="plan-card-header ${phaseClass}">
+        <span class="plan-day-badge">第 ${d.day} 天</span>
+        <span class="plan-phase-tag ${phaseClass}">${phaseName}</span>
+        <span style="font-size:0.88rem;color:var(--soft);font-weight:600;flex:1">${d.grammar}</span>
+        <button class="plan-done-btn${isDone?' done':''}" data-plan-done="${d.day}" onclick="togglePlanDone(${d.day}, !${isDone})">
+          ${isDone ? '✅ 已完成' : '完成打卡'}
+        </button>
+      </div>
+      <div class="plan-card-body">
+        <div class="plan-section">
+          <div class="plan-section-title">📖 今日语法</div>
+          <div style="font-size:0.88rem;font-weight:700;color:var(--ink);">${d.grammar}</div>
+          <div class="plan-grammar-note" id="gnote${i}" onclick="document.getElementById('gnote${i}').classList.toggle('open')" style="margin-top:0.5rem;">
+            💡 ${d.grammarNote}
+          </div>
+        </div>
+
+        <div class="plan-section">
+          <div class="plan-section-title">📝 今日词汇（5个）</div>
+          <div class="plan-vocab-grid">
+            ${d.vocab.map(v => {
+              const fr = v.split('（')[0].trim();
+              return `<span class="plan-vocab-pill">${v}<span class="speak-btn" onclick="speakFrench('${fr.replace(/'/g,"\\'")}',this)">🔊</span></span>`;
+            }).join('')}
+          </div>
+        </div>
+
+        <div class="plan-section">
+          <div class="plan-section-title">💬 今日例句</div>
+          <ul class="plan-sentences">
+            ${d.sentences.map(s => `<li><span class="speak-btn" onclick="speakFrench(this.nextElementSibling.textContent,this)">🔊</span><span>${s}</span></li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="plan-section">
+          <div class="plan-section-title">🎧 今日听力：第 ${ytIdx} 集</div>
+          <div class="plan-yt-wrap">
+            <iframe loading="lazy"
+              src="https://www.youtube.com/embed/4vdX_ywX8Fc?list=PLtJL6GKh6j0W1GFbzc5ANZqtidjrLUAGJ&index=${ytIdx}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="plan-section">
+          <div class="plan-section-title">✏️ 今日练习（5题，答错自动记入错题本）</div>
+          ${d.exercises.map((ex, ei) => `
+            <div class="plan-exercise">
+              <div class="plan-exercise-q">${ei+1}. ${ex.q}</div>
+              <input type="text" id="planEx_${i}_${ei}" class="plan-ex-input" placeholder="输入你的答案..."
+                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                onkeydown="if(event.key==='Enter'){document.getElementById('planCk_${i}_${ei}').click()}">
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <button id="planCk_${i}_${ei}" class="plan-check-btn" onclick="checkPlanAnswer(this,${i},${ei})">检查</button>
+                <span style="font-size:0.75rem;color:var(--grey);">标签：${ex.tag}</span>
+              </div>
+              <div id="planFb_${i}_${ei}" class="plan-ex-feedback"></div>
+            </div>
+          `).join('')}
+        </div>
+
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════ WRONG ITEMS ════════════════════════
+function getWrongItems() {
+  try { return JSON.parse(localStorage.getItem('wrongItems') || '[]'); } catch(e) { return []; }
+}
+
+function deleteWrongItem(idx) {
+  const items = getWrongItems();
+  items.splice(idx, 1);
+  localStorage.setItem('wrongItems', JSON.stringify(items));
+  renderWrong();
+}
+
+function clearAllWrong() {
+  if (confirm('确定要清空所有错题吗？')) {
+    localStorage.removeItem('wrongItems');
+    renderWrong();
+  }
+}
+
+function retryWrongItem(idx) {
+  const container = document.getElementById('wrongRetry_' + idx);
+  if (!container) return;
+  const item = getWrongItems()[idx];
+  if (!item) return;
+  if (container.innerHTML.trim()) { container.innerHTML = ''; return; }
+  container.innerHTML = `
+    <input type="text" class="wrong-retry-input" id="retryInput_${idx}" placeholder="重新作答..." autocomplete="off">
+    <div style="display:flex;gap:0.5rem;margin-top:0.4rem;">
+      <button class="btn-sm primary" onclick="checkWrongRetry(${idx})">检查</button>
+      <button class="btn-sm" onclick="document.getElementById('wrongRetry_${idx}').innerHTML=''">取消</button>
+    </div>
+    <div id="retryFb_${idx}" style="margin-top:0.35rem;font-size:0.83rem;"></div>
+  `;
+  document.getElementById('retryInput_' + idx).focus();
+}
+
+function checkWrongRetry(idx) {
+  const item = getWrongItems()[idx];
+  if (!item) return;
+  const input = document.getElementById('retryInput_' + idx);
+  const fb = document.getElementById('retryFb_' + idx);
+  if (!input || !fb) return;
+  const userAnswer = input.value.trim();
+  const stripAccents = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const norm = s => stripAccents(s.toLowerCase()).replace(/[^a-z0-9\s\/]/g,' ').replace(/\s+/g,' ').trim();
+  const isCorrect = norm(userAnswer) === norm(item.correctAnswer) || (norm(userAnswer).length > 1 && norm(item.correctAnswer).includes(norm(userAnswer)));
+  if (isCorrect) {
+    fb.innerHTML = '<span style="color:var(--green)">✅ 正确！这道题掌握了！</span>';
+    input.style.borderColor = 'var(--green)';
+  } else {
+    fb.innerHTML = `<span style="color:var(--red)">❌ 还是错了。正确答案：<strong>${item.correctAnswer}</strong></span>`;
+    input.style.borderColor = 'var(--red)';
+  }
+}
+
+function renderWrong() {
+  const items = getWrongItems();
+  const countEl = document.getElementById('wrongCount');
+  const content = document.getElementById('wrongContent');
+  if (!content) return;
+  if (countEl) countEl.textContent = `共 ${items.length} 道错题`;
+
+  if (items.length === 0) {
+    content.innerHTML = '<div style="text-align:center;padding:3rem 1rem;color:var(--grey);"><div style="font-size:2.5rem;margin-bottom:1rem;">🎉</div><div style="font-size:1rem;">暂无错题！继续在学习计划中做练习吧。</div></div>';
+    return;
+  }
+
+  // Group by grammarTag
+  const groups = {};
+  items.forEach((item, idx) => {
+    const tag = item.grammarTag || '其他';
+    if (!groups[tag]) groups[tag] = [];
+    groups[tag].push({...item, _idx: idx});
+  });
+
+  let html = '';
+  Object.entries(groups).forEach(([tag, groupItems]) => {
+    html += `<div class="wrong-group-title">${tag} (${groupItems.length}道)</div>`;
+    groupItems.forEach(item => {
+      const idx = item._idx;
+      const dateStr = item.timestamp ? new Date(item.timestamp).toLocaleDateString('zh-CN') : '';
+      const explain = grammarExplains[tag] || '';
+      html += `
+        <div class="wrong-item" id="wrongItem_${idx}">
+          <div class="wrong-item-q">D${item.day} · ${item.question}</div>
+          <div class="wrong-item-row">
+            <span class="wrong-your">你的答案：${item.userAnswer || '（未作答）'}</span>
+            <span class="wrong-correct">✓ 正确：${item.correctAnswer}</span>
+          </div>
+          ${explain ? `<div class="wrong-note">💡 ${explain}</div>` : ''}
+          ${dateStr ? `<div style="font-size:0.75rem;color:var(--grey);margin-top:0.3rem;">${dateStr}</div>` : ''}
+          <div class="wrong-actions">
+            <button class="btn-sm primary" onclick="retryWrongItem(${idx})">再练一次</button>
+            <button class="btn-sm danger" onclick="deleteWrongItem(${idx})">删除</button>
+          </div>
+          <div id="wrongRetry_${idx}"></div>
+        </div>`;
+    });
+  });
+  content.innerHTML = html;
+}
+
 </script>
 
 </body>
