@@ -365,6 +365,266 @@
     .day-card { padding: 1rem; }
     .nav-tab { padding: 0.75rem 1.25rem; font-size: 0.8rem; }
   }
+
+  /* ── Dictation Mode ── */
+  .dictation-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0 1rem;
+    align-items: center;
+  }
+
+  .btn-dictation {
+    padding: 0.55rem 1.1rem;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    font-family: inherit;
+  }
+
+  .btn-dictation:active { transform: scale(0.97); }
+
+  .btn-dictation.start {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .btn-dictation.start:hover { background: #1a2570; }
+
+  .btn-dictation.check {
+    background: #277a4e;
+    color: #fff;
+    display: none;
+  }
+
+  .btn-dictation.check:hover { background: #1d5c38; }
+
+  .btn-dictation.reset {
+    background: var(--tag-bg);
+    color: var(--soft);
+    display: none;
+  }
+
+  .btn-dictation.reset:hover { background: var(--border); }
+
+  .dictation-hint {
+    font-size: 0.8rem;
+    color: var(--grey);
+    font-style: italic;
+    display: none;
+  }
+
+  /* input cells in dictation mode */
+  .conj-table .dictation-input {
+    width: 100%;
+    min-width: 80px;
+    padding: 0.3rem 0.45rem;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .conj-table .dictation-input:focus { border-color: var(--blue); }
+  .conj-table .dictation-input.correct { border-color: var(--green); background: #f0faf5; }
+  .conj-table .dictation-input.wrong { border-color: var(--red); background: #fff5f5; }
+
+  .conj-check-mark {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+    display: inline-block;
+  }
+
+  /* ── Listening Layout ── */
+  .listen-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 760px) {
+    .listen-layout {
+      grid-template-columns: 1fr 300px;
+      align-items: start;
+    }
+  }
+
+  .listen-player-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+  }
+
+  .listen-player-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .episode-list {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  .episode-group-label {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--grey);
+    background: var(--tag-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .episode-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.13s;
+    font-size: 0.82rem;
+  }
+
+  .episode-item:hover { background: var(--tag-bg); }
+  .episode-item.active { background: #e8eaf6; }
+
+  .episode-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .episode-title { flex: 1; color: var(--ink); line-height: 1.35; }
+
+  .listen-tip {
+    margin-top: 1rem;
+    background: #f7f4ec;
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    font-size: 0.85rem;
+    color: var(--soft);
+    line-height: 1.75;
+  }
+
+  /* ══════════════════ GRAMMAR CARD SYSTEM ══════════════════ */
+  .gc { border-radius: 12px; overflow: hidden; margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(26,58,107,0.08); border: 1px solid rgba(26,58,107,0.10); }
+  .gc-header { background: #1a3a6b; color: #fff; padding: 0.9rem 1.2rem; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; user-select: none; }
+  .gc-header:hover { background: #1e437a; }
+  .gc-header-left { flex: 1; }
+  .gc-header-title { font-size: 0.96rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25; }
+  .gc-header-sub { font-size: 0.76rem; font-weight: 400; opacity: 0.72; margin-top: 0.1rem; }
+  .gc-arrow { font-size: 0.6rem; opacity: 0.65; transition: transform 0.22s; flex-shrink: 0; }
+  .gc.open .gc-arrow { transform: rotate(180deg); }
+  .gc-body { display: none; background: #fff; }
+  .gc.open .gc-body { display: block; }
+  .gc-struct { background: #f3f5f9; padding: 0.6rem 1.1rem; border-bottom: 1px solid #e3e7f0;
+    font-size: 0.83rem; color: #333; line-height: 1.6; }
+  .gc-struct-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.07em; color: #1a3a6b; margin-bottom: 0.2rem; opacity: 0.7; }
+  .gc-struct code { font-family: 'SF Mono','Fira Code',monospace; background: #dce3f0;
+    color: #1a3a6b; padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.8rem; }
+  .gc-rules { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .gc-rules.cols-2 { grid-template-columns: 1fr 1fr; }
+  .gc-rules.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 580px) { .gc-rules.cols-2, .gc-rules.cols-3 { grid-template-columns: 1fr; } }
+  .gc-rule { padding: 0.8rem 1rem; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0;
+    font-size: 0.85rem; line-height: 1.65; color: #333; }
+  .gc-rule:last-child { border-right: none; }
+  .gc-rule-title { font-weight: 700; font-size: 0.87rem; color: #1a1a2e; margin-bottom: 0.35rem;
+    display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+  .gc-num { display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%; color: #fff; font-size: 0.7rem;
+    font-weight: 800; flex-shrink: 0; }
+  .gc-ex { background: #f0f7ff; border-left: 3px solid #4a90d9; padding: 0.3rem 0.6rem;
+    border-radius: 0 5px 5px 0; margin-top: 0.35rem; font-size: 0.82rem; color: #1a3a6b; font-style: italic; }
+  .gc-ex.green  { background: #f0faf3; border-color: #2ecc71; color: #1a5c30; }
+  .gc-ex.orange { background: #fff8ee; border-color: #e8a020; color: #7a4500; }
+  .gc-ex.red    { background: #fff3f3; border-color: #e74c3c; color: #7a1a1a; }
+  .gc-warn { background: #fff8e1; border-top: 1px solid #f0e0a0; padding: 0.6rem 1.1rem;
+    font-size: 0.83rem; color: #7a5500; line-height: 1.6; }
+  .gc-tip  { background: #e8f5e9; border-top: 1px solid #c8e6c9; padding: 0.6rem 1.1rem;
+    font-size: 0.83rem; color: #1a5c30; line-height: 1.6; }
+  .gc-table-wrap { padding: 0.8rem 1.1rem; overflow-x: auto; border-bottom: 1px solid #e8eaf0; }
+  .gc-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .gc-table th { background: #1a3a6b; color: #fff; padding: 0.45rem 0.75rem; text-align: left;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; border: none; }
+  .gc-table th:first-child { border-radius: 6px 0 0 0; }
+  .gc-table th:last-child  { border-radius: 0 6px 0 0; }
+  .gc-table td { padding: 0.42rem 0.75rem; border-bottom: 1px solid #e8eaf0;
+    vertical-align: top; color: #2d2d44; }
+  .gc-table tr:last-child td { border-bottom: none; }
+  .gc-table tr:nth-child(even) td { background: #f8f9fc; }
+  .gc-table .col-avoir { background: #eef4ff !important; }
+  .gc-table .col-etre  { background: #fff4ee !important; }
+  .gc-table .col-refl  { background: #eefff4 !important; }
+  .gc-table .col-imp   { background: #fdf8ff !important; }
+  .gc-table .cell-person { color: #1a3a6b; font-weight: 600; font-size: 0.78rem; white-space: nowrap; }
+  .gc-table u { text-decoration-color: #e8a020; text-decoration-thickness: 2px; }
+  .gc-fr { color: #1a3a6b; font-weight: 600; }
+  .gc-fr u { text-decoration-color: #e8a020; text-decoration-thickness: 2px; }
+  .c-blue   { background: #4a90d9; } .c-orange { background: #e8a020; }
+  .c-green  { background: #2ecc71; } .c-red    { background: #e74c3c; }
+  .c-purple { background: #9b59b6; } .c-teal   { background: #16a085; }
+  .gc-section { font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.09em; color: #1a3a6b; opacity: 0.55; margin: 1.6rem 0 0.5rem;
+    padding-left: 0.1rem; border-bottom: 1px solid #dce3f0; padding-bottom: 0.35rem; }
+
+  /* ══════════════════ VERB TABLE — Prelude style ══════════════════ */
+  .vt-wrap { margin-bottom: 2rem; border-radius: 10px; overflow: hidden;
+    border: 1px solid #d0d8ee; box-shadow: 0 2px 8px rgba(26,58,107,0.07); }
+  .vt-title { background: #1a3a6b; color: #fff; padding: 0.65rem 1rem;
+    font-size: 1rem; font-weight: 800; display: flex; align-items: baseline; gap: 0.65rem; }
+  .vt-title span { font-size: 0.75rem; font-weight: 400; opacity: 0.65; }
+  .vt-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; background: #fff; }
+  .vt-table thead th { background: #1e4a8a; color: #fff; padding: 0.5rem 0.85rem;
+    text-align: left; font-size: 0.73rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; border-right: 1px solid rgba(255,255,255,0.15); border-bottom: none; }
+  .vt-table thead th:last-child { border-right: none; }
+  .vt-table thead th:first-child { background: #152f58; }
+  .vt-table tbody tr:nth-child(even) td { background: #f5f7fc; }
+  .vt-table tbody tr:nth-child(odd) td  { background: #fff; }
+  .vt-table td { padding: 0.42rem 0.85rem; border-bottom: 1px solid #e0e6f0;
+    border-right: 1px solid #e0e6f0; vertical-align: middle; color: #2d2d44; }
+  .vt-table td:last-child { border-right: none; }
+  .vt-table tr:last-child td { border-bottom: none; }
+  .vt-table .vt-person { color: #1a3a6b; font-weight: 600; font-size: 0.78rem;
+    white-space: nowrap; width: 90px; background: #eef2fa !important; }
+  .vt-table u { text-decoration-color: #e8a020; text-decoration-thickness: 2px; font-weight: 600; }
+  .vt-table .vt-irreg { color: #c0392b; font-style: italic; }
+  .vt-pc-aux { font-size: 0.73rem; color: #1a3a6b; font-weight: 700; margin-right: 0.2rem; }
+  .vt-pp { font-weight: 700; color: #1a1a2e; }
+  .vt-note { background: #fff8e1; padding: 0.45rem 0.85rem; font-size: 0.78rem;
+    color: #7a5500; border-top: 1px solid #f0e0a0; }
 </style>
 </head>
 <body>
@@ -393,349 +653,785 @@
 <div class="tab-content" id="tab-grammar">
 <div class="container">
   <h1>A1–A2 语法参考手册</h1>
-  <p class="subtitle">A1（基础）+ A2（进阶）共 20 个核心语法点。点击展开。</p>
+  <p class="subtitle">A1（基础）+ A2（进阶）共 20 个核心语法点。点击展开详细卡片。</p>
 
-<h2 style="margin-top:0.5rem;border:none;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey);">A1 · 基础</h2>
+<div class="gc-section">A1 · 基础</div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    现在时 · Présent — 规则动词 <span class="accordion-arrow">▼</span>
+<!-- 1. 现在时规则动词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Présent · 现在时</div>
+      <div class="gc-header-sub">规则动词三大组 — er / ir / re</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>-er 动词（第一组）：</strong><br><span class="fr">parler → je parle, tu parles, il parle, nous parlons, vous parlez, ils parlent</span></p>
-    <p><strong>-ir 动词（第二组）：</strong><br><span class="fr">finir → je finis, tu finis, il finit, nous finissons, vous finissez, ils finissent</span></p>
-    <p><strong>-re 动词（第三组）：</strong><br><span class="fr">vendre → je vends, tu vends, il vend, nous vendons, vous vendez, ils vendent</span></p>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 结构</div>
+      <code>词根 + 人称词尾</code>
+    </div>
+    <div class="gc-rules cols-3">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">1</span>-ER 动词（第一组）</div>
+        <span class="gc-fr">parler</span> → je parl<u>e</u>, tu parl<u>es</u>, il parl<u>e</u>,<br>nous parl<u>ons</u>, vous parl<u>ez</u>, ils parl<u>ent</u>
+        <div class="gc-ex">J'aime parler français.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">2</span>-IR 动词（第二组）</div>
+        <span class="gc-fr">finir</span> → je fin<u>is</u>, tu fin<u>is</u>, il fin<u>it</u>,<br>nous fin<u>issons</u>, vous fin<u>issez</u>, ils fin<u>issent</u>
+        <div class="gc-ex">Tu finis tes devoirs ?</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">3</span>-RE 动词（第三组）</div>
+        <span class="gc-fr">vendre</span> → je vend<u>s</u>, tu vend<u>s</u>, il vend<u>_</u>,<br>nous vend<u>ons</u>, vous vend<u>ez</u>, ils vend<u>ent</u>
+        <div class="gc-ex">Il vend sa voiture.</div>
+      </div>
+    </div>
+    <div class="gc-tip">💡 être / avoir / aller / faire 是高频不规则动词，必须单独背。</div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    冠词 · Articles <span class="accordion-arrow">▼</span>
+<!-- 2. 冠词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Articles · 冠词</div>
+      <div class="gc-header-sub">定冠词 / 不定冠词 / 部分冠词</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>定冠词：</strong><span class="fr">le (m.), la (f.), l' (元音), les (pl.)</span><br>指特定或已知事物：<span class="fr">Le soleil brille.</span></p>
-    <p><strong>不定冠词：</strong><span class="fr">un (m.), une (f.), des (pl.)</span><br>指不特定事物：<span class="fr">J'ai un chien.</span></p>
-    <p><strong>部分冠词：</strong><span class="fr">du, de la, de l', des</span> — 不可数名词：<span class="fr">Je mange du pain.</span></p>
-    <p><strong>否定 → de/d'：</strong><span class="fr">Je n'ai pas de chien.</span> · <span class="fr">Je ne bois pas d'eau.</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    形容词 · Adjectifs — 性数配合与位置 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>性数配合：</strong>形容词与名词的性和数一致。<br><span class="fr">un homme <u>intelligent</u></span> → <span class="fr">une femme <u>intelligente</u></span><br><span class="fr">des garçons <u>intelligents</u></span> → <span class="fr">des filles <u>intelligentes</u></span></p>
-    <p><strong>常见不规则：</strong><br><span class="fr">bon → bonne</span> · <span class="fr">beau → belle</span> · <span class="fr">vieux → vieille</span> · <span class="fr">blanc → blanche</span> · <span class="fr">long → longue</span></p>
-    <p><strong>位置：</strong>大部分放名词后。少数放前（BAGS规则）：<span class="fr">Beau, Âge, Bon, Grand, Petit, Jeune, Vieux, Nouveau, Mauvais, Jolie</span><br><span class="fr">une <u>belle</u> maison</span> · <span class="fr">un <u>grand</u> homme</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    主有形容词 · Possessifs <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <table>
-      <tr><th></th><th>m.sg</th><th>f.sg</th><th>pl</th></tr>
-      <tr><td>我的</td><td>mon</td><td>ma → mon*</td><td>mes</td></tr>
-      <tr><td>你的</td><td>ton</td><td>ta → ton*</td><td>tes</td></tr>
-      <tr><td>他/她的</td><td>son</td><td>sa → son*</td><td>ses</td></tr>
-      <tr><td>我们的</td><td colspan="2">notre</td><td>nos</td></tr>
-      <tr><td>你们的</td><td colspan="2">votre</td><td>vos</td></tr>
-      <tr><td>他们的</td><td colspan="2">leur</td><td>leurs</td></tr>
-    </table>
-    <p>* 元音/h 哑音开头的阴性名词用 <span class="fr">mon/ton/son</span>：<span class="fr">mon amie</span>（不是 ma amie）</p>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">定</span>定冠词 — 已知/特指</div>
+        <span class="gc-fr">le</span> (m.) · <span class="gc-fr">la</span> (f.) · <span class="gc-fr">l'</span> (元音) · <span class="gc-fr">les</span> (pl.)
+        <div class="gc-ex">Le soleil brille. Les étudiants travaillent.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">不</span>不定冠词 — 不特指</div>
+        <span class="gc-fr">un</span> (m.) · <span class="gc-fr">une</span> (f.) · <span class="gc-fr">des</span> (pl.)
+        <div class="gc-ex">J'ai un chien. Elle mange une pomme.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">部</span>部分冠词 — 不可数</div>
+        <span class="gc-fr">du</span> (m.) · <span class="gc-fr">de la</span> (f.) · <span class="gc-fr">de l'</span> (元音) · <span class="gc-fr">des</span>
+        <div class="gc-ex">Je mange du pain. Je bois de l'eau.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-red">否</span>否定句 → de/d'</div>
+        否定时，不定/部分冠词一律变为 <span class="gc-fr">de / d'</span>
+        <div class="gc-ex">Je n'ai pas <u>de</u> chien. Je ne bois pas <u>d'</u>eau.</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    疑问句 · Interrogation <span class="accordion-arrow">▼</span>
+<!-- 3. 形容词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Adjectifs · 形容词</div>
+      <div class="gc-header-sub">性数配合 · 位置 · 不规则变化</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>三种方式：</strong><br>① 语调（口语）：<span class="fr">Tu es français ? ↗</span><br>② <span class="fr">Est-ce que</span>：<span class="fr">Est-ce que tu es français ?</span><br>③ 倒装（正式）：<span class="fr">Es-tu français ?</span></p>
-    <p><strong>疑问词：</strong><span class="fr">qui</span>（谁）· <span class="fr">que/qu'est-ce que</span>（什么）· <span class="fr">où</span>（哪）· <span class="fr">quand</span>（何时）· <span class="fr">comment</span>（怎样）· <span class="fr">pourquoi</span>（为什么）· <span class="fr">combien</span>（多少）</p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    否定 · Négation <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>基本否定：</strong><span class="fr">ne...pas</span> 包围变位动词<br><span class="fr">Je <u>ne</u> parle <u>pas</u>.</span></p>
-    <p><strong>其他否定：</strong><br><span class="fr">ne...plus</span>（不再）· <span class="fr">ne...jamais</span>（从不）· <span class="fr">ne...rien</span>（什么都不）· <span class="fr">ne...personne</span>（没人）</p>
-    <p>复合时态：ne...pas 包围助动词 → <span class="fr">Je <u>n</u>'ai <u>pas</u> mangé.</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    常用介词 · Prépositions <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>地点：</strong><span class="fr">sur</span>（在...上）· <span class="fr">sous</span>（在...下）· <span class="fr">dans</span>（在...里）· <span class="fr">devant</span>（前面）· <span class="fr">derrière</span>（后面）· <span class="fr">à côté de</span>（旁边）· <span class="fr">entre</span>（之间）· <span class="fr">chez</span>（在...家）</p>
-    <p><strong>城市/国家：</strong><br><span class="fr">à</span> + 城市：<span class="fr">à Paris</span><br><span class="fr">en</span> + 阴性国名：<span class="fr">en France</span><br><span class="fr">au</span> + 阳性国名：<span class="fr">au Japon</span><br><span class="fr">aux</span> + 复数国名：<span class="fr">aux États-Unis</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Il y a · Il faut · 无人称结构 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>Il y a</strong> = 有 / 存在<br><span class="fr">Il y a un chat dans le jardin.</span>（花园里有只猫）<br><span class="fr">Il y a trois jours.</span>（三天前）</p>
-    <p><strong>Il faut</strong> = 必须 / 需要<br><span class="fr">Il faut manger.</span>（得吃饭）<br><span class="fr">Il faut que...</span>（需要...）— A2 接虚拟式</p>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 规则</div>
+      <code>阴性 = +e &nbsp;&nbsp; 复数 = +s</code>
+    </div>
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">配</span>性数配合</div>
+        un homme <span class="gc-fr">intelligent</span> → une femme <span class="gc-fr">intelligente</span><br>
+        des garçons <span class="gc-fr">intelligents</span> → des filles <span class="gc-fr">intelligentes</span>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">不</span>常见不规则</div>
+        <span class="gc-fr">bon → bonne</span> · <span class="gc-fr">beau → belle</span><br>
+        <span class="gc-fr">vieux → vieille</span> · <span class="gc-fr">blanc → blanche</span><br>
+        <span class="gc-fr">long → longue</span> · <span class="gc-fr">nouveau → nouvelle</span>
+      </div>
+      <div class="gc-rule" style="grid-column:span 2">
+        <div class="gc-rule-title"><span class="gc-num c-green">位</span>位置 — 大部分放名词<strong>后</strong>，BAGS类放前</div>
+        <strong>BAGS前置：</strong> Beau · Âge(jeune/vieux/nouveau) · Good(bon/mauvais) · Size(grand/petit)<br>
+        <div class="gc-ex">une <u>belle</u> maison · un <u>grand</u> homme · une femme <u>intelligente</u></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<h2 style="border:none;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey);">A2 · 进阶</h2>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Passé composé · 复合过去时 <span class="accordion-arrow">▼</span>
+<!-- 4. 主有形容词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Possessifs · 主有形容词</div>
+      <div class="gc-header-sub">mon/ma/mes · ton/ta/tes · son/sa/ses…</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>构成：</strong><span class="fr">avoir</span> / <span class="fr">être</span>（现在时）+ 过去分词</p>
-    <p><strong>avoir 用于大多数动词：</strong><br>
-    <span class="fr">J'ai mangé</span> · <span class="fr">Tu as fini</span> · <span class="fr">Il a vendu</span></p>
-    <p><strong>être 用于：</strong>①14个位移动词（DR MRS VANDERTRAMP）+ ②所有代动词<br>
-    <span class="fr">Je suis allé(e)</span> · <span class="fr">Elle est partie</span> · <span class="fr">Nous nous sommes levés</span></p>
-    <p><strong>过去分词配合：</strong>être 作助动词时，过去分词与主语性数一致。<br>avoir 作助动词时，如果直接宾语在动词前，过去分词与直宾配合：<span class="fr">Les pommes que j'ai <u>achetées</u></span></p>
-    <p><strong>用法：</strong>已完成的一次性动作；一连串过去动作；有明确时间标志(<span class="fr">hier, la semaine dernière, en 2020</span>)</p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Imparfait · 未完成过去时 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>构成：</strong><span class="fr">nous</span> 现在时去掉 <span class="fr">-ons</span> + 词尾 <span class="fr">-ais, -ais, -ait, -ions, -iez, -aient</span></p>
-    <p>例：<span class="fr">parler → nous parlons → je parl<u>ais</u>, tu parl<u>ais</u>, il parl<u>ait</u>, nous parl<u>ions</u>, vous parl<u>iez</u>, ils parl<u>aient</u></span></p>
-    <p>唯一不规则：<span class="fr">être → j'étais, tu étais, il était, nous étions, vous étiez, ils étaient</span></p>
-    <p><strong>用法：</strong>①过去持续的状态/习惯 ②背景描写（天气/环境/心情）③过去正在进行的动作 ④过去同时发生的动作</p>
+  <div class="gc-body">
+    <div class="gc-table-wrap">
+      <table class="gc-table">
+        <tr><th>人称</th><th>阳性单数</th><th>阴性单数</th><th>复数</th></tr>
+        <tr><td class="cell-person">我的</td><td>mon</td><td>ma (→mon*)</td><td>mes</td></tr>
+        <tr><td class="cell-person">你的</td><td>ton</td><td>ta (→ton*)</td><td>tes</td></tr>
+        <tr><td class="cell-person">他/她的</td><td>son</td><td>sa (→son*)</td><td>ses</td></tr>
+        <tr><td class="cell-person">我们的</td><td colspan="2">notre</td><td>nos</td></tr>
+        <tr><td class="cell-person">你们的</td><td colspan="2">votre</td><td>vos</td></tr>
+        <tr><td class="cell-person">他们的</td><td colspan="2">leur</td><td>leurs</td></tr>
+      </table>
+    </div>
+    <div class="gc-warn">⚠️ 元音/哑音h开头的阴性名词用 mon/ton/son：<span class="gc-fr">mon amie</span>（非 ~~ma amie~~）</div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    PC vs Imparfait · 过去时选择 <span class="accordion-arrow">▼</span>
+<!-- 5. 疑问句 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Interrogation · 疑问句</div>
+      <div class="gc-header-sub">三种问法 + 疑问词</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>核心区别——用画面感记：</strong></p>
-    <p><span class="fr">Imparfait</span> = 电影的背景画面（天气、场景、人物的持续状态）<br>
-    <span class="fr">Passé composé</span> = 画面中发生的事件（有人进门了、电话响了）</p>
-    <p><strong>例：</strong><span class="fr">Il <u>pleuvait</u> (背景) quand je <u>suis sorti</u> (事件).</span><br>
-    <span class="fr">Je <u>lisais</u> (背景) quand le téléphone <u>a sonné</u> (事件).</span><br>
-    <span class="fr">Elle <u>portait</u> une robe rouge (背景) quand je l'<u>ai vue</u> (事件).</span></p>
-    <p><strong>常见错误：</strong><br>
-    ❌ <span class="fr">Hier, il <u>pleuvait</u> toute la journée.</span> → ✅ <span class="fr">Hier, il <u>a plu</u> toute la journée.</span>（有明确时间段=PC）<br>
-    ❌ <span class="fr">Quand j'étais petit, j'<u>ai aimé</u> le chocolat.</span> → ✅ <span class="fr">Quand j'étais petit, j'<u>aimais</u> le chocolat.</span>（过去习惯=imparfait）</p>
-    <p><strong>信号词：</strong><br>
-    <span class="fr">PC</span> → <span class="fr">soudain, tout à coup, une fois, d'abord, puis, ensuite, enfin</span><br>
-    <span class="fr">Imparfait</span> → <span class="fr">tous les jours, souvent, toujours, d'habitude, avant, à cette époque</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Futur simple · 简单将来时 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>构成：</strong>动词不定式 + <span class="fr">-ai, -as, -a, -ons, -ez, -ont</span>（-re 动词先去 e）</p>
-    <p><span class="fr">je parler<u>ai</u> · tu finir<u>as</u> · il vendr<u>a</u> · nous partir<u>ons</u> · vous prendr<u>ez</u> · ils viendr<u>ont</u></span></p>
-    <p><strong>不规则词根（高频）：</strong></p>
-    <table><tr><td>être</td><td>ser-</td><td>je serai</td></tr>
-    <tr><td>avoir</td><td>aur-</td><td>j'aurai</td></tr>
-    <tr><td>aller</td><td>ir-</td><td>j'irai</td></tr>
-    <tr><td>faire</td><td>fer-</td><td>je ferai</td></tr>
-    <tr><td>pouvoir</td><td>pourr-</td><td>je pourrai</td></tr>
-    <tr><td>venir</td><td>viendr-</td><td>je viendrai</td></tr>
-    <tr><td>voir</td><td>verr-</td><td>je verrai</td></tr>
-    <tr><td>savoir</td><td>saur-</td><td>je saurai</td></tr></table>
-    <p><strong>Futur proche：</strong><span class="fr">aller</span> + 动词不定式 = 近期将来<br>
-    <span class="fr">Je <u>vais</u> partir.</span> = 我马上要走（比 futur simple 更口语化）</p>
+  <div class="gc-body">
+    <div class="gc-rules cols-3">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">①</span>语调法（口语）</div>
+        直接用上扬语调
+        <div class="gc-ex">Tu es français ? ↗</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">②</span>Est-ce que（常用）</div>
+        在陈述句前加 Est-ce que
+        <div class="gc-ex">Est-ce que tu es français ?</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">③</span>倒装（正式书面）</div>
+        主语代词与动词倒置
+        <div class="gc-ex">Es-tu français ?</div>
+      </div>
+    </div>
+    <div class="gc-rule" style="border-top:1px solid #e8eaf0">
+      <div class="gc-rule-title">疑问词速查</div>
+      <span class="gc-fr">qui</span>（谁）· <span class="gc-fr">que / qu'est-ce que</span>（什么）· <span class="gc-fr">où</span>（哪里）·
+      <span class="gc-fr">quand</span>（何时）· <span class="gc-fr">comment</span>（怎样）· <span class="gc-fr">pourquoi</span>（为什么）· <span class="gc-fr">combien</span>（多少）
+    </div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Conditionnel présent · 条件式现在时 <span class="accordion-arrow">▼</span>
+<!-- 6. 否定 A1 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Négation · 否定（A1基础）</div>
+      <div class="gc-header-sub">ne…pas 及常用否定副词</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>构成：</strong>futur simple 词根 + imparfait 词尾 = <span class="fr">-ais, -ais, -ait, -ions, -iez, -aient</span></p>
-    <p><strong>三大用法：</strong><br>
-    ① 礼貌请求：<span class="fr">Je <u>voudrais</u> un café.</span>（比 <span class="fr">je veux</span> 礼貌）<br>
-    ② 建议：<span class="fr">Tu <u>devrais</u> te reposer.</span><br>
-    ③ 假设（si + imparfait → conditionnel）：<span class="fr">Si j'avais le temps, je <u>voyagerais</u>.</span></p>
-    <p><strong>Saying "would/should/could"：</strong><br>
-    <span class="fr">je voudrais</span> = I would like · <span class="fr">je devrais</span> = I should · <span class="fr">je pourrais</span> = I could</p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    COD / COI · 直接/间接宾语代词 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>COD（直接宾语代词）：</strong><span class="fr">me, te, le/la, nous, vous, les</span></p>
-    <p><span class="fr">Je vois <u>Marie</u> → Je <u>la</u> vois.</span><br>
-    <span class="fr">Il mange <u>la pomme</u> → Il <u>la</u> mange.</span></p>
-    <p><strong>COI（间接宾语代词）：</strong><span class="fr">me, te, lui, nous, vous, leur</span>（替代 à + 人）</p>
-    <p><span class="fr">Je parle <u>à Paul</u> → Je <u>lui</u> parle.</span><br>
-    <span class="fr">Elle téléphone <u>à ses parents</u> → Elle <u>leur</u> téléphone.</span></p>
-    <p><strong>位置：</strong>动词前。否定：<span class="fr">Je ne <u>le</u> vois pas.</span><br>
-    复合时态（PC）：助动词前 → <span class="fr">Je <u>l</u>'ai vu.</span>（注意过去分词配合！ <span class="fr">Je l'ai vu<u>e</u></span> 如果是阴性）</p>
-    <p><strong>双代词顺序（高频考点）：</strong><br>
-    <span class="fr">me/te/se/nous/vous → le/la/les → lui/leur → y → en</span><br>
-    <span class="fr">Tu me <u>le</u> donnes ?</span> · <span class="fr">Je <u>le lui</u> ai dit.</span> · <span class="fr">Il <u>nous en</u> a parlé.</span></p>
-    <p><strong>⚠️ 常见坑：</strong>命令式肯定句中代词放动词后、连字符：<span class="fr">Donne-<u>le-moi</u> !</span> 但否定命令代词回前面：<span class="fr">Ne <u>me le</u> donne pas !</span></p>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 结构</div>
+      <code>Sujet + <u>ne</u> + verbe + <u>pas</u></code>
+    </div>
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">基</span>基本否定 ne…pas</div>
+        ne/n' 放动词前，pas 放动词后
+        <div class="gc-ex">Je <u>ne</u> parle <u>pas</u>. · Il <u>n'</u>a <u>pas</u> mangé.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">扩</span>常用否定副词</div>
+        <span class="gc-fr">ne…plus</span>（不再）· <span class="gc-fr">ne…jamais</span>（从不）<br>
+        <span class="gc-fr">ne…rien</span>（什么都不）· <span class="gc-fr">ne…personne</span>（没人）
+        <div class="gc-ex">Je ne mange <u>jamais</u> de durian.</div>
+      </div>
+    </div>
+    <div class="gc-warn">⚠️ 复合时态中 ne…pas 包围<strong>助动词</strong>：Je <span class="gc-fr">n'</span>ai <span class="gc-fr">pas</span> mangé.</div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    En / Y · 副代词 <span class="accordion-arrow">▼</span>
+<!-- 7. 介词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Prépositions · 常用介词</div>
+      <div class="gc-header-sub">地点介词 + 城市/国家用法</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>En：替代 de + 名词</strong><br>
-    ① 数量：<span class="fr">Tu as des frères ? — Oui, j'<u>en</u> ai deux.</span><br>
-    ② de + 事物：<span class="fr">Tu parles de ton voyage ? — Oui, j'<u>en</u> parle.</span><br>
-    ③ 部分冠词：<span class="fr">Tu veux du pain ? — Oui, j'<u>en</u> veux.</span></p>
-    <p><strong>Y：替代 à + 地点 / à + 事物</strong><br>
-    ① 地点：<span class="fr">Tu vas à Paris ? — Oui, j'<u>y</u> vais.</span><br>
-    ② à + 事物：<span class="fr">Tu penses à ton examen ? — Oui, j'<u>y</u> pense.</span></p>
-    <p><strong>⚠️ à + 人 用 COI 代词（lui/leur），不用 y：</strong><br>
-    <span class="fr">Je pense à Marie → Je pense <u>à elle</u></span>（人不能用 y！）</p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Pronoms relatifs · 关系代词 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>Qui</strong> = 作主语（who/which/that）<br>
-    <span class="fr">La femme <u>qui</u> parle est ma prof.</span></p>
-    <p><strong>Que</strong> = 作直宾（whom/which/that）<br>
-    <span class="fr">Le livre <u>que</u> je lis est intéressant.</span><br>
-    ⚠️ 复合时态注意配合：<span class="fr">La pomme que j'ai <u>mangée</u>...</span></p>
-    <p><strong>Où</strong> = 地点/时间（where/when）<br>
-    <span class="fr">La ville <u>où</u> je suis né.</span> · <span class="fr">Le jour <u>où</u> je l'ai rencontré.</span></p>
-    <p><strong>Dont</strong> = de + 先行词（of which/whose/about which）<br>
-    <span class="fr">Le film <u>dont</u> tu parles.</span>（= tu parles <u>de</u> ce film）<br>
-    <span class="fr">L'homme <u>dont</u> la femme est médecin.</span>（= la femme <u>de</u> cet homme）</p>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">位</span>空间位置</div>
+        <span class="gc-fr">sur</span>（上）· <span class="gc-fr">sous</span>（下）· <span class="gc-fr">dans</span>（里）<br>
+        <span class="gc-fr">devant</span>（前）· <span class="gc-fr">derrière</span>（后）<br>
+        <span class="gc-fr">à côté de</span>（旁边）· <span class="gc-fr">entre</span>（之间）<br>
+        <span class="gc-fr">chez</span>（在…家/店）
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">地</span>城市 / 国家</div>
+        <span class="gc-fr">à</span> + 城市：<span class="gc-fr">à Paris</span><br>
+        <span class="gc-fr">en</span> + 阴性国名：<span class="gc-fr">en France</span><br>
+        <span class="gc-fr">au</span> + 阳性国名：<span class="gc-fr">au Japon</span><br>
+        <span class="gc-fr">aux</span> + 复数国名：<span class="gc-fr">aux États-Unis</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Comparatif & Superlatif · 比较级与最高级 <span class="accordion-arrow">▼</span>
+<!-- 8. Il y a / Il faut -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Il y a · Il faut · 无人称结构</div>
+      <div class="gc-header-sub">存在表达 + 必要性表达</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>比较级：</strong>plus/moins/aussi + adjectif/adverbe + que</p>
-    <p><span class="fr">Marie est <u>plus</u> grande <u>que</u> Paul.</span><br>
-    <span class="fr">Je cours <u>moins</u> vite <u>que</u> toi.</span><br>
-    <span class="fr">Il est <u>aussi</u> intelligent <u>que</u> son frère.</span></p>
-    <p><strong>名词比较：</strong>plus de / moins de / autant de + nom + que<br>
-    <span class="fr">J'ai <u>plus de</u> temps <u>que</u> toi.</span></p>
-    <p><strong>不规则：</strong><span class="fr">bon → meilleur</span> · <span class="fr">bien → mieux</span>（没有"plus bon"或"plus bien"！）</p>
-    <p><strong>最高级：</strong>le/la/les + plus/moins + adjectif<br>
-    <span class="fr">C'est <u>le plus</u> beau jour de ma vie.</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Verbes pronominaux · 代动词 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>四类代动词：</strong><br>
-    ① 自反（对自己）：<span class="fr">se laver</span>（洗澡）<br>
-    ② 相互（彼此）：<span class="fr">se parler</span>（互相说话）<br>
-    ③ 被动：<span class="fr">Ça se vend bien.</span>（这东西卖得好）<br>
-    ④ 固定搭配：<span class="fr">se souvenir de</span>（记得）、<span class="fr">s'occuper de</span>（负责）</p>
-    <p><strong>复合过去时：</strong>助动词用 <span class="fr">être</span>，自反代词仍在动词前。<br>
-    <span class="fr">Je <u>me suis</u> levé(e) tôt.</span></p>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">有</span>Il y a — 有/存在</div>
+        <div class="gc-ex">Il y a un chat dans le jardin.</div>
+        <div class="gc-ex">Il y a trois jours.（三天前）</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">必</span>Il faut — 必须/需要</div>
+        <span class="gc-fr">Il faut</span> + 动词不定式
+        <div class="gc-ex">Il faut manger. · Il faut que + 虚拟式 (A2)</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Impératif · 命令式 <span class="accordion-arrow">▼</span>
+<div class="gc-section">A2 · 进阶 — 重点语法</div>
+
+<!-- ★★★ Passé composé 三列并排 ★★★ -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Passé composé · 复合过去时</div>
+      <div class="gc-header-sub">avoir vs être vs 代动词 — 三组助动词完整对比</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>只有三个人称：</strong><span class="fr">tu, nous, vous</span>（去掉主语）</p>
-    <p><span class="fr">Parle ! Parlons ! Parlez !</span><br>
-    <span class="fr">Finis ! Finissons ! Finissez !</span></p>
-    <p><strong>注意：</strong><span class="fr">-er</span> 动词的 <span class="fr">tu</span> 形式去 <span class="fr">s</span>：<span class="fr">Tu parles → Parle !</span>（但后面有 y/en 时保留 s：<span class="fr">Vas-y !</span>）</p>
-    <p><strong>代词位置：</strong>肯定命令代词放动词后连字符：<span class="fr">Donne-<u>le-moi</u> !</span> · 否定命令代词回动词前：<span class="fr">Ne <u>me le</u> donne pas !</span></p>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 结构</div>
+      <code>助动词（现在时）+ 过去分词</code> &nbsp;·&nbsp; 过去分词构成：-er→<code>-é</code>  -ir→<code>-i</code>  -re→<code>-u</code>
+    </div>
+    <div class="gc-table-wrap" style="padding-bottom:0">
+      <table class="gc-table">
+        <thead>
+          <tr>
+            <th style="background:#152f58">人称</th>
+            <th class="col-avoir">① avoir（大多数动词）</th>
+            <th class="col-etre">② être（位移/状态动词）</th>
+            <th class="col-refl">③ 代动词（se…）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-person col-avoir">je</td><td class="col-avoir">j'<u>ai</u> mangé</td><td class="col-etre">je <u>suis</u> allé(e)</td><td class="col-refl">je <u>me suis</u> levé(e)</td></tr>
+          <tr><td class="cell-person col-avoir">tu</td><td class="col-avoir">tu <u>as</u> fini</td><td class="col-etre">tu <u>es</u> parti(e)</td><td class="col-refl">tu <u>t'es</u> levé(e)</td></tr>
+          <tr><td class="cell-person col-avoir">il/elle</td><td class="col-avoir">il <u>a</u> vendu</td><td class="col-etre">elle <u>est</u> venue</td><td class="col-refl">il <u>s'est</u> levé</td></tr>
+          <tr><td class="cell-person col-avoir">nous</td><td class="col-avoir">nous <u>avons</u> vu</td><td class="col-etre">nous <u>sommes</u> restés</td><td class="col-refl">nous <u>nous sommes</u> levé(e)s</td></tr>
+          <tr><td class="cell-person col-avoir">vous</td><td class="col-avoir">vous <u>avez</u> pris</td><td class="col-etre">vous <u>êtes</u> arrivé(e)s</td><td class="col-refl">vous <u>vous êtes</u> levé(e)s</td></tr>
+          <tr><td class="cell-person col-avoir">ils/elles</td><td class="col-avoir">ils <u>ont</u> dit</td><td class="col-etre">elles <u>sont</u> sorties</td><td class="col-refl">ils <u>se sont</u> levés</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gc-rules cols-2" style="border-top:1px solid #e8eaf0">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">être</span>DR MRS VANDERTRAMP（14个位移动词）</div>
+        <span style="font-size:0.8rem;color:#555">Devenir · Revenir · Monter · Rester · Sortir · Venir · Aller · Naître · Descendre · Entrer · Rentrer · Tomber · Retourner · Arriver · Mourir · Partir</span>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">配合</span>过去分词性数配合规则</div>
+        être 助动词 → PP与主语性数一致<br>
+        avoir 助动词 → PP通常不变，但直宾在前时配合<br>
+        <div class="gc-ex">Les pommes que j'ai <u>achetées</u>.</div>
+      </div>
+    </div>
+    <div class="gc-tip">💡 高频不规则PP：avoir→<b>eu</b> · être→<b>été</b> · faire→<b>fait</b> · prendre→<b>pris</b> · voir→<b>vu</b> · mettre→<b>mis</b> · dire→<b>dit</b></div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    Articles partitifs · 部分冠词 <span class="accordion-arrow">▼</span>
+<!-- Imparfait -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Imparfait · 未完成过去时</div>
+      <div class="gc-header-sub">构成公式 + 四大用法</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>不可数名词前：</strong><span class="fr">du (m.) / de la (f.) / de l' (元音) / des (pl.)</span></p>
-    <p><span class="fr">Je mange <u>du</u> pain.</span> · <span class="fr">Je bois <u>de l</u>'eau.</span> · <span class="fr">Il achète <u>des</u> légumes.</span></p>
-    <p><strong>否定句中 → de/d'：</strong><br>
-    <span class="fr">Je ne mange <u>pas de</u> pain.</span>（不是"pas du pain"！）</p>
-    <p><strong>数量表达后 → de/d'：</strong><br>
-    <span class="fr">un kilo <u>de</u> pommes</span> · <span class="fr">beaucoup <u>de</u> travail</span></p>
-  </div>
-</div>
-
-<h2 style="border:none;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey);">补充语法点</h2>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    否定句 La Négation &mdash; 8种形式 <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>ne...pas</strong>（基本否定）<br><span class="fr">Je ne mange pas de fruits.</span></p>
-    <p><strong>ne...jamais</strong>（从不）<br><span class="fr">Je ne mange jamais de durian.</span></p>
-    <p><strong>ne...plus</strong>（不再）<br><span class="fr">Je ne mange plus de sucre.</span></p>
-    <p><strong>ne...rien</strong>（什么都不）<br><span class="fr">Je ne mange rien.</span></p>
-    <p><strong>ne...personne</strong>（没有人）<br><span class="fr">Je ne vois personne.</span></p>
-    <p><strong>ne...aucun(e)</strong>（没有任何）<br><span class="fr">Je n&#39;ai aucun fruit.</span></p>
-    <p><strong>ne...ni...ni</strong>（既不...也不...）<br><span class="fr">Je ne mange ni pommes ni bananes.</span></p>
-    <p><strong>ne...que</strong>（只是/仅仅）<br><span class="fr">Je ne mange que des fruits.</span></p>
-    <p><strong>重要规则：</strong><br>
-    &bull; <span class="fr">ne &rarr; n&#39;</span> 在元音前：<span class="fr">Je <u>n&#39;</u>ai pas de fruits.</span><br>
-    &bull; 否定句中 <span class="fr">des &rarr; de</span>：<span class="fr">Je n&#39;ai pas <u>de</u> fruits.</span></p>
-  </div>
-</div>
-
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    名词复数 Le Pluriel des Noms <span class="accordion-arrow">▼</span>
-  </div>
-  <div class="accordion-body">
-    <p><strong>一般规则：+s</strong><br><span class="fr">un livre &rarr; des livres</span> &middot; <span class="fr">un chat &rarr; des chats</span></p>
-    <p><strong>-s/-x/-z 结尾：不变</strong><br><span class="fr">un bus &rarr; des bus</span> &middot; <span class="fr">un prix &rarr; des prix</span> &middot; <span class="fr">un nez &rarr; des nez</span></p>
-    <p><strong>-al &rarr; -aux（大多数）</strong><br><span class="fr">un animal &rarr; des animaux</span> &middot; <span class="fr">un journal &rarr; des journaux</span> &middot; <span class="fr">un hôpital &rarr; des hôpitaux</span></p>
-    <p><strong>-eau/-au &rarr; +x</strong><br><span class="fr">un bateau &rarr; des bateaux</span> &middot; <span class="fr">un cadeau &rarr; des cadeaux</span> &middot; <span class="fr">un chapeau &rarr; des chapeaux</span></p>
-    <p><strong>例外记忆：</strong><br><span class="fr">un pneu &rarr; des pneus</span>（不加 x）&nbsp;&middot;&nbsp;<span class="fr">un festival &rarr; des festivals</span>（不变 -aux）</p>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 结构</div>
+      <code>nous 现在时词根</code> + <code>-ais / -ais / -ait / -ions / -iez / -aient</code>
+    </div>
+    <div class="gc-table-wrap">
+      <table class="gc-table">
+        <thead><tr><th>人称</th><th>parler（规则示例）</th><th class="col-imp">être（唯一不规则）</th></tr></thead>
+        <tbody>
+          <tr><td class="cell-person">je</td><td>je parl<u>ais</u></td><td class="col-imp">j'<u>étais</u></td></tr>
+          <tr><td class="cell-person">tu</td><td>tu parl<u>ais</u></td><td class="col-imp">tu <u>étais</u></td></tr>
+          <tr><td class="cell-person">il/elle</td><td>il parl<u>ait</u></td><td class="col-imp">il <u>était</u></td></tr>
+          <tr><td class="cell-person">nous</td><td>nous parl<u>ions</u></td><td class="col-imp">nous <u>étions</u></td></tr>
+          <tr><td class="cell-person">vous</td><td>vous parl<u>iez</u></td><td class="col-imp">vous <u>étiez</u></td></tr>
+          <tr><td class="cell-person">ils</td><td>ils parl<u>aient</u></td><td class="col-imp">ils <u>étaient</u></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">用法</span>过去的持续/习惯/状态</div>
+        <div class="gc-ex">Quand j'étais petit, je <u>jouais</u> dehors.</div>
+        <div class="gc-ex">Il <u>faisait</u> beau. Le soleil <u>brillait</u>.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">用法</span>过去正在进行 / 背景</div>
+        <div class="gc-ex">Je <u>dormais</u> quand tu as appelé.</div>
+        <div class="gc-ex">Pendant qu'il <u>cuisinait</u>, elle <u>mettait</u> la table.</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="accordion">
-  <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-    动词组别 Les Groupes de Verbes <span class="accordion-arrow">▼</span>
+<!-- ★★★ PC vs Imparfait ★★★ -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 PC vs Imparfait · 过去时选择</div>
+      <div class="gc-header-sub">背景 vs 事件 — 左右对比表</div>
+    </div>
+    <span class="gc-arrow">▼</span>
   </div>
-  <div class="accordion-body">
-    <p><strong>第 1 组：-ER 结尾</strong>（最多动词，规则变位）<br><span class="fr">parler</span>（说）&middot; <span class="fr">manger</span>（吃）&middot; <span class="fr">chanter</span>（唱）<br><em style="color:var(--grey);">* aller 虽然 -er 结尾，属于第三组（不规则）</em></p>
-    <p><strong>第 2 组：-IR 结尾</strong>（nous 变位用 -issons）<br><span class="fr">finir &rarr; nous finissons</span> &middot; <span class="fr">choisir &rarr; nous choisissons</span> &middot; <span class="fr">réfléchir &rarr; nous réfléchissons</span></p>
-    <p><strong>第 3 组：其余不规则动词</strong>（必须单独记忆）<br><span class="fr">aller, être, avoir, voir, faire, partir, dormir, venir, prendre, mettre, pouvoir, vouloir, savoir</span></p>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">🎬 画面感记忆法</div>
+      <code>Imparfait</code> = 电影<strong>背景画面</strong>（持续、天气、心情）&nbsp;&nbsp;
+      <code>Passé composé</code> = <strong>事件发生</strong>（电话响了、有人进门）
+    </div>
+    <div class="gc-table-wrap">
+      <table class="gc-table">
+        <thead>
+          <tr>
+            <th style="width:50%;background:#1a5c30">🟢 Imparfait（背景/习惯）</th>
+            <th style="width:50%;background:#1a3a6b">🔵 Passé composé（事件/完成）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Il <u>pleuvait</u>（背景）</td><td>quand je <u>suis sorti</u>.（事件）</td></tr>
+          <tr><td>Je <u>lisais</u>（正在读书）</td><td>quand le téléphone <u>a sonné</u>.（突然响）</td></tr>
+          <tr><td>Elle <u>portait</u> une robe rouge（状态）</td><td>quand je l'<u>ai vue</u>.（看见）</td></tr>
+          <tr><td style="color:#888;font-size:0.78rem">信号词：tous les jours · souvent · d'habitude · avant · à cette époque</td>
+              <td style="color:#888;font-size:0.78rem">信号词：soudain · tout à coup · d'abord · puis · ensuite · enfin</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gc-warn">⚠️ 常见错误：❌ <em>Hier, il pleuvait toute la journée.</em> → ✅ <em>Hier, il <u>a plu</u> toute la journée.</em>（有明确时间段用PC）</div>
   </div>
 </div>
 
+<!-- Futur -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Futur simple · 简单将来时</div>
+      <div class="gc-header-sub">构成 + 不规则词根 + Futur proche 对比</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 结构</div>
+      <code>不定式（-re去e）</code> + <code>-ai / -as / -a / -ons / -ez / -ont</code>
+    </div>
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">规</span>规则变位示例</div>
+        je parler<u>ai</u> · tu finir<u>as</u> · il vendr<u>a</u><br>
+        nous partir<u>ons</u> · vous prendr<u>ez</u> · ils viendr<u>ont</u>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">不</span>高频不规则词根</div>
+        <span class="gc-fr">être→ser-</span> · <span class="gc-fr">avoir→aur-</span> · <span class="gc-fr">aller→ir-</span><br>
+        <span class="gc-fr">faire→fer-</span> · <span class="gc-fr">pouvoir→pourr-</span> · <span class="gc-fr">venir→viendr-</span><br>
+        <span class="gc-fr">voir→verr-</span> · <span class="gc-fr">savoir→saur-</span>
+      </div>
+    </div>
+    <div class="gc-rule" style="border-top:1px solid #e8eaf0">
+      <div class="gc-rule-title"><span class="gc-num c-green">近</span>Futur proche = aller + 不定式（口语，近期将来）</div>
+      <div class="gc-ex">Je <u>vais partir</u>.（马上走）vs Je <u>partirai</u> un jour.（将来某天）</div>
+    </div>
+  </div>
 </div>
+
+<!-- Conditionnel -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Conditionnel présent · 条件式</div>
+      <div class="gc-header-sub">礼貌 / 建议 / 假设（si + imparfait）</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-struct">
+      <div class="gc-struct-label">📐 结构</div>
+      <code>futur simple 词根</code> + <code>imparfait 词尾（-ais/-ais/-ait/-ions/-iez/-aient）</code>
+    </div>
+    <div class="gc-rules cols-3">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">①</span>礼貌请求</div>
+        比 veux 更客气
+        <div class="gc-ex">Je <u>voudrais</u> un café, s'il vous plaît.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">②</span>建议</div>
+        devrais / pourrait
+        <div class="gc-ex">Tu <u>devrais</u> te reposer.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">③</span>假设（si 从句）</div>
+        si + imparfait → conditionnel
+        <div class="gc-ex">Si j'avais le temps, je <u>voyagerais</u>.</div>
+      </div>
+    </div>
+    <div class="gc-tip">💡 voudrais = would like · devrais = should · pourrais = could · aimerais = would love</div>
+  </div>
 </div>
+
+<!-- ★★★ COD / COI / y / en 完整表格 ★★★ -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Pronoms · COD / COI / y / en</div>
+      <div class="gc-header-sub">四类代词完整对比表 + 双代词顺序</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-table-wrap">
+      <table class="gc-table">
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>代词形式</th>
+            <th>替代什么</th>
+            <th>例句对比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>COD</strong><br><small style="color:#888">直接宾语</small></td>
+            <td class="col-avoir">me · te · <u>le/la</u> · nous · vous · <u>les</u></td>
+            <td>动词直接支配的宾语（无介词）</td>
+            <td>Je vois <u>Marie</u> → Je <u>la</u> vois.<br>Il mange <u>les pommes</u> → Il <u>les</u> mange.</td>
+          </tr>
+          <tr>
+            <td><strong>COI</strong><br><small style="color:#888">间接宾语</small></td>
+            <td class="col-etre">me · te · <u>lui</u> · nous · vous · <u>leur</u></td>
+            <td>à + 人</td>
+            <td>Je parle <u>à Paul</u> → Je <u>lui</u> parle.<br>Elle téléphone <u>à ses parents</u> → Elle <u>leur</u> téléphone.</td>
+          </tr>
+          <tr>
+            <td><strong>en</strong></td>
+            <td class="col-refl"><u>en</u></td>
+            <td>de + 名词（事物/数量/部分冠词）</td>
+            <td>Tu veux <u>du pain</u> ? — J'<u>en</u> veux.<br>Il a <u>deux chats</u> → Il <u>en</u> a deux.</td>
+          </tr>
+          <tr>
+            <td><strong>y</strong></td>
+            <td class="col-imp"><u>y</u></td>
+            <td>à + 地点 / à + 事物（非人）</td>
+            <td>Tu vas <u>à Paris</u> ? — J'<u>y</u> vais.<br>Tu penses <u>à l'examen</u> ? — J'<u>y</u> pense.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gc-struct" style="border-top:1px solid #e3e7f0;border-bottom:none">
+      <div class="gc-struct-label">双代词顺序（高频考点）</div>
+      <code>me/te/se/nous/vous</code> → <code>le/la/les</code> → <code>lui/leur</code> → <code>y</code> → <code>en</code><br>
+      <span style="font-size:0.82rem;color:#555">Je <u>le lui</u> donne. · Tu <u>me le</u> donnes ? · Il <u>nous en</u> a parlé.</span>
+    </div>
+    <div class="gc-warn">⚠️ à + <strong>人</strong> 必须用 COI（lui/leur），不能用 y！<br>
+    ⚠️ 命令肯定式代词后置：<span class="gc-fr">Donne-<u>le-moi</u> !</span> · 命令否定式前置：<span class="gc-fr">Ne <u>me le</u> donne pas !</span><br>
+    ⚠️ PC中COD在前时PP配合：<span class="gc-fr">Je <u>l'</u>ai vue.</span>（vu<u>e</u> 因为 la 是阴性）</div>
+  </div>
+</div>
+
+<!-- 关系代词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Pronoms relatifs · 关系代词</div>
+      <div class="gc-header-sub">qui / que / où / dont — 用法对比</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">qui</span>作主语（后接动词）</div>
+        <div class="gc-ex">La femme <u>qui</u> parle est ma prof.</div>
+        <div class="gc-ex">Le livre <u>qui</u> est sur la table est à moi.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">que</span>作直宾（后接主语）</div>
+        <div class="gc-ex">Le livre <u>que</u> je lis est intéressant.</div>
+        <div class="gc-ex green">La pomme que j'ai <u>mangée</u>…（PP配合COD）</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">où</span>地点/时间先行词</div>
+        <div class="gc-ex">La ville <u>où</u> je suis né.</div>
+        <div class="gc-ex">Le jour <u>où</u> on s'est rencontrés.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-red">dont</span>de + 先行词</div>
+        <div class="gc-ex">Le film <u>dont</u> tu parles.（= tu parles <u>de</u> ce film）</div>
+        <div class="gc-ex">L'homme <u>dont</u> la femme est médecin.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 比较级最高级 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Comparatif &amp; Superlatif · 比较级与最高级</div>
+      <div class="gc-header-sub">plus/moins/aussi + 不规则：bon→meilleur · bien→mieux</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">比</span>比较级：plus / moins / aussi … que</div>
+        <div class="gc-ex">Marie est <u>plus</u> grande <u>que</u> Paul.</div>
+        <div class="gc-ex">Je cours <u>moins</u> vite <u>que</u> toi.</div>
+        <div class="gc-ex">Il est <u>aussi</u> intelligent <u>que</u> son frère.</div>
+        <div class="gc-ex">J'ai <u>plus de</u> temps <u>que</u> toi.（名词比较）</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">最</span>最高级：le/la/les + plus/moins + adj</div>
+        <div class="gc-ex">C'est <u>le plus</u> beau jour de ma vie.</div>
+        <div class="gc-ex">C'est <u>la moins</u> chère.</div>
+        <div class="gc-rule-title" style="margin-top:0.5rem"><span class="gc-num c-red">不</span>不规则</div>
+        <span class="gc-fr">bon → meilleur → le meilleur</span><br>
+        <span class="gc-fr">bien → mieux → le mieux</span>
+      </div>
+    </div>
+    <div class="gc-warn">⚠️ 不能说 <del>plus bon</del> 或 <del>plus bien</del>！必须用 meilleur / mieux。</div>
+  </div>
+</div>
+
+<!-- 代动词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Verbes pronominaux · 代动词</div>
+      <div class="gc-header-sub">自反 / 相互 / 被动 / 固定搭配</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">①</span>自反（对自己做）</div>
+        <span class="gc-fr">se laver</span>（洗澡）· <span class="gc-fr">se lever</span>（起床）<br>
+        <span class="gc-fr">se coucher</span>（睡觉）· <span class="gc-fr">s'habiller</span>（穿衣）
+        <div class="gc-ex">Je me lave. Tu te lèves à 7h.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">②③④</span>相互/被动/固定搭配</div>
+        <span class="gc-fr">se parler</span>（互相说话）<br>
+        <span class="gc-fr">Ça se vend bien.</span>（被动：卖得好）<br>
+        <span class="gc-fr">se souvenir de</span>（固定：记得）· <span class="gc-fr">s'occuper de</span>（负责）
+      </div>
+    </div>
+    <div class="gc-struct" style="border-top:1px solid #e3e7f0;border-bottom:none">
+      <div class="gc-struct-label">PC 中代动词用 être</div>
+      Je <span class="gc-fr">me suis</span> levé(e) tôt. · Nous <span class="gc-fr">nous sommes</span> parlé. · Elle <span class="gc-fr">s'est</span> réveillée.
+    </div>
+  </div>
+</div>
+
+<!-- 命令式 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Impératif · 命令式</div>
+      <div class="gc-header-sub">tu / nous / vous 三个人称 + 代词位置</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-3">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">tu</span>tu 形式（-er 去 s）</div>
+        <div class="gc-ex">Parle ! · Mange ! · Finis !</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">nous</span>nous 形式（建议）</div>
+        <div class="gc-ex">Parlons ! · Allons ! · Finissons !</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">vous</span>vous 形式（正式）</div>
+        <div class="gc-ex">Parlez ! · Finissez ! · Vendez !</div>
+      </div>
+    </div>
+    <div class="gc-warn">⚠️ tu 形式 -er 动词去 s：Tu parles → <u>Parle !</u>（但 Vas-y! 保留 s）<br>
+    肯定命令 代词后置+连字符：<span class="gc-fr">Donne-le-moi !</span> · 否定命令 代词前置：<span class="gc-fr">Ne me le donne pas !</span></div>
+  </div>
+</div>
+
+<!-- 部分冠词 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Articles partitifs · 部分冠词</div>
+      <div class="gc-header-sub">du / de la / de l' / des — 否定变 de</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">用</span>不可数名词前使用</div>
+        <span class="gc-fr">du</span> (m.) · <span class="gc-fr">de la</span> (f.) · <span class="gc-fr">de l'</span> (元音) · <span class="gc-fr">des</span> (pl.)
+        <div class="gc-ex">Je mange <u>du</u> pain. Je bois <u>de l'</u>eau.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-red">否</span>否定/数量后 → de</div>
+        <div class="gc-ex">Je ne mange <u>pas de</u> pain.（非 ~~pas du~~）</div>
+        <div class="gc-ex">un kilo <u>de</u> pommes · beaucoup <u>de</u> travail</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gc-section">补充语法点</div>
+
+<!-- ★★★ 否定句8种 ★★★ -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 La Négation · 否定句 8 种形式</div>
+      <div class="gc-header-sub">pas · jamais · plus · rien · personne · aucun · ni…ni · ne…que</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">1</span>ne…pas（基本否定）</div>
+        <div class="gc-ex">Je <u>ne</u> mange <u>pas</u> de fruits.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">2</span>ne…jamais（从不）</div>
+        <div class="gc-ex">Je ne mange <u>jamais</u> de durian.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">3</span>ne…plus（不再）</div>
+        <div class="gc-ex">Je ne mange <u>plus</u> de sucre.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-red">4</span>ne…rien（什么都不）</div>
+        <div class="gc-ex">Je ne mange <u>rien</u>.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-purple">5</span>ne…personne（没有人）</div>
+        <div class="gc-ex">Je ne vois <u>personne</u>.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-teal">6</span>ne…aucun(e)（没有任何）</div>
+        <div class="gc-ex">Je n'ai <u>aucun</u> problème.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num" style="background:#e91e8c">7</span>ne…ni…ni（既不…也不）</div>
+        <div class="gc-ex">Je ne mange <u>ni</u> pommes <u>ni</u> bananes.</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num" style="background:#3f51b5">8</span>ne…que（只是/仅仅）</div>
+        <div class="gc-ex">Je ne mange <u>que</u> des légumes.</div>
+      </div>
+    </div>
+    <div class="gc-warn">⚠️ ne → n' 在元音前：Je <u>n'</u>ai pas de fruits.<br>
+    ⚠️ 否定句中 des → de：Je n'ai pas <u>de</u> fruits.（非 ~~des~~）</div>
+  </div>
+</div>
+
+<!-- ★★★ 名词复数 4条规则 ★★★ -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Le Pluriel des Noms · 名词复数</div>
+      <div class="gc-header-sub">4条规则 + 例外记忆</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-2">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">1</span>一般规则：+s</div>
+        <div class="gc-ex">un livre → des livre<u>s</u> · un chat → des chat<u>s</u></div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">2</span>-s / -x / -z 结尾：不变</div>
+        <div class="gc-ex">un bus → des bus · un prix → des prix · un nez → des nez</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-green">3</span>-al → -aux（大多数）</div>
+        <div class="gc-ex">un animal → des anim<u>aux</u> · un journal → des journ<u>aux</u></div>
+        <div class="gc-ex red">例外：un festival → des festival<u>s</u>（规则+s）</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-red">4</span>-eau / -au → +x</div>
+        <div class="gc-ex">un bateau → des bateau<u>x</u> · un cadeau → des cadeau<u>x</u></div>
+        <div class="gc-ex orange">例外：un pneu → des pneu<u>s</u>（非 pneux）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 动词组别 -->
+<div class="gc">
+  <div class="gc-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="gc-header-left">
+      <div class="gc-header-title">🔷 Les Groupes de Verbes · 动词组别</div>
+      <div class="gc-header-sub">第一组 -ER · 第二组 -IR · 第三组不规则</div>
+    </div>
+    <span class="gc-arrow">▼</span>
+  </div>
+  <div class="gc-body">
+    <div class="gc-rules cols-3">
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-blue">1</span>第一组：-ER（规则）</div>
+        parler · manger · chanter · aimer · regarder
+        <div class="gc-ex orange">注意：aller 虽是 -er，属第三组！</div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-orange">2</span>第二组：-IR（nous -issons）</div>
+        finir · choisir · réfléchir · obéir
+        <div class="gc-ex">finir → nous finiss<u>ons</u></div>
+      </div>
+      <div class="gc-rule">
+        <div class="gc-rule-title"><span class="gc-num c-red">3</span>第三组：不规则（单独背）</div>
+        être · avoir · aller · faire · pouvoir · vouloir · venir · prendre · mettre · partir · savoir
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+</div><!-- /tab-grammar -->
+
 
 <!-- ═══════════════════════════════  VERBS ═══════════════════════════════ -->
 <div class="tab-content" id="tab-verbs">
@@ -759,23 +1455,33 @@
 <!-- ═══════════════════════════════  LISTEN ═══════════════════════════════ -->
 <div class="tab-content" id="tab-listen">
 <div class="container">
-  <h1>Dictée · 听写训练</h1>
-  <p class="subtitle">YouTube 法语听写频道：边听边默写，练听力+拼写+语法三位一体。播完一句暂停→写下来→对照答案。</p>
+  <h1>🎧 听力训练 · French Listening</h1>
+  <p class="subtitle">FrenchPod101 法语听力系列（共 95 集）。选集播放，从 Absolute Beginner 到 Beginner 循序渐进。</p>
 
-  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:12px;margin:1.5rem 0;">
-    <iframe src="https://www.youtube.com/embed/4vdX_ywX8Fc?list=PLtJL6GKh6j0W1GFbzc5ANZqtidjrLUAGJ" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+  <div class="listen-layout">
+    <!-- Player -->
+    <div>
+      <div class="listen-player-wrap">
+        <iframe id="yt-player"
+          src="https://www.youtube.com/embed/4vdX_ywX8Fc?list=PLtJL6GKh6j0W1GFbzc5ANZqtidjrLUAGJ&index=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="listen-tip">
+        <strong>📝 使用技巧</strong><br>
+        🔹 第一遍不暂停，听大意<br>
+        🔹 逐句暂停，写下你听到的内容<br>
+        🔹 对照字幕，标记错误<br>
+        🔹 再听一遍，专攻错误处（联诵、哑音、同音词）<br>
+        <em style="color:var(--grey);">第 1–15 集：Absolute Beginner · 第 16–36 集：Beginner</em>
+      </div>
+    </div>
 
-  <div class="day-card">
-    <div class="day-header"><div class="day-num">💡</div><div class="day-topic">如何使用这个频道</div></div>
-    <div class="grammar-block">
-      <strong>这个播放列表是完整的法语 Dictée 系列，覆盖 A1 到 B2 难度。</strong><br><br>
-      🔹 <strong>第一步：</strong>第一遍不暂停，听大意<br>
-      🔹 <strong>第二步：</strong>逐句暂停，写下来你听到的<br>
-      🔹 <strong>第三步：</strong>对照视频里的标准答案，标记错误<br>
-      🔹 <strong>第四步：</strong>再听一遍，特别注意你错的地方（联诵、哑音、同音词）<br><br>
-      <strong>A2 考试建议：</strong>每天一段，从最简单的开始。Dictée 是练听力的最快路径——你不仅听到声音，还被迫去想每个词的拼写和语法。<br><br>
-      <em style="color:var(--grey);">💬 Rita 的原话：「适合边听边默写，磨练听力」</em>
+    <!-- Episode list -->
+    <div class="episode-list" id="episodeList">
+      <div class="episode-group-label">Absolute Beginner · 第 1–15 集</div>
+      <!-- items injected by JS -->
+      <div class="episode-group-label" id="beginner-label" style="display:none">Beginner · 第 16–36 集</div>
     </div>
   </div>
 </div>
@@ -1065,26 +1771,124 @@ const verbs = [
 ];
 
 function renderVerbs() {
+  // 3 core tenses shown prominently (Prelude style) + 2 extra tenses
   const tenses = ["Présent","Passé composé","Imparfait","Futur simple","Conditionnel"];
-  const keys = ["pres","pc","imp","fut","cond"];
+  const keys   = ["pres","pc","imp","fut","cond"];
+  const persons = ['je','tu','il/elle','nous','vous','ils/elles'];
   let html = '';
+
+  // Dictation toolbar
+  html += `<div class="dictation-toolbar">
+    <button class="btn-dictation start" id="btn-start-dictation" onclick="startDictation()">✏️ 开始默写</button>
+    <button class="btn-dictation check" id="btn-check-dictation" onclick="checkDictation()">✅ 检查答案</button>
+    <button class="btn-dictation reset" id="btn-reset-dictation" onclick="resetDictation()">🔄 重置</button>
+    <span class="dictation-hint" id="dictation-hint">填写所有变位格，然后点「✅ 检查答案」</span>
+  </div>`;
+
   verbs.forEach(v => {
-    html += `<h2>${v.verb}</h2>`;
-    html += '<div style="overflow-x:auto"><table class="conj-table"><tr><th></th>';
-    tenses.forEach(t => html += `<th>${t}</th>`);
-    html += '</tr>';
+    // Build irregular pp note
+    const ppParts = v.pc.split(', ');
+    const pp = ppParts[0].replace(/^(ai|as|a|avons|avez|ont|suis|es|est|sommes|êtes|sont)\s+/,'').trim();
+    html += `<div class="vt-wrap">
+      <div class="vt-title">${v.verb} <span>变位速查 · 五大时态</span></div>
+      <div style="overflow-x:auto">
+      <table class="vt-table conj-table">
+        <thead><tr>
+          <th>人称</th>
+          <th>Présent<br>现在时</th>
+          <th>Passé composé<br>复合过去时</th>
+          <th>Imparfait<br>未完成过去时</th>
+          <th>Futur simple<br>简单将来时</th>
+          <th>Conditionnel<br>条件式</th>
+        </tr></thead>
+        <tbody>`;
     for(let p=0; p<6; p++) {
-      const persons = ['je','tu','il/elle','nous','vous','ils/elles'];
-      html += `<tr><td>${persons[p]}</td>`;
+      html += `<tr>`;
+      html += `<td class="vt-person">${persons[p]}</td>`;
       keys.forEach(k => {
         const parts = v[k].split(', ');
-        html += `<td style="color:var(--ink);font-weight:${k==='pres'||k==='fut'?'600':'400'}">${parts[p] || parts[0]}</td>`;
+        const answer = (parts[p] || parts[0]).trim();
+        // underline ending for pres/imp/fut: last chars after the stem
+        const isBold = (k==='pres'||k==='fut');
+        html += `<td data-answer="${answer.replace(/"/g,'&quot;')}" style="font-weight:${isBold?'600':'400'}">
+          <span class="conj-display">${answer}</span>
+          <input type="text" class="dictation-input" style="display:none" placeholder="..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <span class="conj-check-mark" style="display:none"></span>
+        </td>`;
       });
-      html += '</tr>';
+      html += `</tr>`;
     }
-    html += '</table></div>';
+    html += `</tbody></table></div>`;
+    html += `<div class="vt-note">📌 Passé composé 过去分词：<strong>${pp}</strong></div>`;
+    html += `</div>`;
   });
   document.getElementById('verbTables').innerHTML = html;
+}
+
+let dictationActive = false;
+
+function startDictation() {
+  dictationActive = true;
+  // Show all inputs, hide display spans
+  document.querySelectorAll('#verbTables .conj-table td[data-answer]').forEach(td => {
+    td.querySelector('.conj-display').style.display = 'none';
+    const inp = td.querySelector('.dictation-input');
+    inp.style.display = 'inline-block';
+    inp.value = '';
+    inp.classList.remove('correct','wrong');
+    td.querySelector('.conj-check-mark').style.display = 'none';
+    td.querySelector('.conj-check-mark').textContent = '';
+  });
+  document.getElementById('btn-start-dictation').style.display = 'none';
+  document.getElementById('btn-check-dictation').style.display = 'inline-block';
+  document.getElementById('btn-reset-dictation').style.display = 'inline-block';
+  document.getElementById('dictation-hint').style.display = 'inline';
+  // Focus first input
+  const first = document.querySelector('#verbTables .dictation-input');
+  if (first) first.focus();
+}
+
+function normConj(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9() ]/g,'').replace(/\s+/g,' ').trim();
+}
+
+function checkDictation() {
+  document.querySelectorAll('#verbTables .conj-table td[data-answer]').forEach(td => {
+    const answer = td.dataset.answer;
+    const inp = td.querySelector('.dictation-input');
+    const mark = td.querySelector('.conj-check-mark');
+    const userVal = inp.value.trim();
+    const isCorrect = normConj(userVal) === normConj(answer);
+    inp.classList.remove('correct','wrong');
+    inp.classList.add(isCorrect ? 'correct' : 'wrong');
+    mark.style.display = 'inline-block';
+    if (isCorrect) {
+      mark.textContent = '✓';
+      mark.style.color = 'var(--green)';
+    } else {
+      mark.textContent = answer;
+      mark.style.color = 'var(--red)';
+      mark.style.fontSize = '0.72rem';
+    }
+  });
+}
+
+function resetDictation() {
+  dictationActive = false;
+  document.querySelectorAll('#verbTables .conj-table td[data-answer]').forEach(td => {
+    td.querySelector('.conj-display').style.display = '';
+    const inp = td.querySelector('.dictation-input');
+    inp.style.display = 'none';
+    inp.value = '';
+    inp.classList.remove('correct','wrong');
+    const mark = td.querySelector('.conj-check-mark');
+    mark.style.display = 'none';
+    mark.textContent = '';
+  });
+  document.getElementById('btn-start-dictation').style.display = 'inline-block';
+  document.getElementById('btn-check-dictation').style.display = 'none';
+  document.getElementById('btn-reset-dictation').style.display = 'none';
+  document.getElementById('dictation-hint').style.display = 'none';
 }
 
 // ════════════════════════ VOCAB ════════════════════════
@@ -1112,10 +1916,83 @@ function renderVocab() {
   `).join('');
 }
 
+// ════════════════════════ LISTENING EPISODES ════════════════════════
+const episodes = [
+  // Absolute Beginner: 1–15
+  {index:1,  title:"Absolute Beginner #1 · Greetings"},
+  {index:2,  title:"Absolute Beginner #2 · Introducing Yourself"},
+  {index:3,  title:"Absolute Beginner #3 · Numbers 1–10"},
+  {index:4,  title:"Absolute Beginner #4 · Days of the Week"},
+  {index:5,  title:"Absolute Beginner #5 · Months & Seasons"},
+  {index:6,  title:"Absolute Beginner #6 · Colors"},
+  {index:7,  title:"Absolute Beginner #7 · Family Members"},
+  {index:8,  title:"Absolute Beginner #8 · Food & Drinks"},
+  {index:9,  title:"Absolute Beginner #9 · At the Café"},
+  {index:10, title:"Absolute Beginner #10 · Getting Around"},
+  {index:11, title:"Absolute Beginner #11 · Shopping"},
+  {index:12, title:"Absolute Beginner #12 · Telling Time"},
+  {index:13, title:"Absolute Beginner #13 · Weather"},
+  {index:14, title:"Absolute Beginner #14 · At the Hotel"},
+  {index:15, title:"Absolute Beginner #15 · Review & Quiz"},
+  // Beginner: 16–36
+  {index:16, title:"Beginner #1 · Daily Routine"},
+  {index:17, title:"Beginner #2 · Hobbies & Free Time"},
+  {index:18, title:"Beginner #3 · At the Restaurant"},
+  {index:19, title:"Beginner #4 · Making Plans"},
+  {index:20, title:"Beginner #5 · Health & Body"},
+  {index:21, title:"Beginner #6 · Clothes & Shopping"},
+  {index:22, title:"Beginner #7 · Travel & Transport"},
+  {index:23, title:"Beginner #8 · Directions"},
+  {index:24, title:"Beginner #9 · At the Post Office"},
+  {index:25, title:"Beginner #10 · Jobs & Work"},
+  {index:26, title:"Beginner #11 · School & Education"},
+  {index:27, title:"Beginner #12 · Home & Furniture"},
+  {index:28, title:"Beginner #13 · Nationalities"},
+  {index:29, title:"Beginner #14 · Past Events"},
+  {index:30, title:"Beginner #15 · Future Plans"},
+  {index:31, title:"Beginner #16 · Asking for Help"},
+  {index:32, title:"Beginner #17 · Emotions & Feelings"},
+  {index:33, title:"Beginner #18 · At the Doctor's"},
+  {index:34, title:"Beginner #19 · Celebrations"},
+  {index:35, title:"Beginner #20 · Nature & Environment"},
+  {index:36, title:"Beginner #21 · Review & Final Quiz"},
+];
+
+let currentEpisode = 1;
+
+function loadEpisode(index) {
+  currentEpisode = index;
+  document.getElementById('yt-player').src =
+    `https://www.youtube.com/embed/4vdX_ywX8Fc?list=PLtJL6GKh6j0W1GFbzc5ANZqtidjrLUAGJ&index=${index}&autoplay=1`;
+  document.querySelectorAll('.episode-item').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.index) === index);
+  });
+}
+
+function renderEpisodeList() {
+  const list = document.getElementById('episodeList');
+  let html = '';
+  let beginnerLabelInserted = false;
+  episodes.forEach(ep => {
+    if (ep.index === 16 && !beginnerLabelInserted) {
+      html += `<div class="episode-group-label">Beginner · 第 16–36 集</div>`;
+      beginnerLabelInserted = true;
+    }
+    const isActive = ep.index === 1 ? ' active' : '';
+    html += `<div class="episode-item${isActive}" data-index="${ep.index}" onclick="loadEpisode(${ep.index})">
+      <div class="episode-num">${ep.index}</div>
+      <div class="episode-title">${ep.title.replace(/^(Absolute Beginner|Beginner) #\d+ · /,'')}</div>
+    </div>`;
+  });
+  // Replace the placeholder group labels with generated content
+  list.innerHTML = `<div class="episode-group-label">Absolute Beginner · 第 1–15 集</div>` + html;
+}
+
 // ════════════════════════ INIT ════════════════════════
 renderDaily();
 renderVerbs();
 renderVocab();
+renderEpisodeList();
 </script>
 
 </body>
