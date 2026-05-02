@@ -886,14 +886,24 @@
 <body>
 
 <nav>
+  <div class="nav-tab active" data-tab="plan">📅 30天计划</div>
   <div class="nav-tab" data-tab="grammar">📖 A1–A2 语法</div>
   <div class="nav-tab" data-tab="verbs">🔤 动词变位</div>
   <div class="nav-tab" data-tab="vocab">📝 A1–A2 词汇</div>
-  <div class="nav-tab active" data-tab="plan">📅 30天计划</div>
   <div class="nav-tab" data-tab="wrong">❌ 错题本</div>
   <div class="nav-tab" data-tab="exam">📝 真题</div>
   <div class="nav-tab" data-tab="listen">🎧 听力</div>
 </nav>
+
+<!-- ════════════════════════════════  PLAN ════════════════════════════════ -->
+<div class="tab-content active" id="tab-plan">
+<div class="container">
+  <h1>📅 30天学习计划</h1>
+  <p class="subtitle">A2存题补缺→高频场景→模拟冲刺，共三阶段30天。每天语法+词汇+听力+练习题，答错自动入错题本。</p>
+  <div id="planDayNav" class="plan-day-nav"></div>
+  <div id="planContent"></div>
+</div>
+</div>
 
 <!-- ═══════════════════════════════  GRAMMAR ═══════════════════════════════ -->
 <div class="tab-content" id="tab-grammar">
@@ -1713,19 +1723,6 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
       </div>
-      <div class="listen-tip">
-        <strong>📝 使用技巧</strong><br>
-        🔹 第一遍不暂停，听大意<br>
-        🔹 逐句暂停，写下你听到的内容<br>
-        🔹 对照字幕，标记错误<br>
-        🔹 再听一遍，专攻错误处（联诵、哑音、同音词）<br>
-        <em style="color:var(--grey);">第 1–15 集：Absolute Beginner · 第 16–36 集：Beginner</em>
-      </div>
-    </div>
-
-    <!-- Episode list -->
-    <div class="episode-list" id="episodeList">
-      <div class="episode-group-label">Absolute Beginner · 第 1–15 集</div>
 
       <!-- 📝 听写练习 · 05/02 Dictation & Analysis -->
       <div class="gc" style="margin-top:1.5rem;">
@@ -1836,6 +1833,20 @@
         </div>
       </div>
 
+      <div class="listen-tip">
+        <strong>📝 使用技巧</strong><br>
+        🔹 第一遍不暂停，听大意<br>
+        🔹 逐句暂停，写下你听到的内容<br>
+        🔹 对照字幕，标记错误<br>
+        🔹 再听一遍，专攻错误处（联诵、哑音、同音词）<br>
+        <em style="color:var(--grey);">第 1–15 集：Absolute Beginner · 第 16–36 集：Beginner</em>
+      </div>
+    </div>
+
+    <!-- Episode list -->
+    <div class="episode-list" id="episodeList">
+      <div class="episode-group-label">Absolute Beginner · 第 1–15 集</div>
+
       <!-- items injected by JS -->
       <div class="episode-group-label" id="beginner-label" style="display:none">Beginner · 第 16–36 集</div>
     </div>
@@ -1844,16 +1855,6 @@
 </div>
 
 <!-- ═══════════════════════════════  EXAM ═══════════════════════════════ -->
-
-<!-- ════════════════════════════════  PLAN ════════════════════════════════ -->
-<div class="tab-content active" id="tab-plan">
-<div class="container">
-  <h1>📅 30天学习计划</h1>
-  <p class="subtitle">A2存题补缺→高频场景→模拟冲刺，共三阶段30天。每天语法+词汇+听力+练习题，答错自动入错题本。</p>
-  <div id="planDayNav" class="plan-day-nav"></div>
-  <div id="planContent"></div>
-</div>
-</div>
 
 <!-- ════════════════════════════════  WRONG ════════════════════════════════ -->
 <div class="tab-content" id="tab-wrong">
@@ -2262,7 +2263,7 @@ const planDays = [
   {day:1, phase:'查漏补缺', grammar:'反身动词构成+变位', grammarNote:'se lever, se laver, s\'habiller — 所有反身动词PC用être，过去分词需配合主语性数', grammarTag:'反身动词',
    vocab:['se lever（起床）','se coucher（睡觉）','se laver（洗漱）','s\'habiller（穿衣）','se reposer（休息）'],
    sentences:['Je me lève à 7h.','Elle s\'est levée tôt.','Nous nous couchons tard.'],
-   listening:1,
+   listening:16,
    tasks:['背5个反身动词','造3句反身动词句子','听力第1集默写关键词'],
    exercises:[
      {q:'Je ___ lève à 7h. (me/te/se)', a:'me', tag:'反身动词'},
@@ -2274,7 +2275,7 @@ const planDays = [
   {day:2, phase:'查漏补缺', grammar:'反身动词PC（se+être，配性数）', grammarNote:'PC中：je me suis levé(e)，阴性+e；ils se sont levés；elles se sont levées', grammarTag:'反身动词',
    vocab:['se réveiller（醒来）','se dépêcher（赶快）','se souvenir（记得）','se promener（散步）','s\'amuser（玩得开心）'],
    sentences:['Je me suis réveillé(e) tôt.','Elles se sont habillées vite.','Nous nous sommes promenés.'],
-   listening:2,
+   listening:17,
    tasks:['练习反身动词PC变位','造句：阴性主语+反身动词PC','听力第2集'],
    exercises:[
      {q:'Ce matin, il ___ ___ levé à 6h.', a:'s\'est', tag:'反身动词'},
@@ -2286,7 +2287,7 @@ const planDays = [
   {day:3, phase:'查漏补缺', grammar:'命令式 affirmative（-ER/-IR/-RE三组）', grammarNote:'-ER动词tu形式去掉s：Parle！；nous建议：Parlons！；vous正式：Parlez！', grammarTag:'命令式',
    vocab:['écouter（听）','regarder（看）','finir（完成）','vendre（卖）','venir（来）'],
    sentences:['Parle plus fort !','Finissons nos devoirs !','Attendez un moment, s\'il vous plaît !'],
-   listening:3,
+   listening:18,
    tasks:['练习三组动词命令式','造5个肯定命令句','听力第3集'],
    exercises:[
      {q:'(Manger, tu) ___ tes légumes !', a:'Mange', tag:'命令式'},
@@ -2298,7 +2299,7 @@ const planDays = [
   {day:4, phase:'查漏补缺', grammar:'命令式 négative + 代词位置变化', grammarNote:'否定命令：Ne + 动词 + pas；代词：否定前置(Ne me dis pas)，肯定后置(Dis-le-moi)', grammarTag:'命令式',
    vocab:['ne...pas（不要...）','se taire（安静）','se dépêcher（赶快）','s\'asseoir（坐下）','partir（离开）'],
    sentences:['Ne parle pas pendant la classe !','Donne-le-moi !','Ne me le donne pas !'],
-   listening:4,
+   listening:19,
    tasks:['练习否定命令式','比较代词位置','听力第4集'],
    exercises:[
      {q:'(Ne pas manger, tu) ___ trop de sucre !', a:'Ne mange pas', tag:'命令式'},
@@ -2310,7 +2311,7 @@ const planDays = [
   {day:5, phase:'查漏补缺', grammar:'depuis/pendant/il y a 时间表达', grammarNote:'depuis=从那时起持续到现在（接现在时）；pendant=一段时间内；il y a=X时间前（接PC）', grammarTag:'depuis/pendant',
    vocab:['depuis（从...起）','pendant（在...期间）','il y a（...前）','longtemps（很长时间）','déjà（已经）'],
    sentences:['J\'apprends le français depuis six mois.','Il a travaillé pendant trois ans.','Il y a deux jours, j\'ai vu ce film.'],
-   listening:5,
+   listening:20,
    tasks:['造depuis/pendant/il y a各2句','听力第5集'],
    exercises:[
      {q:'J\'étudie le français ___ deux ans. (depuis/pendant)', a:'depuis', tag:'depuis/pendant'},
@@ -2322,7 +2323,7 @@ const planDays = [
   {day:6, phase:'查漏补缺', grammar:'条件式 je voudrais/pourrais/aimerais', grammarNote:'条件式=futur词根+imparfait词尾；用于礼貌请求、建议、假设(si+imparfait)', grammarTag:'条件式',
    vocab:['voudrais（想要）','pourrais（可以）','devrais（应该）','aimerais（想）','serait（会是）'],
    sentences:['Je voudrais un café, s\'il vous plaît.','Tu devrais te reposer.','Si j\'avais le temps, je voyagerais.'],
-   listening:6,
+   listening:21,
    tasks:['造5个条件式句子','练习si从句','听力第6集'],
    exercises:[
      {q:'Je ___ (vouloir, conditionnel) un thé.', a:'voudrais', tag:'条件式'},
@@ -2334,7 +2335,7 @@ const planDays = [
   {day:7, phase:'查漏补缺', grammar:'PC vs Imparfait 综合练习', grammarNote:'PC=具体事件/完成；Imparfait=背景/习惯/状态。画面法：Imparfait是背景，PC是事件', grammarTag:'PC vs Imparfait',
    vocab:['soudain（突然）','tout à coup（忽然）','d\'habitude（通常）','quand j\'étais petit（小时候）','pendant que（正当...时）'],
    sentences:['Il pleuvait quand je suis sorti.','Soudain, quelqu\'un a frappé à la porte.','Avant, je prenais le bus tous les jours.'],
-   listening:7,
+   listening:22,
    tasks:['做PC vs Imparfait选择题10道','听力第7集'],
    exercises:[
      {q:'Hier, il ___ (pleuvoir) quand je ___ (sortir).', a:'pleuvait / suis sorti', tag:'PC vs Imparfait'},
@@ -2346,7 +2347,7 @@ const planDays = [
   {day:8, phase:'查漏补缺', grammar:'否定句8种综合练习', grammarNote:'ne...pas/jamais/plus/rien/personne/aucun/ni...ni/ne...que；否定时des→de', grammarTag:'否定句',
    vocab:['ne...jamais（从不）','ne...plus（不再）','ne...rien（什么都不）','ne...personne（没人）','ne...que（只）'],
    sentences:['Je ne mange jamais de durian.','Il ne reste plus de pain.','Je n\'ai vu personne.'],
-   listening:8,
+   listening:23,
    tasks:['写8种否定形式各一句','听力第8集'],
    exercises:[
      {q:'Je ___ mange ___ de viande. (从不)', a:'ne / jamais', tag:'否定句'},
@@ -2358,7 +2359,7 @@ const planDays = [
   {day:9, phase:'查漏补缺', grammar:'关系代词 qui/que/où/dont', grammarNote:'qui=主语接动词；que=宾语接主语；où=地点/时间；dont=de+先行词', grammarTag:'关系代词',
    vocab:['qui（关系主语）','que（关系宾语）','où（地点/时间）','dont（de+先行词）','lequel（哪一个）'],
    sentences:['La femme qui parle est ma prof.','Le film que j\'ai vu était super.','C\'est la ville où je suis né.'],
-   listening:9,
+   listening:24,
    tasks:['用四个关系代词各造两句','听力第9集'],
    exercises:[
      {q:'La femme ___ parle est ma prof. (关系主语)', a:'qui', tag:'关系代词'},
@@ -2370,7 +2371,7 @@ const planDays = [
   {day:10, phase:'查漏补缺', grammar:'代词COD/COI/y/en综合', grammarNote:'COD(le/la/les)→直接宾语；COI(lui/leur)→à+人；y→à+地点/事物；en→de+名词；双代词顺序：me/te/se→le/la/les→lui/leur→y→en', grammarTag:'代词COD/COI',
    vocab:['le/la/les（COD）','lui/leur（COI）','y（à+地点）','en（de+名词）','me/te/nous/vous'],
    sentences:['Je le vois tous les jours.','Je lui parle souvent.','J\'y vais demain.'],
-   listening:10,
+   listening:25,
    tasks:['代词替换练习10题','听力第10集'],
    exercises:[
      {q:'Tu vois Marie ? — Oui, je ___ vois. (COD)', a:'la', tag:'代词COD/COI'},
@@ -2383,7 +2384,7 @@ const planDays = [
   {day:11, phase:'高频场景', grammar:'写作练习——描述一次旅行（PC+地点词汇）', grammarNote:'旅行写作套路：时间背景(Imparfait)+活动(PC)+感受(Imparfait)+总结', grammarTag:'写作',
    vocab:['voyager（旅行）','visiter（参观）','découvrir（发现）','admirer（欣赏）','se souvenir（记得）'],
    sentences:['J\'ai visité Paris l\'année dernière.','Le voyage était inoubliable.','Nous avons découvert de beaux endroits.'],
-   listening:11,
+   listening:26,
    tasks:['写一篇60词旅行描述','用PC+Imparfait混合','听力第11集'],
    exercises:[
      {q:'L\'été dernier, je ___ (visiter, PC) Paris.', a:'ai visité', tag:'写作'},
@@ -2395,7 +2396,7 @@ const planDays = [
   {day:12, phase:'高频场景', grammar:'写作练习——邀请函套路', grammarNote:'邀请函：Salut+姓名 → 目的 → 日期/时间/地点 → 请求 → 期待回复 → 签名', grammarTag:'写作',
    vocab:['inviter（邀请）','organiser（组织）','participer（参加）','confirmer（确认）','apporter（带来）'],
    sentences:['Je t\'invite à ma fête d\'anniversaire.','C\'est samedi à 20h chez moi.','Dis-moi si tu peux venir.'],
-   listening:12,
+   listening:27,
    tasks:['写一封60词邀请函','听力第12集'],
    exercises:[
      {q:'Je t\'___ (inviter) à une soirée.', a:'invite', tag:'写作'},
@@ -2407,7 +2408,7 @@ const planDays = [
   {day:13, phase:'高频场景', grammar:'写作练习——感谢/道歉信', grammarNote:'感谢：Merci pour... + explication；道歉：Je suis désolé(e) + raison + solution', grammarTag:'写作',
    vocab:['remercier（感谢）','s\'excuser（道歉）','malheureusement（不幸地）','désolé(e)（抱歉）','par contre（但是）'],
    sentences:['Je te remercie pour ton aide.','Je suis vraiment désolé(e) de ne pas pouvoir venir.','Par contre, je suis libre dimanche.'],
-   listening:13,
+   listening:28,
    tasks:['写一封道歉信（拒绝邀请）','听力第13集'],
    exercises:[
      {q:'Je ___ beaucoup pour ton invitation. (感谢)', a:'te remercie', tag:'写作'},
@@ -2419,7 +2420,7 @@ const planDays = [
   {day:14, phase:'高频场景', grammar:'口语练习——自我介绍1分30秒', grammarNote:'自我介绍：姓名+年龄+国籍 → 工作/学习 → 家庭 → 爱好 → 学法语原因', grammarTag:'口语',
    vocab:['se présenter（自我介绍）','profession（职业）','loisir（爱好）','langue（语言）','nationalité（国籍）'],
    sentences:['Je m\'appelle... J\'ai ... ans.','Je suis étudiant(e) en ...','J\'apprends le français depuis ...'],
-   listening:14,
+   listening:29,
    tasks:['录音：说1分30秒自我介绍','听力第14集'],
    exercises:[
      {q:'Je m\'___ (s\'appeler) Marie.', a:'appelle', tag:'口语'},
@@ -2431,7 +2432,7 @@ const planDays = [
   {day:15, phase:'高频场景', grammar:'口语练习——独白话题2分钟', grammarNote:'独白结构：Introduction(15s) → Point1+例子(40s) → Point2+例子(40s) → Opinion(25s) → Conclusion(10s)', grammarTag:'口语',
    vocab:['d\'abord（首先）','ensuite（然后）','enfin（最后）','personnellement（个人来说）','par exemple（例如）'],
    sentences:['Je vais vous parler de...','D\'abord... Par exemple...','Personnellement, je pense que...'],
-   listening:15,
+   listening:30,
    tasks:['练习独白：我的城市（2分钟）','听力第15集'],
    exercises:[
      {q:'独白开头标准句是？', a:'Je vais vous parler de [sujet].', tag:'口语'},
@@ -2443,7 +2444,7 @@ const planDays = [
   {day:16, phase:'高频场景', grammar:'听力专项——数字/日期/时间听写', grammarNote:'数字：70=soixante-dix；80=quatre-vingts；90=quatre-vingt-dix；100=cent；时间：Il est 14h30=quatorze heures trente', grammarTag:'听力',
    vocab:['soixante-dix（70）','quatre-vingts（80）','quatre-vingt-dix（90）','cent（100）','mille（1000）'],
    sentences:['Il est quatorze heures trente.','Le train part à vingt et une heures.','Ça coûte quatre-vingt-cinq euros.'],
-   listening:16,
+   listening:31,
    tasks:['听写数字练习','听力第16集专项'],
    exercises:[
      {q:'75用法语怎么说？', a:'soixante-quinze', tag:'听力'},
@@ -2455,7 +2456,7 @@ const planDays = [
   {day:17, phase:'高频场景', grammar:'阅读理解——广告/邮件题型', grammarNote:'广告题：找关键信息（价格/日期/条件）；邮件题：判断目的（邀请/拒绝/询问）', grammarTag:'综合',
    vocab:['une annonce（广告）','un courriel（邮件）','chercher（寻找）','proposer（提议）','gratuit（免费）'],
    sentences:['On cherche un colocataire.','L\'entrée est gratuite pour les moins de 18 ans.','Veuillez confirmer votre réservation.'],
-   listening:17,
+   listening:32,
    tasks:['做阅读理解练习2篇','听力第17集'],
    exercises:[
      {q:'广告中 gratuit 是什么意思？', a:'免费', tag:'综合'},
@@ -2467,7 +2468,7 @@ const planDays = [
   {day:18, phase:'高频场景', grammar:'综合场景——购物/问路', grammarNote:'购物：Je voudrais / C\'est combien ? / Je peux essayer ? 问路：Pour aller à... / Tournez à gauche', grammarTag:'综合',
    vocab:['essayer（试穿）','la taille（尺码）','tourner（转）','continuer tout droit（直走）','au bout de（在...尽头）'],
    sentences:['Je peux essayer cette robe ?','Pour aller à la gare, s\'il vous plaît ?','Tournez à droite après le feu.'],
-   listening:18,
+   listening:33,
    tasks:['角色扮演：购物对话','问路练习','听力第18集'],
    exercises:[
      {q:'购物时如何问价格？', a:'C\'est combien ? / Quel est le prix ?', tag:'综合'},
@@ -2479,7 +2480,7 @@ const planDays = [
   {day:19, phase:'高频场景', grammar:'综合场景——健康/看医生', grammarNote:'J\'ai mal à la tête/gorge/ventre；Je tousse/J\'ai de la fièvre；Vous devriez + infinitif', grammarTag:'综合',
    vocab:['avoir mal à（...疼）','la gorge（喉咙）','tousser（咳嗽）','la fièvre（发烧）','une ordonnance（处方）'],
    sentences:['J\'ai très mal à la gorge.','Je tousse depuis trois jours.','Vous devriez prendre ce médicament.'],
-   listening:19,
+   listening:34,
    tasks:['模拟看医生对话','听力第19集'],
    exercises:[
      {q:'J\'___ mal à la tête. (avoir)', a:'ai', tag:'综合'},
@@ -2491,7 +2492,7 @@ const planDays = [
   {day:20, phase:'高频场景', grammar:'综合场景——描述人/地方（形容词变形）', grammarNote:'形容词性数配合：grand/grande；beau/belle；blanc/blanche；位置：大多数后置，BAGS类前置', grammarTag:'综合',
    vocab:['grand/grande（大/高）','sympathique（友善）','moderne（现代）','animé（热闹）','calme（安静）'],
    sentences:['C\'est une grande ville très animée.','Elle est grande avec les yeux bleus.','Le quartier est calme et agréable.'],
-   listening:20,
+   listening:35,
    tasks:['写一段人物描述（50词）','写一段地点描述（50词）','听力第20集'],
    exercises:[
      {q:'un homme ___ (grand, 阳性)', a:'grand', tag:'综合'},
@@ -2504,7 +2505,7 @@ const planDays = [
   {day:21, phase:'模拟冲刺', grammar:'模拟听力1套', grammarNote:'听力考试：第1部分3题，第2部分4题，第3部分5题。每题听两遍，注意题目中的数字/地点/人名。', grammarTag:'听力',
    vocab:['comprendre（理解）','répéter（重复）','noter（记录）','identifier（辨别）','un dialogue（对话）'],
    sentences:['Écoutez et répondez aux questions.','La première partie : 3 enregistrements.','Vous avez 30 secondes pour lire les questions.'],
-   listening:21,
+   listening:36,
    tasks:['完整做一套听力真题','对答案分析错误','听力第21集'],
    exercises:[
      {q:'听力考试每段录音听几遍？', a:'两遍', tag:'听力'},
@@ -2516,7 +2517,7 @@ const planDays = [
   {day:22, phase:'模拟冲刺', grammar:'模拟听力2套', grammarNote:'重点练习：注意题目中否定句的陷阱；代词替换；同义表达', grammarTag:'听力',
    vocab:['une émission（节目）','une publicité（广告）','un message（留言）','une annonce（广播）','une interview（采访）'],
    sentences:['Vous allez entendre un message.','Répondez aux questions suivantes.','Cochez la bonne réponse.'],
-   listening:22,
+   listening:16,
    tasks:['第2套听力模拟','分析错题类型','听力第22集'],
    exercises:[
      {q:'听力中出现 ne...pas 要注意什么？', a:'否定意思，不要混淆为肯定', tag:'听力'},
@@ -2528,7 +2529,7 @@ const planDays = [
   {day:23, phase:'模拟冲刺', grammar:'模拟听力3套', grammarNote:'综合训练：数字类、判断类、多选类题型强化', grammarTag:'听力',
    vocab:['vrai/faux（对/错）','exact（正确）','incorrect（不正确）','selon（根据）','d\'après（根据）'],
    sentences:['D\'après le document, ...','Selon la personne interrogée,...','Cochez vrai ou faux.'],
-   listening:23,
+   listening:19,
    tasks:['第3套听力模拟','总结错题规律','听力第23集'],
    exercises:[
      {q:'vrai/faux题：如何判断？', a:'找到题目对应的录音句，逐字比对', tag:'听力'},
@@ -2540,7 +2541,7 @@ const planDays = [
   {day:24, phase:'模拟冲刺', grammar:'模拟写作1套（2篇）', grammarNote:'写作考试：两篇各60+词；第1篇：非正式（邀请/感谢/道歉）；第2篇：正式（咨询/投诉）', grammarTag:'写作',
    vocab:['rédiger（撰写）','un paragraphe（段落）','une introduction（引言）','une conclusion（结论）','un brouillon（草稿）'],
    sentences:['Je vous écris pour vous informer de...','Je vous remercie d\'avance.','Dans l\'attente de votre réponse,...'],
-   listening:24,
+   listening:22,
    tasks:['完整写作模拟：2篇限时45分钟','自我评分','听力第24集'],
    exercises:[
      {q:'正式邮件的结尾套语是？', a:'Cordialement / Dans l\'attente de votre réponse, veuillez agréer...', tag:'写作'},
@@ -2564,7 +2565,7 @@ const planDays = [
   {day:26, phase:'模拟冲刺', grammar:'模拟写作3套', grammarNote:'写作综合：检查常见错误（性数配合、助动词选择、冠词使用）', grammarTag:'写作',
    vocab:['vérifier（检查）','corriger（纠正）','relire（重读）','améliorer（改善）','cohérent（连贯）'],
    sentences:['Je relis ma lettre pour corriger les erreurs.','La réponse est cohérente et bien structurée.','J\'améliore mon vocabulaire chaque jour.'],
-   listening:26,
+   listening:28,
    tasks:['写作模拟第3套','建立个人错误清单','听力第26集'],
    exercises:[
      {q:'写作常见错误1：性数配合。une femme ___ (grand)', a:'grande', tag:'综合'},
@@ -2576,7 +2577,7 @@ const planDays = [
   {day:27, phase:'模拟冲刺', grammar:'口语模拟（限时录音）', grammarNote:'口语考试：Part1自我介绍2min；Part2独白2min（10min准备）；Part3角色扮演3-4min', grammarTag:'口语',
    vocab:['s\'exprimer（表达）','une interaction（互动）','un jeu de rôle（角色扮演）','proposer（提议）','négocier（协商）'],
    sentences:['Excusez-moi, je voudrais savoir...','Est-ce que vous pourriez m\'aider ?','Je suis d\'accord avec vous.'],
-   listening:27,
+   listening:31,
    tasks:['口语模拟：限时自我介绍2分钟（录音）','独白练习（话题：ma ville）','听力第27集'],
    exercises:[
      {q:'口语中如何礼貌询问？', a:'Je voudrais savoir... / Pourriez-vous m\'indiquer... ?', tag:'口语'},
@@ -2588,7 +2589,7 @@ const planDays = [
   {day:28, phase:'模拟冲刺', grammar:'口语模拟（限时录音）', grammarNote:'强化：角色扮演常见场景（旅馆预订/问路/购物/看医生）的生存句式', grammarTag:'口语',
    vocab:['réserver（预订）','annuler（取消）','se plaindre（抱怨）','expliquer（解释）','insister（坚持）'],
    sentences:['Je voudrais réserver une chambre pour deux nuits.','Il y a un problème avec ma commande.','Je suis vraiment désolé pour ce contretemps.'],
-   listening:28,
+   listening:33,
    tasks:['角色扮演：旅馆预订（5分钟）','角色扮演：餐厅投诉（5分钟）','听力第28集'],
    exercises:[
      {q:'旅馆预订：Je voudrais ___ une chambre pour deux nuits.', a:'réserver', tag:'口语'},
@@ -2600,7 +2601,7 @@ const planDays = [
   {day:29, phase:'模拟冲刺', grammar:'弱点集中复习（看错题本）', grammarNote:'根据错题本重点复习薄弱语法点。今天不做新题，专攻错题！', grammarTag:'综合',
    vocab:['réviser（复习）','consolider（巩固）','maîtriser（掌握）','s\'améliorer（进步）','réussir（成功）'],
    sentences:['Je dois réviser mes points faibles.','J\'ai progressé grâce à mes révisions.','Je vais réussir l\'examen !'],
-   listening:29,
+   listening:35,
    tasks:['翻看错题本所有错题','重点语法点精练','听力第29集'],
    exercises:[
      {q:'PC vs Imparfait：Hier, je ___ (marcher) quand je ___ (tomber).', a:'marchais / suis tombé(e)', tag:'PC vs Imparfait'},
@@ -2612,7 +2613,7 @@ const planDays = [
   {day:30, phase:'模拟冲刺', grammar:'轻松收尾——只看词汇+听力，不做题', grammarNote:'考前一天：轻松复习词汇，听喜欢的法语歌或播客，保持状态，早点睡觉！', grammarTag:'综合',
    vocab:['confiant(e)（自信的）','prêt(e)（准备好的）','courageux（勇敢的）','concentré(e)（专注的）','réussir（成功）'],
    sentences:['Je suis prêt(e) pour l\'examen !','J\'ai bien travaillé ces 30 jours.','Je vais réussir !'],
-   listening:30,
+   listening:36,
    tasks:['浏览词汇表（只看不写）','听力第30集放松听','早点睡觉！'],
    exercises:[
      {q:'Je suis ___ pour l\'examen ! (准备好的)', a:'prêt(e)', tag:'综合'},
